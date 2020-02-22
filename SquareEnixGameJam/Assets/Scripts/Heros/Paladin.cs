@@ -10,17 +10,16 @@ public class Paladin : Hero
         this.AttackPoint = 2;
         this.DefencePoint = 5;
         this.Luck = 1;
+        this.ClassText = "Paladin";
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public Paladin(float healthPoint, int attackPoint, int defencePoint, int luck) : base(healthPoint, attackPoint, defencePoint, luck)
     {
-        
+        healthPoint = 1.0f;
+        attackPoint = 2;
+        defencePoint = 5;
+        luck = 1;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

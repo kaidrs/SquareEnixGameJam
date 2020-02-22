@@ -8,11 +8,14 @@ public class Hero : ScriptableObject
     private int attackPoint;
     private int defencePoint;
     private int luck;
+    private SpellCard spell;
+    private string classText;
 
     public float HealthPoint { get => healthPoint; set => healthPoint = value; }
     public int AttackPoint { get => attackPoint; set => attackPoint = value; }
     public int DefencePoint { get => defencePoint; set => defencePoint = value; }
     public int Luck { get => luck; set => luck = value; }
+    public string ClassText { get => classText; set => classText = value; }
 
     public Hero(float healthPoint, int attackPoint, int defencePoint, int luck)
     {
@@ -29,6 +32,12 @@ public class Hero : ScriptableObject
 
     public void TakeDamageFromPlayer(Hero hero)
     {
+        int damageMultiplier = (100 / (100 + hero.defencePoint)); //Clamp to 0-100 percentage reduction
+        this.healthPoint -= (hero.AttackPoint * damageMultiplier);
+    }
 
+    public void TakeDamageFromMonster()
+    {
+       
     }
 }

@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Card", menuName = "Cards/SpellCard")]
 public class SpellCard : Card
 {
-	public SpellCard(string name, int number):base(name, number) 
-	{
-		
-	}
 
-	public void CastSpell()
+    public void CastSpell()
 	{
 
 	}

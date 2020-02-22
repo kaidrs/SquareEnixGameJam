@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[SerializeField]
-public class Card : MonoBehaviour
+public class Card : ScriptableObject
 {
-    private string cardName;
-    private int cardNumber;
+    //Fields
+    [Header("Card Properties")]
+    [SerializeField] private string cardName;
+    [SerializeField] private int cardNumber;
 
-    protected Card(string name, int number)
-    {
-        this.cardName = name;
-        this.cardNumber = number;
-    }
+    [SerializeField] private Sprite cardSprite;
+
+    //Properties
+    public string CardName { get => cardName; set => cardName = value; }
+    public int CardNumber { get => cardNumber; set => cardNumber = value; }
+    public Sprite CardSprite { get => cardSprite; set => cardSprite = value; }
 }
