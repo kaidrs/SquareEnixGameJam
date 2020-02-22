@@ -20,7 +20,7 @@ public class HeroManager : MonoBehaviour
 
     public void PickWarrior()
     {
-      
+     
     }
 
     public void PickPaladin()
