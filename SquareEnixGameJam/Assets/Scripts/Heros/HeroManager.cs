@@ -51,7 +51,7 @@ public class HeroManager : MonoBehaviour
         warrior.HealthPoint = 1.0f;
         warrior.AttackPoint = 10;
         warrior.DefencePoint = 5;
-        warrior.Luck = 1;
+        warrior.Luck = 5;
         warrior.ClassText = "Warrior";
         return warrior;
     }
@@ -62,7 +62,7 @@ public class HeroManager : MonoBehaviour
         paladin.HealthPoint = 1.0f;
         paladin.AttackPoint = 10;
         paladin.DefencePoint = 5;
-        paladin.Luck = 1;
+        paladin.Luck = 5;
         paladin.ClassText = "Paladin";
         return paladin;
     }
