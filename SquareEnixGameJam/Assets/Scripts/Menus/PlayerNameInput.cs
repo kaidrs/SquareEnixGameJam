@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerNameInput : MonoBehaviour
+public class PlayerNameInput : MonoBehaviourPunCallbacks
 {
     [SerializeField] private InputField nameInputField = null;
     [SerializeField] private Button continueButton = null;

@@ -7,6 +7,21 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviourPunCallbacks
 {
+    //#region Singleton
+    //private static MainMenu _instance = null;
+    //public static MainMenu Instance
+    //{
+    //    get
+    //    {
+    //        if (_instance == null)
+    //        {
+    //            _instance = GameObject.FindObjectOfType<MainMenu>();
+    //        }
+    //        return _instance;
+    //    }
+    //}
+    //#endregion
+
     [SerializeField] private GameObject findOpponentPanel = null;
     [SerializeField] private GameObject waitingStatusPanel = null;
     [SerializeField] private Text waitingStatusText = null;
@@ -19,6 +34,17 @@ public class MainMenu : MonoBehaviourPunCallbacks
     private void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
+        //#region Dont Destroy On Load
+        //var objects = GameObject.FindObjectsOfType(this.GetType());
+        //if (objects.Length > 1)
+        //{
+        //    DestroyImmediate(this.gameObject);
+        //}
+        //else
+        //{
+        //    DontDestroyOnLoad(this.gameObject);
+        //}
+        //#endregion
     }
 
     public void FindOpponent()
