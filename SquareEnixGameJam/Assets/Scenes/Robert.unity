@@ -1521,6 +1521,7 @@ GameObject:
   - component: {fileID: 2053133170}
   - component: {fileID: 2053133169}
   - component: {fileID: 2053133172}
+  - component: {fileID: 2053133173}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1608,6 +1609,18 @@ MonoBehaviour:
   characterInfo: {fileID: 1492322762}
   panelInfo: {fileID: 1395751491}
   characterNumber: 0
+--- !u!114 &2053133173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053133168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8cf466ffc4dd9b4ca04df3a2a0768c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2062772813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,7 +1759,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2093756547}
-  - component: {fileID: 2093756546}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1754,20 +1766,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &2093756546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093756545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c4c75c5c180064f83ad8c9e47c382c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanText: {fileID: 0}
-  camTexture: {fileID: 0}
 --- !u!4 &2093756547
 Transform:
   m_ObjectHideFlags: 0
