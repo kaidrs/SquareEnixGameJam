@@ -116,7 +116,9 @@ public class HeroManager : MonoBehaviour
     public void WarriorChoice()
     {
         panelInfo.SetActive(true);
-        textForUI = "This class has a superior attack";
+        textForUI = "Starting Stat" +
+            "Attack: 5 (Determine damage)" +
+            "Defence: 2 (De";
         characterNumber = 1;
         isPanelOn = true;
     }
