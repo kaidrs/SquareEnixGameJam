@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     /// When player is first connected via Photon, add player to players list
     /// </summary>
     /// <param name="player"></param>
-    void AddPlayer(Player player)
+    public void AddPlayer(Player player)
     {
         if (players.Count < MAX_PLAYERS)
         {
@@ -75,4 +75,5 @@ public class GameManager : MonoBehaviour
     {
         player.Turn = order;
     }
+
 }

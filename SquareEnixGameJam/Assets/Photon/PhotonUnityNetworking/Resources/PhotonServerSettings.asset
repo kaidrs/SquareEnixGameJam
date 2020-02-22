@@ -18,7 +18,7 @@ MonoBehaviour:
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: cae
     Server: 
     Port: 0
     Protocol: 0
@@ -30,9 +30,19 @@ MonoBehaviour:
   StartInOfflineMode: 0
   RpcList:
   - ClickRpc
+  - Connect
   - DestroyRpc
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - Chat
+  - SendTheP
+  - UpdateThePs
+  - ReceiveTheP
+  - ReceiveInfo
+  - ReceiveThePlayer
+  - SendmyPlayerJSON
+  - ReceivemyPlayerJSON
+  - ReceiveMyPlayerJSON
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
