@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb3df584f4c26f2468d24ed6a066709e, type: 3}
-  m_Name: 6-BattleAxe
+  m_Name: 111-WoodenShield
   m_EditorClassIdentifier: 
-  cardName: Battle Axe
-  cardNumber: 6
+  cardName: Wooden Shield
+  cardNumber: 111
   cardSprite: {fileID: 0}
-  attackStat: 3
-  defenceStat: 0
+  attackStat: 0
+  defenceStat: 1

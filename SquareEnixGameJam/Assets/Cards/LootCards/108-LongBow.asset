@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb3df584f4c26f2468d24ed6a066709e, type: 3}
-  m_Name: 9-Crossbow
+  m_Name: 108-LongBow
   m_EditorClassIdentifier: 
-  cardName: Crossbow
-  cardNumber: 9
+  cardName: Long Bow
+  cardNumber: 108
   cardSprite: {fileID: 0}
-  attackStat: 3
+  attackStat: 2
   defenceStat: 0
