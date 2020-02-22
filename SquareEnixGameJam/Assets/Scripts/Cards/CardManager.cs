@@ -8,22 +8,35 @@ public class CardManager : MonoBehaviour
 
     #region Singleton
 
-    static CardManager instance = null;
+    private static CardManager instance;
   
-    CardManager GetInstance()
+    public static CardManager Instance
     {
-        if (instance == null)
+        get
         {
-            instance = this;
-        }
+            if (instance == null)
+            {
+                instance = FindObjectOfType<CardManager>();
+            }
 
-        return instance;
+            return instance;
+        }
     }
 
     #endregion
 
-    private CardManager()
-    {
+    [SerializeField] Card[] CardColletion;
 
+    Card CallCard(int cardNumber)
+    {
+        for (int i = 0; i < CardColletion.Length; i++)
+        {
+            if (CardColletion[i].CardNumber == cardNumber)
+            {
+                return CardColletion[i];
+            }
+        }
+        return null;
     }
+
 }
