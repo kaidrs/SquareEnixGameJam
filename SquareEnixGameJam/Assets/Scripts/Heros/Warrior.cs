@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Warrior : Hero
 {
-
-    public Warrior(float healthPoint, int attackPoint, int defencePoint, int luck) : base(healthPoint, attackPoint, defencePoint, luck)
+    public Warrior(float healthPoint, int attackPoint, int defencePoint, int luck, string classText) : base(healthPoint, attackPoint, defencePoint, luck, classText)
     {
         healthPoint = 1.0f;
-        attackPoint = 5;
-        defencePoint = 2;
-        luck = 1;
+        attackPoint = 10;
+        defencePoint = 5;
+        luck = 5;
+        classText = "Warrior";
     }
 }
