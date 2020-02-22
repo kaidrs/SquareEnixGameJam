@@ -27,7 +27,7 @@ public class CardManager : MonoBehaviour
 
     [SerializeField] Card[] CardColletion;
 
-    Card CallCard(int cardNumber)
+    public Card CallCard(int cardNumber)
     {
         for (int i = 0; i < CardColletion.Length; i++)
         {
