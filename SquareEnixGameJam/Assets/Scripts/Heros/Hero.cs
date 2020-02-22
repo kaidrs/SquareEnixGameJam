@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hero : ScriptableObject
+public class Hero
 {
     private float healthPoint;
     private int attackPoint;

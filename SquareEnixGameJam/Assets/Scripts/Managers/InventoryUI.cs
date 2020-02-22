@@ -32,7 +32,7 @@ public class InventoryUI : MonoBehaviour
 
     public void InitInventoryUI()
     {
-        heroNameText.text = hero.name;
+        //heroNameText.text = hero.name;
         heroClassText.text = hero.ClassText;
         heroAttackText.text = hero.AttackPoint.ToString();
         heroDefenseText.text = hero.DefencePoint.ToString();
