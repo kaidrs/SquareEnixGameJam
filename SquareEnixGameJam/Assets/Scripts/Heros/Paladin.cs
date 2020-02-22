@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class Paladin : Hero
 {
-    //public Paladin()
-    //{
-    //    this.HealthPoint = 1.0f;
-    //    this.AttackPoint = 2;
-    //    this.DefencePoint = 5;
-    //    this.Luck = 1;
-    //}
 
     public Paladin(float healthPoint, int attackPoint, int defencePoint, int luck) : base(healthPoint, attackPoint, defencePoint, luck)
     {
@@ -19,4 +12,6 @@ public class Paladin : Hero
         defencePoint = 5;
         luck = 1;
     }
+
+    
 }

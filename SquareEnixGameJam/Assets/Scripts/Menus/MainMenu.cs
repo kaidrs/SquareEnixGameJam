@@ -106,7 +106,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
         }
 
     }
-    public override void OnPlayerEnteredRoom(Player newPlayer)
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         if (PhotonNetwork.CurrentRoom.PlayerCount >= MinPlayersPerRoom)
         {

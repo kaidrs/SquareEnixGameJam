@@ -4,23 +4,12 @@ using UnityEngine;
 
 public class Warrior : Hero
 {
-    public Warrior()
-    {
-        this.HealthPoint = 1.0f;
-        this.AttackPoint = 5;
-        this.DefencePoint = 2;
-        this.Luck = 1;
-    }
 
-    // Start is called before the first frame update
-    void Start()
+    public Warrior(float healthPoint, int attackPoint, int defencePoint, int luck) : base(healthPoint, attackPoint, defencePoint, luck)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        healthPoint = 1.0f;
+        attackPoint = 5;
+        defencePoint = 2;
+        luck = 1;
     }
 }

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     public int Turn { get => turn; set => turn = value; }
     public string DisplayName { get => displayName; set => displayName = value; }
+    public Hero Character { get => character; set => character = value; }
 
     public Player(string displayName)
     {
