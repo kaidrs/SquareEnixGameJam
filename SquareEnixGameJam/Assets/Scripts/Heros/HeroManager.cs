@@ -37,20 +37,18 @@ public class HeroManager : MonoBehaviour
         
     }
 
-    public void PickWarrior()
+    public Hero CreateWarrior()
     {
-
         Hero warrior = ScriptableObject.CreateInstance<Warrior>();
         warrior.HealthPoint = 1.0f;
         warrior.AttackPoint = 10;
         warrior.DefencePoint = 5;
         warrior.Luck = 1;
         warrior.ClassText = "Warrior";
-        playerChoice.Add(warrior);
-        GameScene();
+        return warrior;
     }
 
-    public void PickPaladin()
+    public Hero CreatePaladin()
     {
         Hero paladin = ScriptableObject.CreateInstance<Paladin>();
         paladin.HealthPoint = 1.0f;
@@ -58,11 +56,10 @@ public class HeroManager : MonoBehaviour
         paladin.DefencePoint = 5;
         paladin.Luck = 1;
         paladin.ClassText = "Paladin";
-        playerChoice.Add(paladin);
-        GameScene();
+        return paladin;
     }
 
-    public void PickThief()
+    public Hero CreateThief()
     {
         Hero thief = ScriptableObject.CreateInstance<Thief>();
         thief.HealthPoint = 1.0f;
@@ -70,12 +67,29 @@ public class HeroManager : MonoBehaviour
         thief.DefencePoint = 5;
         thief.Luck = 10;
         thief.ClassText = "Thief";
-        playerChoice.Add(thief);
+        return thief;
+    }
+
+    public void PickWarrior()
+    {
+        playerChoice.Add(CreateWarrior());
+        GameScene();
+    }
+
+    public void PickPaladin()
+    {
+        playerChoice.Add(CreatePaladin());
+        GameScene();
+    }
+
+    public void PickThief()
+    {
+        playerChoice.Add(CreateThief());
         GameScene();
     }
 
     public void GameScene()
     {
-        SceneManager.LoadScene("AfterSelectionRob");
+        SceneManager.LoadScene("Jeff");
     }
 }
