@@ -9,17 +9,20 @@ public class Player : MonoBehaviour
 
     // Turn order of the player. Starts with 1, end with GameManager.players.Count
     private int turn;
+    private int tilePosition; //stores tile position 
 
     // The character player chooses at the beginning
     [SerializeField] Hero character;
 
     public int Turn { get => turn; set => turn = value; }
+    public int TilePosition { get => tilePosition; set => TilePosition = value; }
     public string DisplayName { get => displayName; set => displayName = value; }
     public Hero Character { get => character; set => character = value; }
 
-    public Player(string displayName)
+    public Player(string displayName, int tilePosition)
     {
         this.displayName = displayName;
+        this.tilePosition = 0; //default 0
     }
 
     public Player() {}
