@@ -65,7 +65,7 @@ public class TileManager : MonoBehaviour
     void Start()
     {
         this.playerTilePosition = 0;
-        //playerList = GameManager.Instance.players;
+        playerList = GameManager.Instance.Players;
     }
 
     /// <summary>
