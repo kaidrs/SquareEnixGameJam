@@ -18,18 +18,12 @@ public class Zone
 {
     public string name;
     [SerializeField] private ZoneType type;
-    [SerializeField] private List<TileType> numberOfTiles;
+    [SerializeField] private List<TileType> tiles;
     private float zoneMultiplier;
-    private int numberOfTilesPerZone;
 
-    public List<TileType> NumberOfTiles { get => numberOfTiles; set => NumberOfTiles = value; }
+    public List<TileType> Tiles { get => tiles; set => Tiles = value; }
     public float ZoneMultiplier { get => zoneMultiplier; set => ZoneMultiplier = value; }
-    public int NumberOfTilesPerZone { get => numberOfTilesPerZone; set => NumberOfTilesPerZone = value; }
-
-    public Zone (int numberOfTilesPerZone)
-    {
-        this.numberOfTilesPerZone = 10;
-    }
+    public ZoneType Type { get => type; set => Type = value; }
 
     /// <summary>
     /// Retrieves zone multipliers
@@ -68,72 +62,53 @@ public class TileManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private List<Zone> numberOfZones;
+    [SerializeField] private List<Zone> zones;
     private List<Player> playerList;
     private Player currentActivePlayer;
-    private Queue<int> currentTurn;
+    private int currentTurn = 1;
+    public List<TileType> board;
 
-    //Store board number of zones and tiles it contains
-    private int numberOfExistingZones = 0; //default value
-    private int numberOfExistingTiles = 0; //default value
 
     public void Start()
     {
-        numberOfExistingZones = gameObject.GetComponent<TileManager>().numberOfZones.Count;
-        Console.WriteLine($"Set {numberOfExistingTiles} Zones in Board");
+        board = new List<TileType>();
+        Debug.Log($"Set {zones.Count} Zones in Board");
 
-        //foreach (var zones in this.numberOfZones)
-        //{
-        //    numberOfExistingZones++;
-        //    Console.WriteLine($"Set {numberOfExistingTiles} Zones in Board");
-        //    foreach (var tiles in zones.NumberOfTiles)
-        //    {
-        //        numberOfExistingTiles++;
-        //        Console.WriteLine($"Set {numberOfExistingTiles} Tiles in Board");
-        //    }
-        //}
+
+        foreach (var zone in zones)
+        {
+            foreach (var tile in zone.Tiles)
+            {
+                board.Add(tile);
+
+            }
+        }
     }
 
     public void RetrievePlayerList()
     {
-        if (playerList == null)
+        if (GameManager.Instance.Players != null)
         {
             playerList = GameManager.Instance.Players; //retrieve the list of players set in GameManager
 
-            for (int i = 1; i <= playerList.Count; i++) //check how many players exist in the list of players, and queue up their turn, from 1 to number of players
-            {
-                currentTurn.Enqueue(i); //i = 1, so the game should start with player with turn=1 to be at the first in queue
-            }
+            playerList.Sort(SortByTurn);
         }
     }
 
-    /// <summary>
-    /// Loops through the list of players to verify their turn value. Set 
-    /// </summary>
-    public void CheckTurn()
+    public int SortByTurn(Player p1, Player p2)
     {
-        //Look through the playerList who is the next to play
-        foreach (Player player in playerList)
-        {
-            if (player.Turn == currentTurn.Peek())
-            {
-                currentActivePlayer = player;
-            }
-        }
+        return p1.Turn.CompareTo(p2.Turn);
     }
 
-    /// <summary>
-    /// Should be called at the end of the round. Next player becomes the active player
-    /// </summary>
-    public void ChangePlayerTurn()
-    {
-        //Enqueue needs to happen first so we can easily take the playing player, and move them to the end of queue
-        currentTurn.Enqueue(currentActivePlayer.Turn); //add back current active player to the end
-        currentTurn.Dequeue(); //remove current active player from the top of the list
 
-        //assign next player at the top of the queue to be active player
-        CheckTurn();
+    public void UpdateTurn()
+    {
+        int next = currentTurn + 1;
+        currentTurn = next > playerList.Count ? next - playerList.Count : next;
+        currentActivePlayer = playerList[currentTurn - 1];
+        Debug.Log("current " + currentTurn);
     }
+
 
     /// <summary>
     /// Moves the player tile location according to the dice value
@@ -141,12 +116,29 @@ public class TileManager : MonoBehaviour
     /// <param name="diceValue"></param>
     public void SetPlayerTilePosition(int diceValue)
     {
-        currentActivePlayer.TilePosition += diceValue;
-        foreach (var zone in numberOfZones)
-        {
-            if (currentActivePlayer.TilePosition <= zone.NumberOfTiles.Count)
-            {
+        int nextPosition = currentActivePlayer.TilePosition + diceValue;
+        int lastTile = board.Count - 1;
 
+        if (nextPosition > (lastTile - currentActivePlayer.TilePosition))
+        {
+            currentActivePlayer.TilePosition = lastTile;
+        }
+        else
+        {
+            currentActivePlayer.TilePosition = nextPosition;
+        }
+
+        UpdatePlayerZone();
+    }
+
+    public void UpdatePlayerZone()
+    {
+        for (int i = 0; i < zones.Count; i++)
+        {
+            if (currentActivePlayer.TilePosition < zones[i].Tiles.Count)
+            {
+                currentActivePlayer.Zone = zones[i].Type;
+                break;
             }
         }
     }
