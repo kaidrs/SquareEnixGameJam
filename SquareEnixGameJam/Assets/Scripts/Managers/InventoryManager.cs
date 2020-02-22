@@ -5,29 +5,34 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] GameObject heroSprite;
+    private Hero hero; //change later
+
+    // [SerializeField] Animator spriteAnimator;
+    // [SerializeField] Image heroSprite;
+    //[SerializeField] GameObject heroObject;
+    [SerializeField] GameObject warriorObject;
+    [SerializeField] GameObject thiefObject;
+    [SerializeField] GameObject paladinObject;
     [SerializeField] Text heroNameText;
     [SerializeField] Text heroClassText;
     [SerializeField] Text heroAttackText;
     [SerializeField] Text heroDefenseText;
     [SerializeField] Text heroLuckText;
-    [SerializeField] Text heroSpellText;
+   // [SerializeField] Text heroSpellText;
 
-    [SerializeField] Image heroWeaponImage;
-    [SerializeField] Image heroDefenseImage;
-    [SerializeField] Image heroLuckImage;
-    [SerializeField] Image heroSpellImage;
+  //  [SerializeField] Image heroWeaponImage;
+   // [SerializeField] Image heroDefenseImage;
+   // [SerializeField] Image heroLuckImage;
+    //[SerializeField] Image heroSpellImage;
 
-    //Get Hero photon shananagin later
-    Hero hero;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        hero = GetComponent<Hero>();
-
-
+        hero = HeroManager.playerChoice[0];
+        InitInventoryUI();
+        
     }
 
 
@@ -35,13 +40,33 @@ public class InventoryManager : MonoBehaviour
     {
         heroNameText.text = hero.name;
         heroClassText.text = hero.ClassText;
+        UpdateSprite(hero.ClassText);
         heroAttackText.text = hero.AttackPoint.ToString();
         heroDefenseText.text = hero.DefencePoint.ToString();
         heroLuckText.text = hero.Luck.ToString();
-        //heroSpellText.text = SpellCard.name
+        //spellcard name?
 
     }
 
+
+    private void UpdateSprite(string classText)
+    {
+        if (classText == "Thief")
+        {
+            thiefObject.SetActive(true);
+            Debug.Log("switch to thief");
+        }
+        else if (classText == "Warrior")
+        {
+            warriorObject.SetActive(true);
+            Debug.Log("switch to " + classText);
+        }
+        else
+        {
+            paladinObject.SetActive(true);
+            Debug.Log("switch to paladin");
+        }
+    }
 
     // Update is called once per frame
     void Update()

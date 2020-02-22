@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Short Sword
   cardNumber: 101
-  cardSprite: {fileID: 21300000, guid: f2e56729c57dee54aa9c9e46e35eef78, type: 3}
+  cardSprite: {fileID: 21300000, guid: b4273bd6df382964eb3e6289231d8b47, type: 3}
   attackStat: 1
   defenceStat: 0
