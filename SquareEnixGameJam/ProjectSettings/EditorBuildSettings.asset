@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/QRTESTER.unity
+    guid: b83745aa6c2001c4b8bc1582b7cf469c
+  - enabled: 1
     path: Assets/Scenes/Robert.unity
     guid: 79cf699d2997f48458861cc906e119b9
   - enabled: 1
