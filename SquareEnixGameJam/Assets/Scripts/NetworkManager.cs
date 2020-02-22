@@ -22,51 +22,74 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
         }
     }
     #endregion
-
+    public string playersNames;
     PhotonView photonView;
-    public Photon.Realtime.Player myPlayer;
-    public List<ThePlayer> thePlayers;
-    public ThePlayer thePlayer;
+    public Photon.Realtime.Player myPunPlayer;
+    public List<Player> thePlayers;
+    public Player myPlayer;
 
     private void Awake()
     {
-        myPlayer = PhotonNetwork.LocalPlayer;
-        thePlayers = new List<ThePlayer>();
-        thePlayer = new ThePlayer(myPlayer.ToString(), UnityEngine.Random.Range(10, 200), UnityEngine.Random.Range(101, 160));
-        thePlayer.hero.spellID.Add(23);
-        thePlayers.Add(thePlayer);
-        PlayerName.Instance.UpdateNames();
+        #region Dont Destroy On Load
+        var objects = FindObjectsOfType(this.GetType());
+        if (objects.Length > 1)
+        {
+            DestroyImmediate(this.gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+        #endregion
+
+        myPunPlayer = PhotonNetwork.LocalPlayer;
+        thePlayers = new List<Player>();
+
+        UpdatePunPlayersName();
+        //thePlayer = new ThePlayer(myPlayer.ToString(), UnityEngine.Random.Range(10, 200), UnityEngine.Random.Range(101, 160));
+        //PlayerName.Instance.UpdateNames();
     }
+
+    private void UpdatePunPlayersName()
+    {
+        playersNames = "";
+        foreach (var player in PhotonNetwork.PlayerList)
+        {
+            playersNames += $"\n{player.NickName}";
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(thePlayer));
-        photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, myPlayerJSONEcoded(thePlayer));
+        //photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(myPlayer));
+        //photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, myPlayerJSONEcoded(myPlayer));
     }
 
-    private string myPlayerJSONEcoded(ThePlayer playerToEncode)
+    private string myPlayerJSONEcoded(Player playerToEncode)
     {
         return JsonUtility.ToJson(playerToEncode);
     }
 
-    private static ThePlayer myPlayerJSONDecoded(string playerJSON)
+    private static Player myPlayerJSONDecoded(string playerJSON)
     {
-        return (ThePlayer)JsonUtility.FromJson(playerJSON, typeof(ThePlayer));
+        return (Player)JsonUtility.FromJson(playerJSON, typeof(Player));
     }
 
     public void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         Debug.Log(newPlayer.NickName);
-        photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(thePlayer));
+        UpdatePunPlayersName();
+        //photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(myPlayer));
     }
 
     public void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
-        ThePlayer player = null;
+        Player player = null;
         for (int i = 0; i < thePlayers.Count; i++)
         {
-            if (thePlayers[i].name == otherPlayer.ToString())
+            if (thePlayers[i].punName == otherPlayer.ToString())
             {
                 player = thePlayers[i];
                 break;
@@ -76,21 +99,23 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
         {
             thePlayers.Remove(player);
         }
-        
-        PlayerName.Instance.UpdateNames();
+
+        UpdatePunPlayersName();
     }
+
     public void SortPlayers()
     {
         thePlayers.Sort();
     }
-    public void Attack()
-    {
-        int randIndex = Random.Range(0, thePlayers.Count);
-        var randPlayer = thePlayers[randIndex];
-        randPlayer.HP -= 10;
-        Debug.Log($"Attacks");
-        photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, myPlayerJSONEcoded(randPlayer));
-    }
+
+    //public void Attack()
+    //{
+    //    int randIndex = Random.Range(0, thePlayers.Count);
+    //    var randPlayer = thePlayers[randIndex];
+    //    randPlayer.HP -= 10;
+    //    Debug.Log($"Attacks");
+    //    photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, myPlayerJSONEcoded(randPlayer));
+    //}
 
     [PunRPC]
     public void UpdateThePs(string playerJSON, PhotonMessageInfo info)
@@ -98,23 +123,21 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
         var player = myPlayerJSONDecoded(playerJSON);
         for (int i = 0; i < thePlayers.Count; i++)
         {
-            if (thePlayers[i].name == player.name)
+            if (thePlayers[i].punName == player.punName)
             {
                 thePlayers[i] = player;
                 break;
             }
         }
-        PlayerName.Instance.UpdateNames();
     }
 
     [PunRPC]
     public void ReceiveMyPlayerJSON(string playerJSON, PhotonMessageInfo info)
     {
-        ThePlayer playerJSONDecode = myPlayerJSONDecoded(playerJSON);
-        if (!thePlayers.Exists(x => x.name == playerJSONDecode.name))
+        Player playerJSONDecode = myPlayerJSONDecoded(playerJSON);
+        if (!thePlayers.Exists(x => x.punName == playerJSONDecode.punName))
         {
             thePlayers.Add(playerJSONDecode);
-            PlayerName.Instance.UpdateNames();
         }
     }
 

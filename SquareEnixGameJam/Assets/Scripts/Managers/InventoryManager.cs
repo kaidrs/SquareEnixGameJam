@@ -38,7 +38,8 @@ public class InventoryManager : MonoBehaviour
 
     public void InitInventoryUI()
     {
-        heroNameText.text = hero.name;
+        //heroNameText.text = hero.name;
+        
         heroClassText.text = hero.ClassText;
         UpdateSprite(hero.ClassText);
         heroAttackText.text = hero.AttackPoint.ToString();

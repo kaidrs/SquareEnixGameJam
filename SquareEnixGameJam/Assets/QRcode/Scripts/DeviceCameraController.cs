@@ -38,7 +38,7 @@ public class DeviceCameraController : MonoBehaviour {
 	{
         webcam = new DeviceCamera (isUseEasyWebCam);
 		e_CameraPlaneObj = transform.Find ("CameraPlane").gameObject;
-		StartWork ();
+		//StartWork ();
 	}
 
 	// Update is called once per frame  

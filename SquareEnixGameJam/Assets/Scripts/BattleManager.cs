@@ -24,7 +24,20 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Hero thief = ScriptableObject.CreateInstance<Thief>();
+        //thief.HealthPoint = 1.0f;
+        //thief.AttackPoint = 5;
+        //thief.DefencePoint = 5;
+        //thief.Luck = 10;
+        //thief.ClassText = "Thief";
+        //Hero warrior = ScriptableObject.CreateInstance<Warrior>();
+        //warrior.HealthPoint = 1.0f;
+        //warrior.AttackPoint = 5;
+        //warrior.DefencePoint = 5;
+        //warrior.Luck = 10;
+        //PlayerVsPlayer(thief, warrior);
+
+
     }
 
     // Update is called once per frame
@@ -41,6 +54,26 @@ public class BattleManager : MonoBehaviour
                 playerTwo.TakeDamageFromPlayer(playerOne);
         }
         while (playerOne.HealthPoint >= 0 || playerTwo.HealthPoint >= 0);
+
+        if(playerOne.HealthPoint <= 0)
+        {
+            Debug.Log("Player two wins");
+        }
+        else
+        {
+            Debug.Log("Player one wins");
+        }
+    }
+
+
+    public void PlayerVsMonster(Hero player, MonsterCard monster)
+    {
+        do
+        {
+            monster.TakeDamage(player);
+            player.TakeDamageFromMonster(monster);
+        }
+        while (player.HealthPoint >= 0 || monster.Health >= 0);
     }
 
 
