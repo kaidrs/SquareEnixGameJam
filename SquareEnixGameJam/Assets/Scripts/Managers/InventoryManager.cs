@@ -7,7 +7,12 @@ public class InventoryManager : MonoBehaviour
 {
     private Hero hero; //change later
 
-   // [SerializeField] GameObject heroSprite;
+    // [SerializeField] Animator spriteAnimator;
+    // [SerializeField] Image heroSprite;
+    //[SerializeField] GameObject heroObject;
+    [SerializeField] GameObject warriorObject;
+    [SerializeField] GameObject thiefObject;
+    [SerializeField] GameObject paladinObject;
     [SerializeField] Text heroNameText;
     [SerializeField] Text heroClassText;
     [SerializeField] Text heroAttackText;
@@ -35,6 +40,7 @@ public class InventoryManager : MonoBehaviour
     {
         heroNameText.text = hero.name;
         heroClassText.text = hero.ClassText;
+        UpdateSprite(hero.ClassText);
         heroAttackText.text = hero.AttackPoint.ToString();
         heroDefenseText.text = hero.DefencePoint.ToString();
         heroLuckText.text = hero.Luck.ToString();
@@ -42,6 +48,25 @@ public class InventoryManager : MonoBehaviour
 
     }
 
+
+    private void UpdateSprite(string classText)
+    {
+        if (classText == "Thief")
+        {
+            thiefObject.SetActive(true);
+            Debug.Log("switch to thief");
+        }
+        else if (classText == "Warrior")
+        {
+            warriorObject.SetActive(true);
+            Debug.Log("switch to " + classText);
+        }
+        else
+        {
+            paladinObject.SetActive(true);
+            Debug.Log("switch to paladin");
+        }
+    }
 
     // Update is called once per frame
     void Update()
