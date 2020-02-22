@@ -9,6 +9,7 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
 {
     #region Singleton
     private static NetworkManager _instance = null;
+    PhotonView photonView;
     public static NetworkManager Instance
     {
         get
@@ -24,11 +25,13 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
 
     public List<Photon.Realtime.Player> photonPlayers;
     public Photon.Realtime.Player myPlayer;
+    public List<TheP> thePs;
+    public TheP thePlayer;
 
     private void Awake()
     {
+        
         photonPlayers = new List<Photon.Realtime.Player>();
-
         foreach (var player in PhotonNetwork.CurrentRoom.Players.Values)
         {
             if (player == PhotonNetwork.LocalPlayer)
@@ -40,13 +43,19 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
                 photonPlayers.Add(player);
             }
         }
+        thePs = new List<TheP>();
+        thePlayer = new TheP(myPlayer.ToString(), Random.Range(10, 200));
+        thePs.Add(thePlayer);
+        PlayerName.Instance.UpdateNames();
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        photonView = GetComponent<PhotonView>();
+        photonView.RPC("ReceiveTheP", RpcTarget.Others, thePlayer.name,thePlayer.HP);
+        photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, thePlayer.name, thePlayer.HP);
     }
-
+    
     public void OnPlayerEnteredRoom(Player newPlayer)
     {
         
@@ -54,37 +63,51 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
 
     public void OnPlayerLeftRoom(Player otherPlayer)
     {
+
     }
 
     public void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
     {
+        Debug.Log("OnRoomPropertiesUpdate");
     }
 
     public void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
+        Debug.Log($"OnPlayerPropertiesUpdate, {NetworkManager.Instance.myPlayer}, TP:{targetPlayer},{changedProps}");
     }
 
     public void OnMasterClientSwitched(Player newMasterClient)
     {
+
     }
 
-    public void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    
+    public void Attack()
     {
-        throw new System.NotImplementedException();
+        thePlayer.HP -= 10;
+        Debug.Log($"Attacks");
+        photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, thePlayer.name,thePlayer.HP);
     }
 
-    public void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    [PunRPC]
+    public void ReceiveTheP(string name, int hp, PhotonMessageInfo info)
     {
-        throw new System.NotImplementedException();
+        var incP = new TheP(name, hp);
+        thePs.Add(incP);
+        Debug.Log(incP);
     }
 
-    public void OnPlayerPropertiesUpdate(Photon.Realtime.Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
+    [PunRPC]
+    public void UpdateThePs(string name, int hp, PhotonMessageInfo info)
     {
-        throw new System.NotImplementedException();
+        foreach (var item in thePs)
+        {
+            if (name == item.name)
+            {
+                item.HP = hp;
+            }
+        }
+        PlayerName.Instance.UpdateNames();
     }
 
-    public void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
-    {
-        throw new System.NotImplementedException();
-    }
 }

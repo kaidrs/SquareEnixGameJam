@@ -5,18 +5,9 @@ public class Movement : MonoBehaviourPun
 {
     [SerializeField] private float movementSpeed = 100.0f;
     [SerializeField] private TextMesh playerName = null;
-
     private void Start()
     {
         playerName.text = photonView.Owner.NickName;
-        //if (photonView.IsMine)
-        //{
-        //    playerName.text = PhotonNetwork.NickName;
-        //}
-        //else
-        //{
-        //    playerName.text = PhotonNetwork.PlayerListOthers[0].NickName;
-        //}
     }
 
     void Update()
@@ -37,5 +28,11 @@ public class Movement : MonoBehaviourPun
         }.normalized;
         transform.Translate(movement * movementSpeed * Time.deltaTime);
         //controller.SimpleMove(movement * movementSpeed * Time.deltaTime);
+        updateText();
+    }
+
+    public void updateText()
+    {
+        playerName.text = photonView.Owner.NickName;
     }
 }

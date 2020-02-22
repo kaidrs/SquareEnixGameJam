@@ -34,17 +34,6 @@ public class MainMenu : MonoBehaviourPunCallbacks
     private void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-        //#region Dont Destroy On Load
-        //var objects = GameObject.FindObjectsOfType(this.GetType());
-        //if (objects.Length > 1)
-        //{
-        //    DestroyImmediate(this.gameObject);
-        //}
-        //else
-        //{
-        //    DontDestroyOnLoad(this.gameObject);
-        //}
-        //#endregion
     }
 
     public void FindOpponent()
