@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb3df584f4c26f2468d24ed6a066709e, type: 3}
-  m_Name: 12-RoundShield
+  m_Name: 119-GreatHelm
   m_EditorClassIdentifier: 
-  cardName: Round Shield
-  cardNumber: 12
+  cardName: Great Helm
+  cardNumber: 119
   cardSprite: {fileID: 0}
   attackStat: 0
-  defenceStat: 2
+  defenceStat: 3
