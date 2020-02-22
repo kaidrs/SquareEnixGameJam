@@ -25,9 +25,9 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     public string playersNames;
     PhotonView photonView;
     public Photon.Realtime.Player myPunPlayer;
-    public List<Player> thePlayers;
-    public Player myPlayer;
-
+    //public List<Player> thePlayers;
+    //public Player myPlayer;
+    PlayerManager PMi;
     private void Awake()
     {
         #region Dont Destroy On Load
@@ -43,11 +43,13 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
         #endregion
 
         myPunPlayer = PhotonNetwork.LocalPlayer;
-        thePlayers = new List<Player>();
+        //thePlayers = new List<Player>();
 
         UpdatePunPlayersName();
         //thePlayer = new ThePlayer(myPlayer.ToString(), UnityEngine.Random.Range(10, 200), UnityEngine.Random.Range(101, 160));
         //PlayerName.Instance.UpdateNames();
+        PMi = PlayerManager.Instance;
+        PMi.Init();
     }
 
     private void UpdatePunPlayersName()
@@ -63,7 +65,7 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        //photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(myPlayer));
+        photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(PMi.currentPlayer));
         //photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, myPlayerJSONEcoded(myPlayer));
     }
 
@@ -81,23 +83,23 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     {
         Debug.Log(newPlayer.NickName);
         UpdatePunPlayersName();
-        //photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(myPlayer));
+        //photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(PMi.currentPlayer));
     }
 
     public void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
         Player player = null;
-        for (int i = 0; i < thePlayers.Count; i++)
+        for (int i = 0; i < PMi.allPlayers.Count; i++)
         {
-            if (thePlayers[i].punName == otherPlayer.ToString())
+            if (PMi.allPlayers[i].punName == otherPlayer.ToString())
             {
-                player = thePlayers[i];
+                player = PMi.allPlayers[i];
                 break;
             }
         }
         if (player != null)
         {
-            thePlayers.Remove(player);
+            PMi.allPlayers.Remove(player);
         }
 
         UpdatePunPlayersName();
@@ -105,7 +107,7 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
 
     public void SortPlayers()
     {
-        thePlayers.Sort();
+        PMi.allPlayers.Sort();
     }
 
     //public void Attack()
@@ -121,11 +123,11 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     public void UpdateThePs(string playerJSON, PhotonMessageInfo info)
     {
         var player = myPlayerJSONDecoded(playerJSON);
-        for (int i = 0; i < thePlayers.Count; i++)
+        for (int i = 0; i < PMi.allPlayers.Count; i++)
         {
-            if (thePlayers[i].punName == player.punName)
+            if (PMi.allPlayers[i].punName == player.punName)
             {
-                thePlayers[i] = player;
+                PMi.allPlayers[i] = player;
                 break;
             }
         }
@@ -135,9 +137,9 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     public void ReceiveMyPlayerJSON(string playerJSON, PhotonMessageInfo info)
     {
         Player playerJSONDecode = myPlayerJSONDecoded(playerJSON);
-        if (!thePlayers.Exists(x => x.punName == playerJSONDecode.punName))
+        if (!PMi.allPlayers.Exists(x => x.punName == playerJSONDecode.punName))
         {
-            thePlayers.Add(playerJSONDecode);
+            PMi.allPlayers.Add(playerJSONDecode);
         }
     }
 
@@ -150,6 +152,17 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     {
         PhotonNetwork.RemoveCallbackTarget(this);
     }
+
+    public void Ready()
+    {
+        PMi.currentPlayer.punReady = true;
+        photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, myPlayerJSONEcoded(PMi.currentPlayer));
+        if (!PMi.allPlayers.Exists(x => !x.punReady))
+        {
+            PhotonNetwork.LoadLevel("PlayScene");
+        }
+    }
+
 
     public void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
     {

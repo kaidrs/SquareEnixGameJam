@@ -6,11 +6,11 @@ public class Paladin : Hero
 {
     public Paladin()
     {
-        this.HealthPoint = 1.0f;
-        this.AttackPoint = 5;
-        this.DefencePoint = 10;
-        this.Luck = 5;
-        this.ClassText = "Paladin";
+        this.healthPoint = 1.0f;
+        this.attackPoint = 5;
+        this.defencePoint = 10;
+        this.luck = 5;
+        this.classText = "Paladin";
     }
 
     public Paladin(float healthPoint, int attackPoint, int defencePoint, int luck, string classText) : base(healthPoint, attackPoint, defencePoint, luck, classText)
