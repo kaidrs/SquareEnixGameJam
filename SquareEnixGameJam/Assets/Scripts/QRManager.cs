@@ -9,7 +9,7 @@ public class QRManager : MonoBehaviour
     void Start()
     {
         Invoke("StartQR", 3f);
-        Invoke("killIt", 7f);
+        //Invoke("killIt", 7f);
     }
 
     // Update is called once per frame
