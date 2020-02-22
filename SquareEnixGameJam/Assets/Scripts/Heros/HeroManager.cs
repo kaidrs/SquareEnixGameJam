@@ -90,6 +90,6 @@ public class HeroManager : MonoBehaviour
 
     public void GameScene()
     {
-        SceneManager.LoadScene("AfterSelectionRob");
+        SceneManager.LoadScene("Jeff");
     }
 }
