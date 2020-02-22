@@ -2,22 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Card", menuName = "Cards/MonsterCard")]
 public class MonsterCard : Card
 {
-    float health = 1;
-    int damage;
-    int defense;
-
-	public MonsterCard(string name, int number, int damage, int defense):base(name, number)
-	{
-        this.damage = damage;
-        this.defense = defense;
-	}
+    [Header("Monster Properties")]
+    [SerializeField] private float health;
+    [SerializeField] private int defence;
 
     public void TakeDamage(Hero hero)
     {
-        float damageMultiplier = (100 / (100 + defense)); //Clamp to 0-100 percentage reduction
+        int damageMultiplier = (100 / (100 + defence)); //Clamp to 0-100 percentage reduction
         this.health -= (hero.AttackPoint * damageMultiplier);
     }
-
 }
