@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class Paladin : Hero
 {
-    public Paladin()
-    {
-        this.HealthPoint = 1.0f;
-        this.AttackPoint = 2;
-        this.DefencePoint = 5;
-        this.Luck = 1;
-    }
+    //public Paladin()
+    //{
+    //    this.HealthPoint = 1.0f;
+    //    this.AttackPoint = 2;
+    //    this.DefencePoint = 5;
+    //    this.Luck = 1;
+    //}
 
-    // Start is called before the first frame update
-    void Start()
+    public Paladin(float healthPoint, int attackPoint, int defencePoint, int luck) : base(healthPoint, attackPoint, defencePoint, luck)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        healthPoint = 1.0f;
+        attackPoint = 2;
+        defencePoint = 5;
+        luck = 1;
     }
 }
