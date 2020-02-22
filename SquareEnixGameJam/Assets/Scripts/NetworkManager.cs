@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
-using ExitGames.Client.Photon;
+using System;
+using Random = UnityEngine.Random;
 
 public class NetworkManager : MonoBehaviour, IInRoomCallbacks
 {
     #region Singleton
     private static NetworkManager _instance = null;
-    PhotonView photonView;
     public static NetworkManager Instance
     {
         get
@@ -23,91 +23,120 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     }
     #endregion
 
-    public List<Photon.Realtime.Player> photonPlayers;
+    PhotonView photonView;
     public Photon.Realtime.Player myPlayer;
-    public List<TheP> thePs;
-    public TheP thePlayer;
+    public List<ThePlayer> thePlayers;
+    public ThePlayer thePlayer;
 
     private void Awake()
     {
-        
-        photonPlayers = new List<Photon.Realtime.Player>();
-        foreach (var player in PhotonNetwork.CurrentRoom.Players.Values)
-        {
-            if (player == PhotonNetwork.LocalPlayer)
-            {
-                myPlayer = PhotonNetwork.LocalPlayer;
-            }
-            else
-            {
-                photonPlayers.Add(player);
-            }
-        }
-        thePs = new List<TheP>();
-        thePlayer = new TheP(myPlayer.ToString(), Random.Range(10, 200));
-        thePs.Add(thePlayer);
+        myPlayer = PhotonNetwork.LocalPlayer;
+        thePlayers = new List<ThePlayer>();
+        thePlayer = new ThePlayer(myPlayer.ToString(), UnityEngine.Random.Range(10, 200), UnityEngine.Random.Range(101, 160));
+        thePlayer.hero.spellID.Add(23);
+        thePlayers.Add(thePlayer);
         PlayerName.Instance.UpdateNames();
     }
     // Start is called before the first frame update
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        photonView.RPC("ReceiveTheP", RpcTarget.Others, thePlayer.name,thePlayer.HP);
-        photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, thePlayer.name, thePlayer.HP);
+        photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(thePlayer));
+        photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, myPlayerJSONEcoded(thePlayer));
     }
-    
-    public void OnPlayerEnteredRoom(Player newPlayer)
+
+    private string myPlayerJSONEcoded(ThePlayer playerToEncode)
     {
+        return JsonUtility.ToJson(playerToEncode);
+    }
+
+    private static ThePlayer myPlayerJSONDecoded(string playerJSON)
+    {
+        return (ThePlayer)JsonUtility.FromJson(playerJSON, typeof(ThePlayer));
+    }
+
+    public void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        Debug.Log(newPlayer.NickName);
+        photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(thePlayer));
+    }
+
+    public void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        ThePlayer player = null;
+        for (int i = 0; i < thePlayers.Count; i++)
+        {
+            if (thePlayers[i].name == otherPlayer.ToString())
+            {
+                player = thePlayers[i];
+                break;
+            }
+        }
+        if (player != null)
+        {
+            thePlayers.Remove(player);
+        }
         
+        PlayerName.Instance.UpdateNames();
     }
-
-    public void OnPlayerLeftRoom(Player otherPlayer)
+    public void SortPlayers()
     {
-
+        thePlayers.Sort();
     }
-
-    public void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
-    {
-        Debug.Log("OnRoomPropertiesUpdate");
-    }
-
-    public void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
-    {
-        Debug.Log($"OnPlayerPropertiesUpdate, {NetworkManager.Instance.myPlayer}, TP:{targetPlayer},{changedProps}");
-    }
-
-    public void OnMasterClientSwitched(Player newMasterClient)
-    {
-
-    }
-
-    
     public void Attack()
     {
-        thePlayer.HP -= 10;
+        int randIndex = Random.Range(0, thePlayers.Count);
+        var randPlayer = thePlayers[randIndex];
+        randPlayer.HP -= 10;
         Debug.Log($"Attacks");
-        photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, thePlayer.name,thePlayer.HP);
+        photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, myPlayerJSONEcoded(randPlayer));
     }
 
     [PunRPC]
-    public void ReceiveTheP(string name, int hp, PhotonMessageInfo info)
+    public void UpdateThePs(string playerJSON, PhotonMessageInfo info)
     {
-        var incP = new TheP(name, hp);
-        thePs.Add(incP);
-        Debug.Log(incP);
-    }
-
-    [PunRPC]
-    public void UpdateThePs(string name, int hp, PhotonMessageInfo info)
-    {
-        foreach (var item in thePs)
+        var player = myPlayerJSONDecoded(playerJSON);
+        for (int i = 0; i < thePlayers.Count; i++)
         {
-            if (name == item.name)
+            if (thePlayers[i].name == player.name)
             {
-                item.HP = hp;
+                thePlayers[i] = player;
+                break;
             }
         }
         PlayerName.Instance.UpdateNames();
     }
 
+    [PunRPC]
+    public void ReceiveMyPlayerJSON(string playerJSON, PhotonMessageInfo info)
+    {
+        ThePlayer playerJSONDecode = myPlayerJSONDecoded(playerJSON);
+        if (!thePlayers.Exists(x => x.name == playerJSONDecode.name))
+        {
+            thePlayers.Add(playerJSONDecode);
+            PlayerName.Instance.UpdateNames();
+        }
+    }
+
+    private void OnEnable()
+    {
+        PhotonNetwork.AddCallbackTarget(this);
+    }
+
+    private void OnDisable()
+    {
+        PhotonNetwork.RemoveCallbackTarget(this);
+    }
+
+    public void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
+    {
+    }
+    public void OnPlayerPropertiesUpdate(Photon.Realtime.Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
+    {
+
+    }
+    public void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
+    {
+
+    }
 }

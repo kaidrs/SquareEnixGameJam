@@ -10,4 +10,8 @@ public class SpellCard : Card
 	{
 
 	}
+	public override string ToString()
+	{
+		return $"Cardname:{CardName}, CardNumber:{CardNumber}";
+	}
 }

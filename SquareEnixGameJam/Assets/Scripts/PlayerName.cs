@@ -26,9 +26,9 @@ public class PlayerName : MonoBehaviour
     // Start is called before the first frame update
     public void UpdateNames()
     {
-        //playerName.text = $"\nYou: {NetworkManager.Instance.myPlayer}";
+        NetworkManager.Instance.SortPlayers();
         playersNames.text = "";
-        foreach (var player in NetworkManager.Instance.thePs)
+        foreach (var player in NetworkManager.Instance.thePlayers)
         {
             playersNames.text += $"\n{player}";
         }

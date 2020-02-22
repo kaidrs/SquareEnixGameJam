@@ -39,5 +39,10 @@ MonoBehaviour:
   - SendTheP
   - UpdateThePs
   - ReceiveTheP
+  - ReceiveInfo
+  - ReceiveThePlayer
+  - SendmyPlayerJSON
+  - ReceivemyPlayerJSON
+  - ReceiveMyPlayerJSON
   DisableAutoOpenWizard: 1
   ShowSettings: 1
