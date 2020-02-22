@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hero : MonoBehaviour
+public class Hero : ScriptableObject
 {
     private float healthPoint;
     private int attackPoint;
@@ -23,6 +23,11 @@ public class Hero : MonoBehaviour
     }
 
     public Hero()
+    {
+
+    }
+
+    public void TakeDamageFromPlayer(Hero hero)
     {
 
     }
