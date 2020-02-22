@@ -36,13 +36,14 @@ public class Hero
 
     public void TakeDamageFromPlayer(Hero hero)
     {
-        int damageMultiplier = (100 / (100 + hero.defencePoint)); //Clamp to 0-100 percentage reduction
-        this.healthPoint -= (hero.attackPoint * damageMultiplier);
+        float damageMultiplier = (100 / (100 + (float)hero.defencePoint)); //Clamp to 0-100 percentage reduction
+        this.healthPoint -= ((float)hero.attackPoint * damageMultiplier)/100.0f;
+    
     }
 
     public void TakeDamageFromMonster(MonsterCard monster)
     {
-        int damageMultiplier = (100 / (100 + this.defencePoint)); //Clamp to 0-100 percentage reduction
-        this.healthPoint -= (monster.Attack * damageMultiplier);
+        float damageMultiplier = (100 / (100 + (float)this.defencePoint)); //Clamp to 0-100 percentage reduction
+        this.healthPoint -= ((float)monster.Attack * damageMultiplier);
     }
 }

@@ -24,18 +24,10 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Hero thief = ScriptableObject.CreateInstance<Thief>();
-        //thief.HealthPoint = 1.0f;
-        //thief.AttackPoint = 5;
-        //thief.DefencePoint = 5;
-        //thief.Luck = 10;
-        //thief.ClassText = "Thief";
-        //Hero warrior = ScriptableObject.CreateInstance<Warrior>();
-        //warrior.HealthPoint = 1.0f;
-        //warrior.AttackPoint = 5;
-        //warrior.DefencePoint = 5;
-        //warrior.Luck = 10;
-        //PlayerVsPlayer(thief, warrior);
+        Hero thief = new Thief(1.0f, 5, 5, 10, "Thief");  
+        Hero warrior = new Warrior(1.0f, 10, 5, 5, "Warrior");
+
+        PlayerVsPlayer(thief, warrior);
 
 
     }
@@ -48,21 +40,11 @@ public class BattleManager : MonoBehaviour
 
     public void PlayerVsPlayer(Hero playerOne, Hero playerTwo)
     {
-        do
-        {
-                playerOne.TakeDamageFromPlayer(playerTwo);
-                playerTwo.TakeDamageFromPlayer(playerOne);
-        }
-        while (playerOne.healthPoint >= 0 || playerTwo.healthPoint >= 0);
+        playerOne.TakeDamageFromPlayer(playerTwo);
+        playerTwo.TakeDamageFromPlayer(playerOne);
+        Debug.Log(playerOne.HealthPoint);
+        Debug.Log(playerTwo.HealthPoint);
 
-        if(playerOne.healthPoint <= 0)
-        {
-            Debug.Log("Player two wins");
-        }
-        else
-        {
-            Debug.Log("Player one wins");
-        }
     }
 
 
