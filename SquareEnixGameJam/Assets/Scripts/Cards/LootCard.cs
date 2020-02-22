@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Card", menuName = "Cards/LootCard")]
 public class LootCard : Card
 {
-	private int attackStat;
-	private int defenceStat;
+	[Header("Loot Properties")]
+	[SerializeField] private int attackStat;
+	[SerializeField] private int defenceStat;
 
-	public LootCard(string name, int number, int attack, int defence):base(name, number)
+	public void AddStatToPlayer(Hero hero)
 	{
-		this.attackStat = attack;
-		this.defenceStat = defence;
-	}
-
-	public void AddStatToPlayer(/*Hero hero*/)
-	{
-		//hero.attack += this.attackStat;
-		//hero.defence += this.defenceStat;
+		hero.AttackPoint += this.attackStat;
+		hero.DefencePoint += this.defenceStat;
 	}
 }
