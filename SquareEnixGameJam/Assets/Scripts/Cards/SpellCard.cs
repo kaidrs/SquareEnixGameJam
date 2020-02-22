@@ -13,15 +13,15 @@ public class SpellCard : Card
 	{
 		if (heal > 0)
 		{
-			hero.HealthPoint += heal;
-			if (hero.HealthPoint > 1.0f)
+			hero.healthPoint += heal;
+			if (hero.healthPoint > 1.0f)
 			{
-				hero.HealthPoint = 1.0f;
+				hero.healthPoint = 1.0f;
 			}
 		}
 		if (damage > 0)
 		{
-			otherHero.HealthPoint -= damage;
+			otherHero.healthPoint -= damage;
 		}
 	}
 

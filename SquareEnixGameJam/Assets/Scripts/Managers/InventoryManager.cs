@@ -38,12 +38,13 @@ public class InventoryManager : MonoBehaviour
 
     public void InitInventoryUI()
     {
-        heroNameText.text = hero.name;
-        heroClassText.text = hero.ClassText;
-        UpdateSprite(hero.ClassText);
-        heroAttackText.text = hero.AttackPoint.ToString();
-        heroDefenseText.text = hero.DefencePoint.ToString();
-        heroLuckText.text = hero.Luck.ToString();
+        //heroNameText.text = hero.name;
+        
+        heroClassText.text = hero.classText;
+        UpdateSprite(hero.classText);
+        heroAttackText.text = hero.attackPoint.ToString();
+        heroDefenseText.text = hero.defencePoint.ToString();
+        heroLuckText.text = hero.luck.ToString();
         //spellcard name?
 
     }

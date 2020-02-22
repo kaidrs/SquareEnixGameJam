@@ -24,7 +24,12 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Hero thief = new Thief(1.0f, 5, 5, 10, "Thief");  
+        Hero warrior = new Warrior(1.0f, 10, 5, 5, "Warrior");
+
+        PlayerVsPlayer(thief, warrior);
+
+
     }
 
     // Update is called once per frame
@@ -35,12 +40,22 @@ public class BattleManager : MonoBehaviour
 
     public void PlayerVsPlayer(Hero playerOne, Hero playerTwo)
     {
+        playerOne.TakeDamageFromPlayer(playerTwo);
+        playerTwo.TakeDamageFromPlayer(playerOne);
+        Debug.Log(playerOne.healthPoint);
+        Debug.Log(playerTwo.healthPoint);
+
+    }
+
+
+    public void PlayerVsMonster(Hero player, MonsterCard monster)
+    {
         do
         {
-                playerOne.TakeDamageFromPlayer(playerTwo);
-                playerTwo.TakeDamageFromPlayer(playerOne);
+            monster.TakeDamage(player);
+            player.TakeDamageFromMonster(monster);
         }
-        while (playerOne.HealthPoint >= 0 || playerTwo.HealthPoint >= 0);
+        while (player.healthPoint >= 0 || monster.Health >= 0);
     }
 
 

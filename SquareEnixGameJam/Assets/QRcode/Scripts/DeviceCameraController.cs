@@ -17,9 +17,8 @@ public class DeviceCameraController : MonoBehaviour {
 		}
 	}
 
-	private DeviceCamera webcam; 
-
-	GameObject e_CameraPlaneObj;
+	private DeviceCamera webcam;
+    GameObject e_CameraPlaneObj;
 	bool isCorrected = false;
 	float screenVideoRatio = 1.0f;
 	public bool isUseEasyWebCam = true;
@@ -37,9 +36,9 @@ public class DeviceCameraController : MonoBehaviour {
 
 	void Start()
 	{
-		webcam = new DeviceCamera (isUseEasyWebCam);
+        webcam = new DeviceCamera (isUseEasyWebCam);
 		e_CameraPlaneObj = transform.Find ("CameraPlane").gameObject;
-		StartWork ();
+		//StartWork ();
 	}
 
 	// Update is called once per frame  
@@ -54,17 +53,22 @@ public class DeviceCameraController : MonoBehaviour {
 			{
 				e_CameraPlaneObj.GetComponent<Renderer>().material.mainTexture = webcam.preview;
 			}
-
 		}
 	}
 
 	/// <summary>
-	/// Stops the work.
-	/// when you need to leave current scene ,you must call this func firstly
+	/// start the work.
 	/// </summary>
 	public void StartWork()
 	{
-		if (this.webcam != null) {
+#if UNITY_ANDROID
+        if (!EasyWebCam.checkPermissions())
+        {
+            requestCameraPermissions();
+            return;
+        }
+#endif
+        if (this.webcam != null) {
 			this.webcam.Play ();
 		}
 	}
@@ -82,7 +86,6 @@ public class DeviceCameraController : MonoBehaviour {
 		{
 			e_CameraPlaneObj.GetComponent<Renderer>().material.mainTexture = null;
 		}
-
 	}
 
 	/// <summary>
@@ -102,10 +105,16 @@ public class DeviceCameraController : MonoBehaviour {
 			videoWidth = webcam.Width();
 			videoHeight = webcam.Height();
 		}
+
 		videoRatio = videoWidth * 1.0f / videoHeight;
-		ScreenWidth = Mathf.Max (Screen.width, Screen.height);
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
+        ScreenWidth = Mathf.Max (Screen.width, Screen.height);
 		ScreenHeight = Mathf.Min (Screen.width, Screen.height);
-		screenRatio = ScreenWidth * 1.0f / ScreenHeight;
+#else
+        ScreenWidth = Screen.width;
+        ScreenHeight = Screen.height;
+#endif
+        screenRatio = ScreenWidth * 1.0f / ScreenHeight;
 
 		screenVideoRatio = screenRatio / videoRatio;
 		isCorrected = true;
@@ -114,8 +123,32 @@ public class DeviceCameraController : MonoBehaviour {
 			e_CameraPlaneObj.GetComponent<CameraPlaneController>().correctPlaneScale(screenVideoRatio);
 		}
 	}
-
-
+    
+    void requestCameraPermissions()
+    {
+        CameraPermissionsController.RequestPermission(new[] { EasyWebCam.CAMERA_PERMISSION }, new AndroidPermissionCallback(
+            grantedPermission =>
+            {
+                StartCoroutine(waitTimeToOpenCamera());
+                // The permission was successfully granted, restart the change avatar routine
+            },
+            deniedPermission =>
+            {
+                // The permission was denied
+            },
+            deniedPermissionAndDontAskAgain =>
+            {
+                // The permission was denied, and the user has selected "Don't ask again"
+                // Show in-game pop-up message stating that the user can change permissions in Android Application Settings
+                // if he changes his mind (also required by Google Featuring program)
+            }));
+    }
+    
+    IEnumerator waitTimeToOpenCamera()
+    {
+        yield return new WaitForSeconds(0.1f);
+        StartWork();
+    }
 }
 
 

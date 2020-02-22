@@ -17,6 +17,6 @@ public class MonsterCard : Card
     public void TakeDamage(Hero hero)
     {
         int damageMultiplier = (100 / (100 + defence)); //Clamp to 0-100 percentage reduction
-        this.health -= (hero.AttackPoint * damageMultiplier);
+        this.health -= (hero.attackPoint * damageMultiplier);
     }
 }
