@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private int MAX_PLAYERS = 6;
     private int MIN_PLAYERS = 2;
 
+    public List<Player> Players { get => players; set => Players = value; }
 
     #region Singleton
     private static GameManager _instance = null;
