@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class HeroManager : MonoBehaviour
 {
-    public static List<string> playerChoice = new List<string>();
+    public static List<Hero> playerChoice = new List<Hero>();
 
 
     #region Singleton
@@ -39,19 +39,38 @@ public class HeroManager : MonoBehaviour
 
     public void PickWarrior()
     {
-        playerChoice.Add("Warrior");
+
+        Hero warrior = ScriptableObject.CreateInstance<Warrior>();
+        warrior.HealthPoint = 1.0f;
+        warrior.AttackPoint = 10;
+        warrior.DefencePoint = 5;
+        warrior.Luck = 1;
+        warrior.ClassText = "Warrior";
+        playerChoice.Add(warrior);
         GameScene();
     }
 
     public void PickPaladin()
     {
-        playerChoice.Add("Paladin");
+        Hero paladin = ScriptableObject.CreateInstance<Paladin>();
+        paladin.HealthPoint = 1.0f;
+        paladin.AttackPoint = 10;
+        paladin.DefencePoint = 5;
+        paladin.Luck = 1;
+        paladin.ClassText = "Paladin";
+        playerChoice.Add(paladin);
         GameScene();
     }
 
     public void PickThief()
     {
-        playerChoice.Add("Thief");
+        Hero thief = ScriptableObject.CreateInstance<Thief>();
+        thief.HealthPoint = 1.0f;
+        thief.AttackPoint = 5;
+        thief.DefencePoint = 5;
+        thief.Luck = 10;
+        thief.ClassText = "Thief";
+        playerChoice.Add(thief);
         GameScene();
     }
 
