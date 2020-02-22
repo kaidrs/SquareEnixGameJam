@@ -148,6 +148,7 @@ public class TileManager : MonoBehaviour
     {
         int cardID = 1; //to be removed
         CardManager.Instance.CallCard(cardID);
+        FindObjectOfType<QRDecodeTest>().Play(); //singleton if yolo
         //UI/Scene change which depends on the event
     }
 
