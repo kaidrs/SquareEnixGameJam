@@ -36,8 +36,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            _instance = new GameManager();
-            print("Game manager instantiated");
             DontDestroyOnLoad(this.gameObject);
         }
         #endregion
