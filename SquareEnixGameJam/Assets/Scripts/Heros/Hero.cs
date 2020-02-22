@@ -17,12 +17,13 @@ public class Hero
     public int Luck { get => luck; set => luck = value; }
     public string ClassText { get => classText; set => classText = value; }
 
-    public Hero(float healthPoint, int attackPoint, int defencePoint, int luck)
+    public Hero(float healthPoint, int attackPoint, int defencePoint, int luck, string classText)
     {
         this.healthPoint = healthPoint;
         this.attackPoint = attackPoint;
         this.defencePoint = defencePoint;
         this.luck = luck;
+        this.classText = classText;
     }
 
     public Hero()
