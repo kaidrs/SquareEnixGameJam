@@ -16,11 +16,10 @@ public class DiceManager : MonoBehaviour
         
     }
 
-    public void RollDice()
+    public int RollDice()
     {
         int rand = Random.Range(1, 7);
         Debug.Log("Player moves " + rand + " steps forward");
-
-
+        return rand;
     }
 }
