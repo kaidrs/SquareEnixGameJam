@@ -53,9 +53,9 @@ public class BattleManager : MonoBehaviour
                 playerOne.TakeDamageFromPlayer(playerTwo);
                 playerTwo.TakeDamageFromPlayer(playerOne);
         }
-        while (playerOne.HealthPoint >= 0 || playerTwo.HealthPoint >= 0);
+        while (playerOne.healthPoint >= 0 || playerTwo.healthPoint >= 0);
 
-        if(playerOne.HealthPoint <= 0)
+        if(playerOne.healthPoint <= 0)
         {
             Debug.Log("Player two wins");
         }
@@ -73,7 +73,7 @@ public class BattleManager : MonoBehaviour
             monster.TakeDamage(player);
             player.TakeDamageFromMonster(monster);
         }
-        while (player.HealthPoint >= 0 || monster.Health >= 0);
+        while (player.healthPoint >= 0 || monster.Health >= 0);
     }
 
 
