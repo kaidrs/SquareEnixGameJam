@@ -43,7 +43,10 @@ public class GameManager : MonoBehaviour
         #endregion
     }
 
-    // When player is first connected via Photon, add player to players list 
+    /// <summary>
+    /// When player is first connected via Photon, add player to players list
+    /// </summary>
+    /// <param name="player"></param>
     void AddPlayer(Player player)
     {
         if (players.Count < MAX_PLAYERS)
@@ -62,5 +65,14 @@ public class GameManager : MonoBehaviour
             print("Starting game...");
         }
     }
-    
+
+    /// <summary>
+    /// For DiceManager
+    /// </summary>
+    /// <param name="player"></param>
+    /// <param name="order"></param>
+    void RegisterTurn(Player player, int order)
+    {
+        player.Turn = order;
+    }
 }

@@ -10,8 +10,11 @@ public class Player : MonoBehaviour
     // Turn order of the player. Starts with 1, end with GameManager.players.Count
     private int turn;
 
-    // TODO: Add this field when @Robert is done with Hero class
-    // [SerializeField] Hero character;
+    // The character player chooses at the beginning
+    [SerializeField] Hero character;
+
+    public int Turn { get => turn; set => turn = value; }
+    public string DisplayName { get => displayName; set => displayName = value; }
 
     public Player(string displayName)
     {
