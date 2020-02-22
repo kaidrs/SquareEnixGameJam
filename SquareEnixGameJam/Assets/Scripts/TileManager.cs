@@ -27,7 +27,7 @@ public class Zone
     /// <returns></returns>
     public float GetZoneMultiplier()
     {
-        switch(type)
+        switch (type)
         {
             case ZoneType.StarterZone:
                 return zoneMultiplier = 1.0f;
@@ -49,7 +49,7 @@ public class TileManager : MonoBehaviour
     {
         get
         {
-            if(_instance == null)
+            if (_instance == null)
             {
                 _instance = FindObjectOfType<TileManager>();
             }
@@ -60,12 +60,53 @@ public class TileManager : MonoBehaviour
 
     [SerializeField] private List<Zone> numberOfZones;
     private List<Player> playerList;
-    private int playerTilePosition;
+    private Player currentActivePlayer;
+    private Queue<int> currentTurn;
 
-    void Start()
+    public void Start()
     {
-        this.playerTilePosition = 0;
-        playerList = GameManager.Instance.Players;
+
+    }
+
+    public void RetrievePlayerList()
+    {
+        if (playerList == null)
+        {
+            playerList = GameManager.Instance.Players; //retrieve the list of players set in GameManager
+
+            for (int i = 1; i <= playerList.Count; i++) //check how many players exist in the list of players, and queue up their turn, from 1 to number of players
+            {
+                currentTurn.Enqueue(i); //i = 1, so the game should start with player with turn=1 to be at the first in queue
+            }
+        }
+    }
+
+    /// <summary>
+    /// Loops through the list of players to verify their turn value. Set 
+    /// </summary>
+    public void CheckTurn()
+    {
+        //Look through the playerList who is the next to play
+        foreach (Player player in playerList)
+        {
+            if (player.Turn == currentTurn.Peek())
+            {
+                currentActivePlayer = player;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Should be called at the end of the round. Next player becomes the active player
+    /// </summary>
+    public void ChangePlayerTurn()
+    {
+        //Enqueue needs to happen first so we can easily take the playing player, and move them to the end of queue
+        currentTurn.Enqueue(currentActivePlayer.Turn); //add back current active player to the end
+        currentTurn.Dequeue(); //remove current active player from the top of the list
+
+        //assign next player at the top of the queue to be active player
+        CheckTurn();
     }
 
     /// <summary>
@@ -74,11 +115,13 @@ public class TileManager : MonoBehaviour
     /// <param name="diceValue"></param>
     public void SetPlayerTilePosition(int diceValue)
     {
-        this.playerTilePosition += diceValue;
+        currentActivePlayer.TilePosition += diceValue;
     }
 
     public void PromptCardTile()
     {
+        int cardID = 1; //to be removed
+        CardManager.Instance.CallCard(cardID);
         //UI/Scene change which depends on the event
     }
 
