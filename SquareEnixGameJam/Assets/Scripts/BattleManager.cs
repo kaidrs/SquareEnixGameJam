@@ -42,8 +42,8 @@ public class BattleManager : MonoBehaviour
     {
         playerOne.TakeDamageFromPlayer(playerTwo);
         playerTwo.TakeDamageFromPlayer(playerOne);
-        Debug.Log(playerOne.HealthPoint);
-        Debug.Log(playerTwo.HealthPoint);
+        Debug.Log(playerOne.healthPoint);
+        Debug.Log(playerTwo.healthPoint);
 
     }
 
