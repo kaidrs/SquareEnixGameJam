@@ -8,6 +8,11 @@ public class MonsterCard : Card
     [Header("Monster Properties")]
     [SerializeField] private float health;
     [SerializeField] private int defence;
+    [SerializeField] private int attack;
+
+    public int Attack { get => attack; set => attack = value; }
+    public int Defence { get => defence; set => defence = value; }
+    public float Health { get => health; set => health = value; }
 
     public void TakeDamage(Hero hero)
     {

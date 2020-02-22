@@ -36,8 +36,9 @@ public class Hero : ScriptableObject
         this.healthPoint -= (hero.AttackPoint * damageMultiplier);
     }
 
-    public void TakeDamageFromMonster()
+    public void TakeDamageFromMonster(MonsterCard monster)
     {
-       
+        int damageMultiplier = (100 / (100 + this.defencePoint)); //Clamp to 0-100 percentage reduction
+        this.healthPoint -= (monster.Attack * damageMultiplier);
     }
 }
