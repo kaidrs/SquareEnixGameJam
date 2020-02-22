@@ -30,6 +30,8 @@ public class QRDecodeTest : MonoBehaviour
 		{
 			this.e_qrController.onQRScanFinished += new QRCodeDecodeController.QRScanFinished(this.qrScanFinished);
 		}
+
+        Invoke("Play", 3f);
 	}
 
 	private void Update()
@@ -58,6 +60,8 @@ public class QRDecodeTest : MonoBehaviour
 			this.scanLineObj.SetActive(false);
 		}
 
+        this.Stop();
+
 	}
 
 	public void Reset()
@@ -78,6 +82,7 @@ public class QRDecodeTest : MonoBehaviour
 		{
 			this.scanLineObj.SetActive(true);
 		}
+
 	}
 
 	public void Play()
@@ -86,7 +91,9 @@ public class QRDecodeTest : MonoBehaviour
 		if (this.e_qrController != null)
 		{
 			this.e_qrController.StartWork();
-		}
+            FindObjectOfType<DeviceCameraController>().StartWork();
+            UIManager.Instance.ShowQR();
+        }
 	}
 
 	public void Stop()
@@ -104,7 +111,9 @@ public class QRDecodeTest : MonoBehaviour
 		{
 			this.scanLineObj.SetActive(false);
 		}
-	}
+
+        UIManager.Instance.ShowInventory();
+    }
 
 	public void GotoNextScene(string scenename)
 	{
