@@ -1,25 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class DiceManager : MonoBehaviour
+public class TestClass : MonoBehaviour
 {
+    [SerializeField] Text classes;
+    string playerClass = "";
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerClass = HeroManager.playerChoice[0]; 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    public int RollDice()
-    {
-        int rand = Random.Range(1, 7);
-        Debug.Log("Player moves " + rand + " steps forward");
-        return rand;
+        classes.text = playerClass;
     }
 }
