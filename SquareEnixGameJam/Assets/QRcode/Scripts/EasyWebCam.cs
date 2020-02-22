@@ -13,7 +13,13 @@ namespace TBEasyWebCam
 		public ResolutionMode mCamResolution = ResolutionMode.MediumResolution;
         public static FocusMode mFocusMode = FocusMode.AutoFocus;
 		public static bool isActive = false;
-		public static Texture2D WebCamPreview
+        
+        private float time = 0f;
+        private int count = 0;
+
+        public static string CAMERA_PERMISSION = "android.permission.CAMERA";
+
+        public static Texture2D WebCamPreview
 		{
 			get
 			{
@@ -33,25 +39,23 @@ namespace TBEasyWebCam
 		    //	Debug.Log("wo cha nimade enter le easywebcamX .....");
 		}
 
-		void Awake()
-		{
-			#if UNITY_EDITOR
-			
-			#elif UNITY_ANDROID
+        void Awake()
+        {
+#if UNITY_EDITOR
+
+#elif UNITY_ANDROID
+            
 			isActive = true;
 			easyWebCamInterface = new EasyWebCamAndroid ();
-			if (easyWebCamInterface.isCameraUsable ()) {
-			}
-			NativePlugin.LogStr= 401;
-			#elif UNITY_IOS
+            
+#elif UNITY_IOS
 
 			isActive = true;
 			easyWebCamInterface = new EasyWebCamiOS ();
-			NativePlugin.LogStr= 401;
 
-			#endif
+#endif
 
-			setPreviewResolution (mCamResolution);
+            setPreviewResolution(mCamResolution);
 		}
 
 		void Start()
@@ -76,8 +80,12 @@ namespace TBEasyWebCam
 		{
 			if ( easyWebCamInterface != null && EasyWebCamBase.isRunning) {
 				easyWebCamInterface.UpdateImage();
-            if ( Input.GetMouseButtonDown(0)) {
-                    setFocusMode(mFocusMode);
+                if ( Input.GetMouseButtonDown(0)) {
+                    if (isDoubleClick())
+                    {
+                        Debug.Log("current double clicked is enter !");
+                        setFocusMode(FocusMode.TapToFocus);
+                    }
 				}
 			}
 		}
@@ -155,7 +163,7 @@ namespace TBEasyWebCam
 
 			#elif UNITY_ANDROID|| UNITY_IOS
 			if (easyWebCamInterface != null) {
-			easyWebCamInterface.Stop ();
+			    easyWebCamInterface.Stop ();
 			}
 			#endif
 
@@ -172,7 +180,6 @@ namespace TBEasyWebCam
 				int preWidth = 0;
 				int preHeight = 0;
 				resolutionMode.Dimensions (out preWidth,out preHeight);
-
 				easyWebCamInterface.setPreviewResolution (preWidth, preHeight);
 			}
 		}
@@ -307,7 +314,35 @@ namespace TBEasyWebCam
 		{
 			return EasyWebCamBase.isRunning;
 		}
-		
-	}
+        
+        bool isDoubleClick()
+        {
+            count++;
+            if (count == 1)
+            {
+                time = Time.time;
+
+            }
+            if (2 == count && Time.time - time <= 0.5f)
+            { 
+                count = 0;
+                return true;
+            }
+            if (Time.time - time > 0.5f)
+            {
+                count = 0;
+            }
+            return false;
+        }
+
+        public static bool checkPermissions()
+        {
+            if (Application.platform != RuntimePlatform.Android)
+            {
+                return true;
+            }
+            return CameraPermissionsController.IsPermissionGranted(CAMERA_PERMISSION);
+        }
+    }
 
 }
