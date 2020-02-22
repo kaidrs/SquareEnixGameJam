@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35a22c417144754f87bc5f6904c5ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardColletion:
+  lootCardColletion:
   - {fileID: 11400000, guid: a2b6997e858109e42a21e9f842429a29, type: 2}
   - {fileID: 11400000, guid: 09759ec49ddbbd94f8969b65c462a11c, type: 2}
   - {fileID: 11400000, guid: b66f9b385e5c78f4782998290b82549d, type: 2}
@@ -56,14 +56,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6e6bf78e57e571a4c8b4e94568e38380, type: 2}
   - {fileID: 11400000, guid: 3b4b81914cd14b444ab1450e4b32d409, type: 2}
   - {fileID: 11400000, guid: 71477c8570ce3a040958aaea7c1bfb71, type: 2}
-  - {fileID: 11400000, guid: 6ef009dd2c77515468dacf0f13db0416, type: 2}
-  - {fileID: 11400000, guid: 45f692b60b1230b42bbe4df6d45fe0ee, type: 2}
-  - {fileID: 11400000, guid: 8f41157f2b190104193a0d0907319eeb, type: 2}
-  - {fileID: 11400000, guid: ca8441419ab053e40b4a18da6cf2020b, type: 2}
-  - {fileID: 11400000, guid: ecc556aedaada5044bf673c1b1217665, type: 2}
-  - {fileID: 11400000, guid: e931ba38f9641cb41ac9a8ca2fceb9bc, type: 2}
-  - {fileID: 11400000, guid: 22b32cf37ff94a9439854141b43acb2f, type: 2}
-  - {fileID: 11400000, guid: b26bfded595062a48ae5c082dd4e8020, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  monsterCardColletion:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -84,6 +85,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spellCardColletion:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -94,6 +96,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  eventCardColletion:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
