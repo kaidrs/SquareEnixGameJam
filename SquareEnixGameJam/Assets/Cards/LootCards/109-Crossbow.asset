@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Crossbow
   cardNumber: 109
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 5983389886235713193, guid: c4c3ce296f022194eb08418892fdbf12,
+    type: 3}
   attackStat: 3
   defenceStat: 0
