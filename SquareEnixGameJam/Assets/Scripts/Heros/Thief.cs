@@ -8,7 +8,7 @@ public class Thief : Hero
     {
         healthPoint = 1.0f;
         attackPoint = 5;
-        DefencePoint = 5;
+        base.defencePoint = 5;
         luck = 10;
         classText = "Thief";
     }

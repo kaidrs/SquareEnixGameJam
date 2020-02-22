@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class Player
+public class Player: IComparable
 {
 
     //PUN
@@ -27,7 +27,7 @@ public class Player
     //public ZoneType zone { get => zone; set => zone = value; }
     //public string displayName { get => displayName; set => displayName = value; }
 
-    public Player(string displayName)
+    public Player(string displayName, string punName)
     {
         this.displayName = displayName;
         this.tilePosition = 0;
@@ -39,4 +39,21 @@ public class Player
 
     }
 
+    public int CompareTo(object obj)
+    {
+        if (obj == null) return 1;
+
+        if (obj is Player otherPlayer)
+        {
+            return punName.CompareTo(otherPlayer.punName);
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    public override string ToString()
+    {
+        return displayName;
+    }
 }

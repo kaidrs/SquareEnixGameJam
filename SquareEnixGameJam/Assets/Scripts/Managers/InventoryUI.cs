@@ -33,10 +33,10 @@ public class InventoryUI : MonoBehaviour
     public void InitInventoryUI()
     {
         //heroNameText.text = hero.name;
-        heroClassText.text = hero.ClassText;
-        heroAttackText.text = hero.AttackPoint.ToString();
-        heroDefenseText.text = hero.DefencePoint.ToString();
-        heroLuckText.text = hero.Luck.ToString();
+        heroClassText.text = hero.classText;
+        heroAttackText.text = hero.attackPoint.ToString();
+        heroDefenseText.text = hero.defencePoint.ToString();
+        heroLuckText.text = hero.luck.ToString();
         //heroSpellText.text = SpellCard.name
 
     }

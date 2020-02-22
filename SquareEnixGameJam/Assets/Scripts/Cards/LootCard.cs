@@ -11,7 +11,7 @@ public class LootCard : Card
 
 	public void AddStatToPlayer(Hero hero)
 	{
-		hero.AttackPoint += this.attackStat;
-		hero.DefencePoint += this.defenceStat;
+		hero.attackPoint += this.attackStat;
+		hero.defencePoint += this.defenceStat;
 	}
 }

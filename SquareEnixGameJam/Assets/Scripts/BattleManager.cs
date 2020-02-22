@@ -55,7 +55,7 @@ public class BattleManager : MonoBehaviour
             monster.TakeDamage(player);
             player.TakeDamageFromMonster(monster);
         }
-        while (player.HealthPoint >= 0 || monster.Health >= 0);
+        while (player.healthPoint >= 0 || monster.Health >= 0);
     }
 
 
