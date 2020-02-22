@@ -21,6 +21,10 @@ public class Zone
     [SerializeField] private List<TileType> numberOfTiles;
     private float zoneMultiplier = 1.0f;
 
+    /// <summary>
+    /// Retrieves zone multiplier
+    /// </summary>
+    /// <returns></returns>
     public float GetZoneMultiplier()
     {
         switch(type)
@@ -54,28 +58,32 @@ public class TileManager : MonoBehaviour
     }
     #endregion
 
-    //Need player class here
     [SerializeField] private List<Zone> numberOfZones;
-    private int playerTileLocation;
+    private List<Player> playerList;
+    private int playerTilePosition;
 
     void Start()
     {
-        this.playerTileLocation = 0;
-
-        //find Object of Type Player
+        this.playerTilePosition = 0;
+        //playerList = GameManager.Instance.players;
     }
 
     /// <summary>
     /// Moves the player tile location according to the dice value
     /// </summary>
     /// <param name="diceValue"></param>
-    public void SetPlayerTileLocation(int diceValue)
+    public void SetPlayerTilePosition(int diceValue)
     {
-        this.playerTileLocation += diceValue;
+        this.playerTilePosition += diceValue;
     }
 
     public void PromptCardTile()
     {
-        //Scene change which depends on the event
+        //UI/Scene change which depends on the event
+    }
+
+    public void VerifyPlayerTilePosition()
+    {
+
     }
 }
