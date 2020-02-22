@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<Player> players;
 
+    private int MAX_PLAYERS = 6;
+    private int MIN_PLAYERS = 2;
 
     #region Singleton
     private static GameManager _instance = null;
@@ -41,5 +43,24 @@ public class GameManager : MonoBehaviour
         #endregion
     }
 
+    // When player is first connected via Photon, add player to players list 
+    void AddPlayer(Player player)
+    {
+        if (players.Count < MAX_PLAYERS)
+        {
+            players.Add(player);
+        } else
+        {
+            print("Number of players is maximum. Cannot add more players");
+        }
+    }
+
+    void StartGame()
+    {
+        if (players.Count > MIN_PLAYERS)
+        {
+            print("Starting game...");
+        }
+    }
     
 }

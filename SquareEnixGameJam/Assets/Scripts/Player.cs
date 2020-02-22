@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] string character;
+    // Name the player registers with
+    [SerializeField] private string displayName;
 
-    // Start is called before the first frame update
-    void Start()
+    // Turn order of the player. Starts with 1, end with GameManager.players.Count
+    private int turn;
+
+    // TODO: Add this field when @Robert is done with Hero class
+    // [SerializeField] Hero character;
+
+    public Player(string displayName)
     {
-        
+        this.displayName = displayName;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Player() {}
+
 }
