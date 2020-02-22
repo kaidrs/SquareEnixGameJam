@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Short Bow
   cardNumber: 107
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: -1541056526609149816, guid: c4c3ce296f022194eb08418892fdbf12,
+    type: 3}
   attackStat: 1
   defenceStat: 0

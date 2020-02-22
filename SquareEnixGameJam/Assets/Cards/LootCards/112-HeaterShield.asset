@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb3df584f4c26f2468d24ed6a066709e, type: 3}
-  m_Name: 111-WoodenShield
+  m_Name: 112-HeaterShield
   m_EditorClassIdentifier: 
-  cardName: Wooden Shield
-  cardNumber: 111
-  cardSprite: {fileID: 21300000, guid: 54f8c0a228bb7494680096c6d28a2e94, type: 3}
+  cardName: Heater Shield
+  cardNumber: 112
+  cardSprite: {fileID: 21300000, guid: cc2c7f2ddd1c129409bcfd730a36f4d3, type: 3}
   attackStat: 0
-  defenceStat: 1
+  defenceStat: 2
