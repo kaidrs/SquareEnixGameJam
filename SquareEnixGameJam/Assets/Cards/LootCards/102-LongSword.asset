@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Long Sword
   cardNumber: 102
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 21300000, guid: b4273bd6df382964eb3e6289231d8b47, type: 3}
   attackStat: 3
   defenceStat: 0
