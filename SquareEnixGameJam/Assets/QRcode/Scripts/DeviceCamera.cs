@@ -27,10 +27,12 @@ public class DeviceCamera {
 	bool isRunning = false;
 	bool isUseEasyWebCam = true;
 
+    int previewWidth = 640;
+    int previewHeight = 480;
+
     public DeviceCamera (bool isUseEWC = true)
 	{
-
-		#if (UNITY_ANDROID || UNITY_IOS)&& !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 		isUseEasyWebCam = isUseEWC;
 		if(isUseEasyWebCam)
 		{
@@ -39,20 +41,24 @@ public class DeviceCamera {
 		}
 		else
 		{
-			webcamera = new WebCamTexture (640, 480);
+#if UNITY_ANDROID
+            if(EasyWebCam.checkPermissions())
+            {
+                webcamera = new WebCamTexture (640, 480);
+            }
+#else
+        webcamera = new WebCamTexture (640, 480);
+#endif
 		}
-		#else
-		webcamera = new WebCamTexture (640, 480);
-		#endif
-
-
-
+#else
+        webcamera = new WebCamTexture (640, 480);
+#endif
 	}
 
     public DeviceCamera (int width,int height,bool isUseEWC = true)
 	{
-		
-		#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 		isUseEasyWebCam = isUseEWC;
 		if(isUseEasyWebCam)
 		{
@@ -61,14 +67,24 @@ public class DeviceCamera {
 		}
 		else
 		{
-			webcamera = new WebCamTexture (width, height);
+#if UNITY_ANDROID
+            if(EasyWebCam.checkPermissions())
+            {
+                previewWidth = width;
+                previewHeight = height;
+        	    webcamera = new WebCamTexture (width, height);
+            }
+#else
+                previewWidth = width;
+                previewHeight = height;
+        	    webcamera = new WebCamTexture (width, height);
+#endif
 		}
-		#else
-			webcamera = new WebCamTexture (width, height);
-		#endif
+#else
+        webcamera = new WebCamTexture (width, height);
+#endif
 	}
-
-
+    
 	/// <summary>
 	/// open the camera
 	/// </summary>
@@ -77,17 +93,25 @@ public class DeviceCamera {
 		if (isRunning) {
 			return;
 		}
-		#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 		if(isUseEasyWebCam)
 		{
 			EasyWebCam.Play();
 		}
 		else{
-			webcamera.Play ();
+            if(webcamera != null)
+            {
+        	    webcamera.Play ();
+            }
+            else
+            {
+                webcamera = new WebCamTexture (previewWidth, previewHeight);
+                webcamera.Play ();
+            }
 		}
-		#else
-		webcamera.Play ();
-		#endif
+#else
+        webcamera.Play ();
+#endif
 		isRunning = true;
 	}
 
@@ -99,19 +123,21 @@ public class DeviceCamera {
 		if (!isRunning) {
 			return;
 		}
-
-		#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 		if(isUseEasyWebCam)
 		{
-		EasyWebCam.Stop();
+		    EasyWebCam.Stop();
 		}
 		else
 		{
-		webcamera.Stop ();
+            if(webcamera != null)
+            {
+        	    webcamera.Stop ();
+            }
 		}
-		#else
-		webcamera.Stop ();
-		#endif
+#else
+        webcamera.Stop ();
+#endif
 		isRunning = false;
 	}
 	/// <summary>
@@ -120,7 +146,7 @@ public class DeviceCamera {
 	/// <returns>The size.</returns>
 	public Vector2 getSize()
 	{
-		#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 		if(isUseEasyWebCam)
 		{
 		return new Vector2(EasyWebCam.Width(), EasyWebCam.Height()); 
@@ -129,10 +155,9 @@ public class DeviceCamera {
 		{
 		return new Vector2(webcamera.width, webcamera.height); 
 		}
-
-		#else
+#else
 		return new Vector2(webcamera.width, webcamera.height); 
-		#endif
+#endif
 	}
 
 	/// <summary>
@@ -140,7 +165,7 @@ public class DeviceCamera {
 	/// </summary>
 	public int Width()
 	{
-		#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 		if(isUseEasyWebCam)
 		{
 		return EasyWebCam.Width(); 
@@ -149,9 +174,9 @@ public class DeviceCamera {
 		{
 		return webcamera.width; 
 		}
-		#else
+#else
 		return webcamera.width; 
-		#endif
+#endif
 	}
 
 	/// <summary>
@@ -159,7 +184,7 @@ public class DeviceCamera {
 	/// </summary>
 	public int Height()
 	{
-		#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 		if(isUseEasyWebCam)
 		{
 			return  EasyWebCam.Height(); 
@@ -169,9 +194,9 @@ public class DeviceCamera {
 			return webcamera.height; 
 		}
 
-		#else
+#else
 		return webcamera.height; 
-		#endif
+#endif
 	}
 
 	/// <summary>
@@ -180,7 +205,7 @@ public class DeviceCamera {
 	/// <returns><c>true</c>, if playing was ised, <c>false</c> otherwise.</returns>
 	public bool isPlaying()
 	{
-		#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 		if(isUseEasyWebCam)
 		{
 		return EasyWebCam.isPlaying ();
@@ -190,9 +215,9 @@ public class DeviceCamera {
 		return webcamera.isPlaying; 
 		}
 			
-		#else
+#else
 		return webcamera.isPlaying; 
-		#endif
+#endif
 	}
 
 	/// <summary>
@@ -201,19 +226,19 @@ public class DeviceCamera {
 	/// <returns>The pixels.</returns>
 	public Color[] GetPixels()
 	{
-		#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 		if(isUseEasyWebCam)
 		{
 			return EasyWebCam.WebCamPreview.GetPixels();
 		}
 		else
 		{
-		return webcamera.GetPixels(); 
+		    return webcamera.GetPixels(); 
 		}
 
-		#else
+#else
 		return webcamera.GetPixels(); 
-		#endif
+#endif
 	}
 
 	/// <summary>
@@ -226,7 +251,7 @@ public class DeviceCamera {
 	/// <param name="targetHeight">Target height.</param>
 	public Color[] GetPixels(int x,int y,int targetWidth,int targetHeight)
 	{
-		#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 		if(isUseEasyWebCam)
 		{
 			return EasyWebCam.WebCamPreview.GetPixels(x,y,targetWidth,targetHeight); 
@@ -236,9 +261,9 @@ public class DeviceCamera {
 			return webcamera.GetPixels(x,y,targetWidth,targetHeight); 
 		}
 			
-		#else
+#else
 		return webcamera.GetPixels(x,y,targetWidth,targetHeight); 
-		#endif
+#endif
 	}
 
 	/// <summary>
@@ -247,7 +272,7 @@ public class DeviceCamera {
 	/// <returns>The pixels32.</returns>
 	public Color32[] GetPixels32()
 	{
-		#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 		if(isUseEasyWebCam)
 		{
 			return EasyWebCam.WebCamPreview.GetPixels32();
@@ -256,13 +281,8 @@ public class DeviceCamera {
 		{
 			return webcamera.GetPixels32(); 
 		}
-			
-
-		#else
+#else
 		return webcamera.GetPixels32(); 
-		#endif
+#endif
 	}
-
-
-
 }

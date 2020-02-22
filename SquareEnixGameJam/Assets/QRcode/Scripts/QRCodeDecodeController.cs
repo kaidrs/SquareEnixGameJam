@@ -56,12 +56,12 @@ public class QRCodeDecodeController : MonoBehaviour
 	{
 		#if UNITY_EDITOR
 		if (framerate++ % 15== 0) {
-		#elif UNITY_IOS
+#elif UNITY_IOS || UNITY_ANDROID
 		if (framerate++ % 15== 0) {
-        #elif UNITY_ANDROID
-        if (framerate++ % 18== 0) {
-		#endif
-			if (e_DeviceController.isPlaying && !decoding)
+#else
+        if (framerate++ % 20== 0) {
+#endif
+            if (e_DeviceController.isPlaying && !decoding)
 			{
 				W = e_DeviceController.dWebCam.Width();					// get the image width
 				H = e_DeviceController.dWebCam.Height();			// get the image height 
@@ -97,9 +97,9 @@ public class QRCodeDecodeController : MonoBehaviour
 						targetColorARR[i + j*blockWidth].a = 255;
 					}
 				}
-
-				// scan the qrcode 
-				Loom.RunAsync(() =>
+#if !UNITY_WEBGL
+                // scan the qrcode 
+                Loom.RunAsync(() =>
 				              {
 					try
 					{
@@ -118,7 +118,17 @@ public class QRCodeDecodeController : MonoBehaviour
 						decoding = false;
 					}
 				});	
-			}
+#else 
+                Result data;
+                data = barReader.Decode(targetColorARR, blockWidth, blockWidth);//start decode
+                if (data != null) // if get the result success
+                {
+                    decoding = true;    // set the variable is true
+                    dataText = data.Text;   // use the variable to save the code result
+                }
+#endif
+
+            }
 			
 			if(decoding)
 			{
@@ -140,9 +150,7 @@ public class QRCodeDecodeController : MonoBehaviour
 		decoding = false;
 		tempDecodeing = decoding;
 	}
-
-
-
+    
 	/// <summary>
 	/// Stops the work.
 	/// </summary>

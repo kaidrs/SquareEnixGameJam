@@ -29,7 +29,7 @@ public class CameraPlaneController : MonoBehaviour {
 		width = Screenwidth;
 		this.transform.localPosition = new Vector3(0,0,91.6f);
 		
-		#if UNITY_EDITOR|| UNITY_STANDALONE
+		#if UNITY_EDITOR|| UNITY_STANDALONE||UNITY_WEBGL||UNITY_WEBPLAYER
 		transform.localEulerAngles = new Vector3(90,180,0);
 		transform.localScale = new Vector3(width/10, 1.0f, height/10);
 		#elif UNITY_WEBPLAYER
@@ -88,28 +88,21 @@ public class CameraPlaneController : MonoBehaviour {
 	public void correctPlaneScale(float size)
 	{
 		screenRatio = size;
-		#if (UNITY_ANDROID|| UNITY_IOS||UNITY_METRO)&& !UNITY_EDITOR
-		Vector3 orgVec = transform.localScale;
-		
-		if(screenRatio >1f)
-		{
-			transform.localScale = new Vector3(orgVec.x, 1.0f, orgVec.z * screenRatio);	
-		}
-		else if(screenRatio <1 && screenRatio >0)
-		{
-			transform.localScale = new Vector3(orgVec.x/screenRatio, 1.0f, orgVec.z);	
-		}
-		else
-		{
-			
-		}
 
-		#elif UNITY_WEBPLAY||UNITY_WEBGL||UNITY_EDITOR
-			Vector3 orgVec = transform.localScale;
-			transform.localScale = new Vector3(orgVec.x*screenRatio , 1.0f, orgVec.z );	
+        Vector3 orgVec = transform.localScale;
+        if (screenRatio > 1f)
+        {
+            transform.localScale = new Vector3(orgVec.x, 1.0f, orgVec.z * screenRatio);
+        }
+        else if (screenRatio < 1 && screenRatio > 0)
+        {
+            transform.localScale = new Vector3(orgVec.x / screenRatio, 1.0f, orgVec.z);
+        }
+        else
+        {
 
-		#endif
-	}
+        }
+    }
 
 
 		void updateRotationAndScale()
