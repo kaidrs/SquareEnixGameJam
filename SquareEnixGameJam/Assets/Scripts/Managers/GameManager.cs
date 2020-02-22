@@ -5,10 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 
 {
-    [SerializeField] private static List<Player> players;
+    [SerializeField] private List<Player> players;
 
     private int MAX_PLAYERS = 6;
     private int MIN_PLAYERS = 2;
+
 
     #region Singleton
     private static GameManager _instance = null;
@@ -36,8 +37,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            _instance = new GameManager();
-            print("Game manager instantiated");
             DontDestroyOnLoad(this.gameObject);
         }
         #endregion
