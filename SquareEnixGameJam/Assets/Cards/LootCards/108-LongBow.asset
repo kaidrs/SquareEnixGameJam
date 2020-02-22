@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Long Bow
   cardNumber: 108
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: -6288762130912202625, guid: c4c3ce296f022194eb08418892fdbf12,
+    type: 3}
   attackStat: 2
   defenceStat: 0

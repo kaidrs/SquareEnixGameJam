@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Breastplate
   cardNumber: 116
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: -9177875935099439593, guid: 094ef5e7cc1f9d049a26198ed7efb031,
+    type: 3}
   attackStat: 0
   defenceStat: 3

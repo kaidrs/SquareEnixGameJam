@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Barbuta Helmet
   cardNumber: 118
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 3825213400521136483, guid: 094ef5e7cc1f9d049a26198ed7efb031,
+    type: 3}
   attackStat: 0
   defenceStat: 2
