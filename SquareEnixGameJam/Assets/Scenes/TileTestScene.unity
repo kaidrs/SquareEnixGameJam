@@ -152,13 +152,13 @@ MonoBehaviour:
   numberOfZones:
   - name: Zone 1
     type: 0
-    numberOfTiles: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    numberOfTilesPerZone: 000000000000000000000000
   - name: Zone 2
     type: 1
-    numberOfTiles: 
+    numberOfTilesPerZone: 
   - name: Zone 3
     type: 2
-    numberOfTiles: 
+    numberOfTilesPerZone: 
 --- !u!4 &61404249
 Transform:
   m_ObjectHideFlags: 0

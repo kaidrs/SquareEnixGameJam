@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum TileType
 {
-    None, Loot, Spell, Monster
+    None, Loot, Spell, Monster, Checkpoint, MonsterBoss
 }
 
 public enum ZoneType
@@ -13,16 +13,26 @@ public enum ZoneType
     StarterZone, MiddleZone, FinalZone
 }
 
-[Serializable]
+[Serializable] //The Game Board will be set and modifiable in the editor
 public class Zone
 {
     public string name;
     [SerializeField] private ZoneType type;
     [SerializeField] private List<TileType> numberOfTiles;
-    private float zoneMultiplier = 1.0f;
+    private float zoneMultiplier;
+    private int numberOfTilesPerZone;
+
+    public List<TileType> NumberOfTiles { get => numberOfTiles; set => NumberOfTiles = value; }
+    public float ZoneMultiplier { get => zoneMultiplier; set => ZoneMultiplier = value; }
+    public int NumberOfTilesPerZone { get => numberOfTilesPerZone; set => NumberOfTilesPerZone = value; }
+
+    public Zone (int numberOfTilesPerZone)
+    {
+        this.numberOfTilesPerZone = 10;
+    }
 
     /// <summary>
-    /// Retrieves zone multiplier
+    /// Retrieves zone multipliers
     /// </summary>
     /// <returns></returns>
     public float GetZoneMultiplier()
@@ -30,11 +40,11 @@ public class Zone
         switch (type)
         {
             case ZoneType.StarterZone:
-                return zoneMultiplier = 1.0f;
+                return this.zoneMultiplier = 1.0f;
             case ZoneType.MiddleZone:
-                return zoneMultiplier = 1.5f;
+                return this.zoneMultiplier = 1.5f;
             case ZoneType.FinalZone:
-                return zoneMultiplier = 2.0f;
+                return this.zoneMultiplier = 2.0f;
             default:
                 return 0;
         }
@@ -63,9 +73,25 @@ public class TileManager : MonoBehaviour
     private Player currentActivePlayer;
     private Queue<int> currentTurn;
 
+    //Store board number of zones and tiles it contains
+    private int numberOfExistingZones = 0; //default value
+    private int numberOfExistingTiles = 0; //default value
+
     public void Start()
     {
+        numberOfExistingZones = gameObject.GetComponent<TileManager>().numberOfZones.Count;
+        Console.WriteLine($"Set {numberOfExistingTiles} Zones in Board");
 
+        //foreach (var zones in this.numberOfZones)
+        //{
+        //    numberOfExistingZones++;
+        //    Console.WriteLine($"Set {numberOfExistingTiles} Zones in Board");
+        //    foreach (var tiles in zones.NumberOfTiles)
+        //    {
+        //        numberOfExistingTiles++;
+        //        Console.WriteLine($"Set {numberOfExistingTiles} Tiles in Board");
+        //    }
+        //}
     }
 
     public void RetrievePlayerList()
@@ -116,9 +142,16 @@ public class TileManager : MonoBehaviour
     public void SetPlayerTilePosition(int diceValue)
     {
         currentActivePlayer.TilePosition += diceValue;
+        foreach (var zone in numberOfZones)
+        {
+            if (currentActivePlayer.TilePosition <= zone.NumberOfTiles.Count)
+            {
+
+            }
+        }
     }
 
-    public void PromptCardTile()
+    public void PromptCardTile() //to refactor in accordance to card manager
     {
         int cardID = 1; //to be removed
         CardManager.Instance.CallCard(cardID);
