@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     /// <param name="order"></param>
     void RegisterTurn(Player player, int order)
     {
-        player.Turn = order;
+        player.turn = order;
     }
 
 }

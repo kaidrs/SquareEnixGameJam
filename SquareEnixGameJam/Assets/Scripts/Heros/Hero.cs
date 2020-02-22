@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 public class Hero
 {
     private float healthPoint;
     private int attackPoint;
     private int defencePoint;
     private int luck;
-    private SpellCard spell;
+    private List<int> spellCards;
     private string classText;
 
     public float HealthPoint { get => healthPoint; set => healthPoint = value; }
@@ -16,6 +18,7 @@ public class Hero
     public int DefencePoint { get => defencePoint; set => defencePoint = value; }
     public int Luck { get => luck; set => luck = value; }
     public string ClassText { get => classText; set => classText = value; }
+    public List<int> SpellCards { get => spellCards; set => spellCards = value; }
 
     public Hero(float healthPoint, int attackPoint, int defencePoint, int luck)
     {
