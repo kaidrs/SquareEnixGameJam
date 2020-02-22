@@ -26,35 +26,40 @@ public class QRScan : MonoBehaviour
             runningCam = true;
         }
     }
-
+    float timePassed = 1;
     void OnGUI()
     {
-        if (runningCam && camTexture!= null)
+        if (runningCam && camTexture != null)
         {
             // drawing the camera on screen
             GUI.DrawTexture(screenRect, camTexture, ScaleMode.ScaleToFit);
-            // do the reading — you might want to attempt to read less often than you draw on the screen for performance sake
-            try
+            timePassed -= 1 * Time.deltaTime;
+            Debug.Log("time passed: " + timePassed);
+            if (timePassed <=0)
             {
-                IBarcodeReader barcodeReader = new BarcodeReader();
-                // decode the current frame
-                var result = barcodeReader.Decode(camTexture.GetPixels32(),
-                  camTexture.width, camTexture.height);
-                if (result != null)
+                timePassed = 1;
+                try
                 {
-                    Debug.Log("DECODED TEXT FROM QR: " + result.Text);
-                    scanText.text = result.Text;
+                    IBarcodeReader barcodeReader = new BarcodeReader();
+                    // decode the current frame
+                    var result = barcodeReader.Decode(camTexture.GetPixels32(),
+                      camTexture.width, camTexture.height);
+                    if (result != null)
+                    {
+                        Debug.Log("DECODED TEXT FROM QR: " + result.Text);
+                        scanText.text = result.Text;
 
-                    //camTexture.Stop();
-                    runningCam = false;
-                    FindObjectOfType<QRManager>().killIt();
+                        //camTexture.Stop();
+                        runningCam = false;
+                        FindObjectOfType<QRManager>().killIt();
 
+
+                    }
 
                 }
-
+                catch (Exception ex) { Debug.LogWarning(ex.Message); } 
             }
-            catch (Exception ex) { Debug.LogWarning(ex.Message); }
         }
-        
+
     }
 }
