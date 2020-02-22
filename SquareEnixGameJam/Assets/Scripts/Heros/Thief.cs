@@ -4,23 +4,12 @@ using UnityEngine;
 
 public class Thief : Hero
 {
-    public Thief()
-    {
-        this.HealthPoint = 1.0f;
-        this.AttackPoint = 2;
-        this.DefencePoint = 2;
-        this.Luck = 5;
-    }
 
-    // Start is called before the first frame update
-    void Start()
+    public Thief(float healthPoint, int attackPoint, int defencePoint, int luck) : base(healthPoint, attackPoint, defencePoint, luck)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        healthPoint = 1.0f;
+        attackPoint = 2;
+        DefencePoint = 2;
+        luck = 5;
     }
 }

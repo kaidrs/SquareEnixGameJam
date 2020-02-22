@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 
 {
-    [SerializeField] private List<Player> players;
+    [SerializeField] private static List<Player> players;
 
     private int MAX_PLAYERS = 6;
     private int MIN_PLAYERS = 2;

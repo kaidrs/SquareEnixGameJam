@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 public class NetworkManager : MonoBehaviour, IInRoomCallbacks
 {
@@ -65,5 +66,25 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
 
     public void OnMasterClientSwitched(Player newMasterClient)
     {
+    }
+
+    public void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPlayerPropertiesUpdate(Photon.Realtime.Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
+    {
+        throw new System.NotImplementedException();
     }
 }
