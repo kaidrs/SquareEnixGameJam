@@ -10,6 +10,7 @@ public class Paladin : Hero
         this.AttackPoint = 2;
         this.DefencePoint = 5;
         this.Luck = 1;
+        this.ClassText = "Paladin";
     }
 
     // Start is called before the first frame update

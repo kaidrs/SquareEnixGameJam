@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Card", menuName = "Cards/SpellCard")]
 public class SpellCard : Card
 {
-	public void CastSpell()
+
+    public void CastSpell()
 	{
 
 	}

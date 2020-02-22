@@ -10,6 +10,7 @@ public class Warrior : Hero
         this.AttackPoint = 5;
         this.DefencePoint = 2;
         this.Luck = 1;
+        this.ClassText = "Warrior";
     }
 
     // Start is called before the first frame update

@@ -10,6 +10,7 @@ public class Thief : Hero
         this.AttackPoint = 2;
         this.DefencePoint = 2;
         this.Luck = 5;
+        this.ClassText = "Thief";
     }
 
     // Start is called before the first frame update
