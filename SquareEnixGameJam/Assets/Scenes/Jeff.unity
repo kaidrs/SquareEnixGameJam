@@ -902,6 +902,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &185087921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 185087923}
+  - component: {fileID: 185087922}
+  m_Layer: 0
+  m_Name: ActionsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &185087922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185087921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e946b6926436b4bfd95b0c5e07cc67bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellSlots:
+  - {fileID: 649980511}
+  - {fileID: 2142968457}
+  - {fileID: 925644435}
+  - {fileID: 1853441078}
+  defaultSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!4 &185087923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185087921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 67.02191, y: 507.02777, z: -19.471863}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &203955929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,6 +2203,7 @@ GameObject:
   - component: {fileID: 649980514}
   - component: {fileID: 649980513}
   - component: {fileID: 649980515}
+  - component: {fileID: 649980516}
   m_Layer: 5
   m_Name: S1
   m_TagString: Untagged
@@ -2258,7 +2308,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 649980513}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 649980516}
+        m_MethodName: TriggerThisSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &649980516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649980511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5369feea5330d4fac920ba680c598159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &656572376
 GameObject:
   m_ObjectHideFlags: 0
@@ -3598,11 +3671,6 @@ MonoBehaviour:
   heroAttackText: {fileID: 2066199432}
   heroDefenseText: {fileID: 161940097}
   heroLuckText: {fileID: 98041493}
-  spells:
-  - {fileID: 649980511}
-  - {fileID: 2142968457}
-  - {fileID: 925644435}
-  - {fileID: 1853441078}
 --- !u!1 &824448385
 GameObject:
   m_ObjectHideFlags: 0
