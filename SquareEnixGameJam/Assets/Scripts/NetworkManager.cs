@@ -122,9 +122,9 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     [PunRPC]
     public void UpdateThePs(string playerJSON, PhotonMessageInfo info)
     {
-        Debug.Log($"Add to PLayer list! {playerJSON}");
+        Debug.Log($"UpdateThePs: {playerJSON}");
         var player = myPlayerJSONDecoded(playerJSON);
-        Debug.Log($"PLayer {player}");
+        Debug.Log($"UpdateThePs: {player}");
         if (PMi.ownerPlayer.punName == player.punName)
         {
             PMi.ownerPlayer = player;

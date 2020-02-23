@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1d018a34c9b1654b9c4c6eb6394b917, type: 3}
-  m_Name: 143-HolyBolt
+  m_Name: 145-LightingBolt
   m_EditorClassIdentifier: 
-  cardName: Holy Bolt
-  cardNumber: 143
-  cardSprite: {fileID: 21300000, guid: a6fcc101db1f96e4f9341e2e81f6b314, type: 3}
+  cardName: LightingBolt
+  cardNumber: 145
+  cardSprite: {fileID: 21300000, guid: 09c2c0a1fc834af4a8f7238606e85665, type: 3}
   damage: 2
-  heal: 2
+  heal: 0

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public Hero myHero;
 
     // [SerializeField] Animator spriteAnimator;
     // [SerializeField] Image heroSprite;
@@ -18,9 +17,6 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] Text heroAttackText;
     [SerializeField] Text heroDefenseText;
     [SerializeField] Text heroLuckText;
-
-    [SerializeField] public List<GameObject> spells;
-    private int availableSpellSlots;
 
     // [SerializeField] Text heroSpellText;
 
@@ -51,41 +47,21 @@ public class InventoryManager : MonoBehaviour
     {
         if (PlayerManager.Instance != null)
         {
-            myHero = PlayerManager.Instance.ownerPlayer.hero;
             InitInventoryUI();
-        }
-
-        if (spells != null) {
-          availableSpellSlots = spells.Count;
         }
     }
 
 
     public void InitInventoryUI()
     {
-        //heroNameText.text = hero.name;
-        
+        var myHero = PlayerManager.Instance.ownerPlayer.hero;
+        heroNameText.text = PlayerManager.Instance.ownerPlayer.displayName;
         heroClassText.text = myHero.classText;
         UpdateSprite(myHero.classText);
         heroAttackText.text = myHero.attackPoint.ToString();
         heroDefenseText.text = myHero.defencePoint.ToString();
         heroLuckText.text = myHero.luck.ToString();
         //spellcard name?
-
-    }
-
-    public void PopulateSpell(SpellCard card)
-    {
-        if (availableSpellSlots > 0)
-        {
-            GameObject nextAvailableSlot = spells[spells.Count - availableSpellSlots];
-            nextAvailableSlot.GetComponent<Image>().sprite = card.CardSprite;
-            availableSpellSlots--;
-        } else
-        {
-            Debug.Log("PopulateSpell::Spell slot is full!");
-        }
-
     }
 
 

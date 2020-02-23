@@ -12,6 +12,14 @@ public class QRCodeMapper : MonoBehaviour
     {
         TileType playerTileType = TileManager.Instance.GetMyCurrentTile(PlayerManager.Instance.ownerPlayer.tilePosition);
         int code = int.Parse(QRResult);
+        Debug.Log($"YOU GOT CARD #{code}");
+        #region passTURN
+        if (code == 198)
+        {
+            NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+            return;
+        } 
+        #endregion
         Card myCard = CardManager.Instance.CallCard(code);
 
         switch (playerTileType)
@@ -19,7 +27,6 @@ public class QRCodeMapper : MonoBehaviour
             case TileType.Loot:
                 LootCard lootedCard = myCard as LootCard;
                 UIManager.Instance.PromptReward(lootedCard);
-                lootedCard.AddStatToPlayer();
                 NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.Spell:
@@ -39,34 +46,34 @@ public class QRCodeMapper : MonoBehaviour
                 NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
         }
-        if (code <= 120)
-        {
-            chosenCard = CardManager.Instance.CallLootCard(code);
+        //if (code <= 120)
+        //{
+        //    chosenCard = CardManager.Instance.CallLootCard(code);
 
-            ((LootCard)chosenCard).AddStatToPlayer();
-            if (InventoryManager.Instance != null)
-            {
-                InventoryManager.Instance.InitInventoryUI();
-            } else
-            {
-                Debug.Log("Inventory instance does not exist");
-            }
-        }
+        //    ((LootCard)chosenCard).AddStatToPlayer();
+        //    if (InventoryManager.Instance != null)
+        //    {
+        //        InventoryManager.Instance.InitInventoryUI();
+        //    } else
+        //    {
+        //        Debug.Log("Inventory instance does not exist");
+        //    }
+        //}
 
-        else if (code <= 140)
-        {
-            chosenCard = CardManager.Instance.CallMonsterCard(code);
-            //BattleManager.Instance.PlayerVsMonster(PlayerManager.Instance.ownerPlayer.hero, ((MonsterCard)chosenCard));
-        }
-        else if (code <= 150)
-        {
-            chosenCard = CardManager.Instance.CallSpellCard(code);
-            InventoryManager.Instance.PopulateSpell(card);
-        }
-        else
-        {
-            chosenCard = CardManager.Instance.CallEventCard(code);
-        }
+        //else if (code <= 140)
+        //{
+        //    chosenCard = CardManager.Instance.CallMonsterCard(code);
+        //    //BattleManager.Instance.PlayerVsMonster(PlayerManager.Instance.ownerPlayer.hero, ((MonsterCard)chosenCard));
+        //}
+        //else if (code <= 150)
+        //{
+        //    chosenCard = CardManager.Instance.CallSpellCard(code);
+        //    InventoryManager.Instance.PopulateSpell(card);
+        //}
+        //else
+        //{
+        //    chosenCard = CardManager.Instance.CallEventCard(code);
+        //}
 
     }
 
