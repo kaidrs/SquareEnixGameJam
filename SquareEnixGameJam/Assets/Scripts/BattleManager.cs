@@ -24,11 +24,15 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Hero thief = new Thief(1.0f, 5, 5, 10, "Thief");  
-        Hero warrior = new Warrior(1.0f, 10, 5, 5, "Warrior");
+        Hero thief = new Thief(100.0f, 5, 5, 25, "Thief");  
+        Hero warrior = new Warrior(100.0f, 25, 5, 5, "Warrior");
+        MonsterCard monster = ScriptableObject.CreateInstance<MonsterCard>();
+        monster.Attack = 5;
+        monster.Defence = 2;
+        monster.Health = 100.0f;
 
-        PlayerVsPlayer(thief, warrior);
-
+       // PlayerVsPlayer(thief, warrior);
+        PlayerVsMonster(thief, monster);
 
     }
 
@@ -38,24 +42,52 @@ public class BattleManager : MonoBehaviour
         
     }
 
-    public void PlayerVsPlayer(Hero playerOne, Hero playerTwo)
+    public bool PlayerVsPlayer(Hero playerOne, Hero playerTwo)
     {
-        playerOne.TakeDamageFromPlayer(playerTwo);
-        playerTwo.TakeDamageFromPlayer(playerOne);
-        Debug.Log(playerOne.healthPoint);
-        Debug.Log(playerTwo.healthPoint);
-
+        while (playerOne.healthPoint >= 0.0f && playerTwo.healthPoint >= 0.0f)
+        {
+            playerTwo.TakeDamageFromPlayer(playerOne);
+            playerOne.TakeDamageFromPlayer(playerTwo);
+            Debug.Log("Player one " + playerOne.healthPoint);
+            Debug.Log("Player two " + playerTwo.healthPoint);
+        }
+        //playerTwo.TakeDamageFromPlayer(playerOne);
+        //playerOne.TakeDamageFromPlayer(playerTwo);
+        Debug.Log("Final Player one " + playerOne.healthPoint);
+        Debug.Log("Final Player two " + playerTwo.healthPoint);
+        if(playerOne.healthPoint > playerTwo.healthPoint)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 
-    public void PlayerVsMonster(Hero player, MonsterCard monster)
+    public bool PlayerVsMonster(Hero player, MonsterCard monster)
     {
-        do
+        while (player.healthPoint >= 0.0f && monster.Health >= 0.0f)
         {
-            monster.TakeDamage(player);
             player.TakeDamageFromMonster(monster);
+            monster.TakeDamage(player);
+            Debug.Log("Player one " + player.healthPoint);
+            Debug.Log("Monster " + monster.Health);
         }
-        while (player.healthPoint >= 0 || monster.Health >= 0);
+        //playerTwo.TakeDamageFromPlayer(playerOne);
+        //playerOne.TakeDamageFromPlayer(playerTwo);
+        Debug.Log("Final Player" + player.healthPoint);
+        Debug.Log("Final monster" + monster.Health);
+
+        if(player.healthPoint > monster.Health)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 

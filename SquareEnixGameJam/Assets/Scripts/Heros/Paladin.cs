@@ -6,7 +6,7 @@ public class Paladin : Hero
 {
     public Paladin()
     {
-        this.healthPoint = 1.0f;
+        this.healthPoint = 100.0f;
         this.attackPoint = 5;
         this.defencePoint = 10;
         this.luck = 5;
