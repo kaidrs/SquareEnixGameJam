@@ -21,9 +21,6 @@ public class DiceScript : MonoBehaviour {
     private void Update()
     {
         diceVelocity = rigidbody.velocity;
-
-        //DEBUG
-        if (Input.GetKeyDown(KeyCode.K)) { isRolling = false; }
     }
 
     public void RollDice()
