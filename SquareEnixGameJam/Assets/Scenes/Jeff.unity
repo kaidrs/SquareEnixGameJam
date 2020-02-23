@@ -746,7 +746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &166412369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,7 +793,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &203955929
 GameObject:
@@ -947,6 +947,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206643112}
   m_CullTransparentMesh: 0
+--- !u!1 &212043070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 212043072}
+  - component: {fileID: 212043071}
+  m_Layer: 0
+  m_Name: TileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &212043071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212043070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed6254e1ae1ed3419ba0fd3a917b926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zones:
+  - name: Z1
+    type: 0
+    tiles: 010000000200000003000000
+  - name: Z2
+    type: 1
+    tiles: 0100000002000000
+  - name: Z3
+    type: 2
+    tiles: 05000000
+  board: 
+  panelBattle: {fileID: 0}
+--- !u!4 &212043072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212043070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 94.35491, y: 189.39449, z: -183.625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &248744164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,6 +2101,7 @@ GameObject:
   - component: {fileID: 649980512}
   - component: {fileID: 649980514}
   - component: {fileID: 649980513}
+  - component: {fileID: 649980515}
   m_Layer: 5
   m_Name: S1
   m_TagString: Untagged
@@ -2108,6 +2164,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649980511}
   m_CullTransparentMesh: 0
+--- !u!114 &649980515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649980511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 649980513}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &656572376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,7 +2570,7 @@ RectTransform:
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
@@ -3304,8 +3403,8 @@ MonoBehaviour:
   QRScanCanvas: {fileID: 2088586328}
   CameraPlane: {fileID: 294002359}
   BattleCanvas: {fileID: 474678553}
-  p1SpriteObject: {fileID: 1814651266}
-  p2SpriteObject: {fileID: 2128081738}
+  p1SpriteObject: {fileID: 1814651268}
+  p2SpriteObject: {fileID: 2128081740}
   p1HpSlider: {fileID: 874694849}
   p2HpSlider: {fileID: 1178953015}
   p1Text: {fileID: 423446676}
@@ -4389,52 +4488,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130158051}
   m_CullTransparentMesh: 0
---- !u!1 &1144371702
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1144371704}
-  - component: {fileID: 1144371703}
-  m_Layer: 0
-  m_Name: TileManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1144371703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144371702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aed6254e1ae1ed3419ba0fd3a917b926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zones: []
-  board: 
-  panelBattle: {fileID: 474678553}
---- !u!4 &1144371704
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144371702}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 138.00002, y: 244.03558, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1178953013
 GameObject:
   m_ObjectHideFlags: 0
@@ -5687,6 +5740,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2eff2b9ad5ce1f438e0a355f3365764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myHero:
+    heroSprite: {fileID: 0}
+    healthPoint: 0
+    attackPoint: 0
+    defencePoint: 0
+    luck: 0
+    classText: 
+    spellCards: 
   warriorObject: {fileID: 1014815845}
   thiefObject: {fileID: 872468034}
   paladinObject: {fileID: 441589814}
@@ -5695,6 +5756,11 @@ MonoBehaviour:
   heroAttackText: {fileID: 2066199432}
   heroDefenseText: {fileID: 161940097}
   heroLuckText: {fileID: 98041493}
+  spells:
+  - {fileID: 649980511}
+  - {fileID: 2142968457}
+  - {fileID: 925644435}
+  - {fileID: 1853441078}
 --- !u!1 &1507194742
 GameObject:
   m_ObjectHideFlags: 0
@@ -5929,13 +5995,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1633918672}
   - component: {fileID: 1633918673}
+  - component: {fileID: 1633918674}
   m_Layer: 0
   m_Name: QRTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1633918672
 Transform:
   m_ObjectHideFlags: 0
@@ -5948,7 +6015,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1633918673
 MonoBehaviour:
@@ -5965,11 +6032,25 @@ MonoBehaviour:
   e_qrController: {fileID: 1253132430}
   UiText: {fileID: 368476223}
   resetBtn: {fileID: 1451115594}
+  QRResult: 
   scanLineObj: {fileID: 1405413922}
   torchOnSprite: {fileID: 21300000, guid: d96c440672b1949408891fb76c5647cc, type: 3}
   torchOffSprite: {fileID: 21300000, guid: d96c440672b1949408891fb76c5647cc, type: 3}
   torchImage: {fileID: 0}
   isOpenBrowserIfUrl: 0
+--- !u!114 &1633918674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633918671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af374dc09b72a40d88edcfaca3343522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 11400000, guid: 7671b974056a1b14db884e68bd6ce3cd, type: 2}
 --- !u!1 &1647587291
 GameObject:
   m_ObjectHideFlags: 0
