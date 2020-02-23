@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +22,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] Camera QRCamera;
     [SerializeField] GameObject InventoryCanvas;
     [SerializeField] GameObject QRScanCanvas;
     [SerializeField] GameObject CameraPlane;
@@ -63,6 +65,7 @@ public class UIManager : MonoBehaviour
         InventoryCanvas.SetActive(true);
         QRScanCanvas.SetActive(false);
         CameraPlane.SetActive(false);
+        QRCamera.enabled = true;
     }
 
 
@@ -106,6 +109,11 @@ public class UIManager : MonoBehaviour
         promptReward.SetActive(true);
         rewardImage.sprite = card.CardSprite;
         promptRewardText.text = "You have received " + card.CardName + " !";
+        if (card is SpellCard)
+        {
+            InventoryManager.Instance.PopulateSpell(card as SpellCard);
+        }
+        // UPdate incv InventoryManager.Instance.InitInventoryUI();
     }
 
     public void HidePrompts()
@@ -145,6 +153,13 @@ public class UIManager : MonoBehaviour
         QRScanCanvas.SetActive(false);
         CameraPlane.SetActive(false);
         promptCanvas.SetActive(false);
+        QRCamera.enabled = false;
         DiceManager.Instance.diceScript.RollDice();
+    }
+
+    public void PromptGoQR()
+    {
+        /// got qr pass type to qr when set is ready
+        throw new NotImplementedException();
     }
 }

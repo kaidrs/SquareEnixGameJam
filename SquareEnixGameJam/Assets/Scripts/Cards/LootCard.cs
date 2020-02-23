@@ -10,10 +10,18 @@ public class LootCard : Card
 	[SerializeField] public int defenceStat;
 	[SerializeField] public int luckStat;
 
-	public void AddStatToPlayer(Hero hero)
+	public void AddStatToPlayer()
 	{
-		hero.attackPoint += attackStat;
-		hero.defencePoint += defenceStat;
-		hero.luck += luckStat;
+		var hero = PlayerManager.Instance.ownerPlayer.hero;
+		int multiplier = (int)PlayerManager.Instance.ownerPlayer.zone + 1;
+		hero.attackPoint += this.attackStat * multiplier;
+		hero.defencePoint += this.defenceStat * multiplier;
+		hero.luck += this.luckStat * multiplier;
+		PlayerManager.Instance.BroadcastUpdate();
+	}
+	public override string ToString()
+	{
+		int multiplier = (int)PlayerManager.Instance.ownerPlayer.zone + 1;
+		return $"Stat:\n Attack:{attackStat * multiplier}\nDefence:{defenceStat * multiplier}\nLuck:{luckStat * multiplier}\n";
 	}
 }

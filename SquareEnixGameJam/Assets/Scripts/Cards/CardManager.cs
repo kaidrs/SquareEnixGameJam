@@ -9,7 +9,7 @@ public class CardManager : MonoBehaviour
     #region Singleton
 
     private static CardManager instance = null;
-  
+
     public static CardManager Instance
     {
         get
@@ -33,6 +33,10 @@ public class CardManager : MonoBehaviour
     [SerializeField] private EventCard[] eventCardColletion;
 
     [SerializeField] private Dictionary<int, LootCard> lootCardDict = new Dictionary<int, LootCard>();
+    public LootCard GetRandomLoot()
+    {
+        return lootCardColletion[Random.Range(0, lootCardColletion.Length)];
+    }
 
 
     private void Start()
@@ -132,6 +136,42 @@ public class CardManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public MonsterCard GetBossCard()
+    {
+        switch (PlayerManager.Instance.ownerPlayer.zone)
+        {
+            case ZoneType.StarterZone:
+                foreach (var monster in monsterCardColletion)
+                {
+                    if (monster.zone == ZoneType.StarterZone && monster.bossCard)
+                    {
+                        return monster;
+                    }
+                }
+                break;
+            case ZoneType.MiddleZone:
+                foreach (var monster in monsterCardColletion)
+                {
+                    if (monster.zone == ZoneType.MiddleZone && monster.bossCard)
+                    {
+                        return monster;
+                    }
+                }
+                break;
+            case ZoneType.FinalZone:
+                foreach (var monster in monsterCardColletion)
+                {
+                    if (monster.zone == ZoneType.FinalZone && monster.bossCard)
+                    {
+                        return monster;
+                    }
+                }
+                break;
+        }
+        return null;
+
     }
 
 }
