@@ -283,7 +283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 5.0025}
+  m_AnchoredPosition: {x: 0, y: 5.0024414}
   m_SizeDelta: {x: 0, y: -9.9951}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &37454971
@@ -433,7 +433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.3}
+  m_AnchoredPosition: {x: 0, y: -23.30011}
   m_SizeDelta: {x: 0, y: -694.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138210474
@@ -1306,7 +1306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 5.0025}
+  m_AnchoredPosition: {x: 0, y: 5.0024414}
   m_SizeDelta: {x: 0, y: -9.9951}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &428638266
@@ -1936,7 +1936,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You search the loot and obtain {ITEM} !
+  m_Text: Message
 --- !u!222 &656572379
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2926,6 +2926,8 @@ MonoBehaviour:
   promptCanvas: {fileID: 689725658}
   promptBattle: {fileID: 662782841}
   promptBattleText: {fileID: 963280698}
+  battleEngageBtn: {fileID: 1287612869}
+  battleRetreatBtn: {fileID: 1187831979}
   promptMessage: {fileID: 1374895787}
   promptMessageText: {fileID: 656572378}
   promptReward: {fileID: 2123392362}
@@ -3916,7 +3918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.3}
+  m_AnchoredPosition: {x: 0, y: -23.30011}
   m_SizeDelta: {x: 0, y: -694.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1130158053
@@ -4449,7 +4451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 5.0025}
+  m_AnchoredPosition: {x: 0, y: 5.0024414}
   m_SizeDelta: {x: 0, y: -9.9951}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1289299097
@@ -4578,7 +4580,7 @@ GameObject:
   - component: {fileID: 1329620993}
   - component: {fileID: 1329620992}
   m_Layer: 5
-  m_Name: Yes
+  m_Name: Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4646,7 +4648,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1329620993}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 816975961}
+        m_MethodName: HidePrompts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1329620993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6381,7 +6394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.3}
+  m_AnchoredPosition: {x: 0, y: -23.30011}
   m_SizeDelta: {x: 0, y: -694.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2008444987
