@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public Hero hero; //change later
-
-    //public Hero CurrentHero { get => hero; set => CurrentHero = value; }
+    public Hero myHero;
 
     // [SerializeField] Animator spriteAnimator;
     // [SerializeField] Image heroSprite;
@@ -20,6 +18,10 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] Text heroAttackText;
     [SerializeField] Text heroDefenseText;
     [SerializeField] Text heroLuckText;
+
+    [SerializeField] public List<GameObject> spells;
+    private int availableSpellSlots;
+
     // [SerializeField] Text heroSpellText;
 
     //  [SerializeField] Image heroWeaponImage;
@@ -47,10 +49,9 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hero = HeroManager.playerChoice[0];
-        //hero = new Hero(1, 1, 1, 1);
+        myHero = PlayerManager.Instance.ownerPlayer.hero;
+        availableSpellSlots = spells.Count;
         InitInventoryUI();
-        
     }
 
 
@@ -58,12 +59,26 @@ public class InventoryManager : MonoBehaviour
     {
         //heroNameText.text = hero.name;
         
-        heroClassText.text = hero.classText;
-        UpdateSprite(hero.classText);
-        heroAttackText.text = hero.attackPoint.ToString();
-        heroDefenseText.text = hero.defencePoint.ToString();
-        heroLuckText.text = hero.luck.ToString();
+        heroClassText.text = myHero.classText;
+        UpdateSprite(myHero.classText);
+        heroAttackText.text = myHero.attackPoint.ToString();
+        heroDefenseText.text = myHero.defencePoint.ToString();
+        heroLuckText.text = myHero.luck.ToString();
         //spellcard name?
+
+    }
+
+    public void PopulateSpell(SpellCard card)
+    {
+        if (availableSpellSlots > 0)
+        {
+            GameObject nextAvailableSlot = spells[spells.Count - availableSpellSlots];
+            nextAvailableSlot.GetComponent<Image>().sprite = card.CardSprite;
+            availableSpellSlots--;
+        } else
+        {
+            Debug.Log("PopulateSpell::Spell slot is full!");
+        }
 
     }
 
@@ -85,11 +100,5 @@ public class InventoryManager : MonoBehaviour
             paladinObject.SetActive(true);
             Debug.Log("switch to paladin");
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

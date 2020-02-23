@@ -6,6 +6,8 @@ public class QRCodeMapper : MonoBehaviour
 {
     Card chosenCard;
 
+    [SerializeField] public SpellCard card;
+
     public void MapCodeToCard(string QRResult)
     {
         int code = int.Parse(QRResult);
@@ -13,36 +15,26 @@ public class QRCodeMapper : MonoBehaviour
         if (code <= 120)
         {
             chosenCard = CardManager.Instance.CallLootCard(code);
-            //Hero currentHero = new Hero(1,1,1,1);
-            Debug.Log(InventoryManager.Instance);
 
-            //if (currentHero != null)
-            //{
-            //    ((LootCard)chosenCard).AddStatToPlayer(currentHero);
-            //    InventoryManager.Instance.InitInventoryUI();
-            //    Debug.Log("Hero attack stats: " + currentHero.AttackPoint);
-            //    Debug.Log("Hero defense stats: " + currentHero.DefencePoint);
-            //    Debug.Log("Hero luck stats: " + currentHero.Luck);
-            //}
-            //else
-            //{
-            //    Debug.Log("QRCodeMapper: No hero found");
-            //}
-            
-            
-        } else if (code <= 140)
+            ((LootCard)chosenCard).AddStatToPlayer(PlayerManager.Instance.ownerPlayer.hero);
+            InventoryManager.Instance.InitInventoryUI();
+        }
+
+        else if (code <= 140)
         {
             chosenCard = CardManager.Instance.CallMonsterCard(code);
-        } else if (code <= 150)
+            //BattleManager.Instance.PlayerVsMonster(PlayerManager.Instance.ownerPlayer.hero, ((MonsterCard)chosenCard));
+        }
+        else if (code <= 150)
         {
             chosenCard = CardManager.Instance.CallSpellCard(code);
-
-        } else
+            InventoryManager.Instance.PopulateSpell(card);
+        }
+        else
         {
             chosenCard = CardManager.Instance.CallEventCard(code);
         }
 
-        Debug.Log("Found card name is =================" + chosenCard.CardName);
     }
 
 }
