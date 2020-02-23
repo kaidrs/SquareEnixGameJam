@@ -8,7 +8,7 @@ public class TextUpdate : MonoBehaviour
     private Text dialogTextBox;
     [SerializeField] private string[] textsToDisplay;
     [SerializeField] private GameObject panel;
-    private Touch touch;
+    //private Touch touch;
     private int currentText = 0;
 
     public void Start()
@@ -19,23 +19,15 @@ public class TextUpdate : MonoBehaviour
 
     public void Update()
     {
-        TapToContinueText();
+        ClickToContinueText();
     }
 
-    public void TapToContinueText()
+    public void ClickToContinueText()
     {
-        if(touch.phase == TouchPhase.Began && Input.touchCount > 0)
-        {
-            touch.phase = TouchPhase.Ended;
-            NextText();
-        }
-
-#if UNITY_EDITOR
-        if (Input.anyKeyDown)
+        if(Input.GetMouseButtonDown(0))
         {
             NextText();
         }
-#endif
     }
 
     public void NextText()
