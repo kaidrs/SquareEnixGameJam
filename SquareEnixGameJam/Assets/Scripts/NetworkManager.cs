@@ -171,17 +171,27 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     {
         PMi.ownerPlayer.punReady = true;
         PMi.BroadcastUpdate();
-        if (!PMi.allPlayers.Exists(x => !x.punReady))
+        if (AreAllReady())
         {
             PMi.allPlayers.Sort();
-            var sceneName = "PlayScene";
-            photonView.RPC("LoadScene", RpcTarget.AllViaServer, sceneName);
+            var sceneName = "Robert";
+            BroadcastLoadScene(sceneName);
             GameManager.Instance.StartGame();
         }
         foreach (var item in PMi.allPlayers)
         {
             Debug.Log($"{item} - {item.punReady}");
         }
+    }
+
+    public void BroadcastLoadScene(string sceneName)
+    {
+        photonView.RPC("LoadScene", RpcTarget.AllViaServer, sceneName);
+    }
+
+    public bool AreAllReady()
+    {
+        return !PMi.allPlayers.Exists(x => !x.punReady);
     }
 
     public void BroadcastUpdateTurn()
