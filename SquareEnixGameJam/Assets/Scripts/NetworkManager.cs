@@ -125,6 +125,10 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
         Debug.Log($"Add to PLayer list! {playerJSON}");
         var player = myPlayerJSONDecoded(playerJSON);
         Debug.Log($"PLayer {player}");
+        if (PMi.ownerPlayer.punName == player.punName)
+        {
+            PMi.ownerPlayer = player;
+        }
         for (int i = 0; i < PMi.allPlayers.Count; i++)
         {
             if (PMi.allPlayers[i].punName == player.punName)
@@ -169,6 +173,7 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
         PMi.BroadcastUpdate();
         if (!PMi.allPlayers.Exists(x => !x.punReady))
         {
+            PMi.allPlayers.Sort();
             var sceneName = "PlayScene";
             photonView.RPC("LoadScene", RpcTarget.AllViaServer, sceneName);
         }
@@ -178,7 +183,17 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
         }
     }
 
-    
+    public void BroadcastUpdateTurn()
+    {
+        photonView.RPC("EndTurn", RpcTarget.AllViaServer);
+    }
+
+
+    [PunRPC]
+    public void EndTurn()
+    {
+        GameManager.Instance.UpdateTurn();
+    }
 
     public void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
     {

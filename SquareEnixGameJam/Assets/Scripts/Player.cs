@@ -10,6 +10,7 @@ public class Player: IComparable
     //PUN
     public string punName;
     public bool punReady = false;
+    public int initRollForOrder;
 
     // Name the player registers with
     public string displayName;
@@ -46,7 +47,7 @@ public class Player: IComparable
 
         if (obj is Player otherPlayer)
         {
-            return punName.CompareTo(otherPlayer.punName);
+            return turn.CompareTo(otherPlayer.turn);
         }
         else
         {
@@ -55,6 +56,6 @@ public class Player: IComparable
     }
     public override string ToString()
     {
-        return displayName;
+        return $"{turn}:{displayName}";
     }
 }
