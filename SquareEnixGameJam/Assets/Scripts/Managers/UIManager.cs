@@ -113,7 +113,7 @@ public class UIManager : MonoBehaviour
         {
             InventoryManager.Instance.PopulateSpell(card as SpellCard);
         }
-        // UPdate incv InventoryManager.Instance.InitInventoryUI();
+        InventoryManager.Instance.InitInventoryUI();
     }
 
     public void HidePrompts()
@@ -159,7 +159,8 @@ public class UIManager : MonoBehaviour
 
     public void PromptGoQR()
     {
-        /// got qr pass type to qr when set is ready
-        throw new NotImplementedException();
+        Debug.Log("we cool");
+        QRDecodeTest.Instance.Play();
+      
     }
 }
