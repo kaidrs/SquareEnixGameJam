@@ -61,10 +61,7 @@ public class SpellActions : MonoBehaviour
 
         foreach (GameObject slot in spellSlots)
         {
-            Debug.Log("GetNextEmptySlot:: slot name " + slot.name);
             Sprite sprite = slot.GetComponent<Image>().sprite;
-            Debug.Log("GetNextEmptySlot:: sprite name " + sprite.name);
-            Debug.Log("GetNextEmptySlot:: default name " + defaultSlotImage);
 
             if (sprite.name == defaultSlotImage)
             {
@@ -78,7 +75,6 @@ public class SpellActions : MonoBehaviour
     {
         // int nextEmptySlot = GetNextEmptySlot();
         int nextEmptySlot = spellSlots.Count - availableSlots;
-        Debug.Log("AddSpellToUI::nextEmptySlot " + nextEmptySlot);
 
         if (nextEmptySlot >= 0)
         {
@@ -112,13 +108,14 @@ public class SpellActions : MonoBehaviour
         else
         {
             int slotIndex = 0;
-            foreach (int value in spellsLookupTable.Values)
+            foreach (KeyValuePair<int, int> keyValue in spellsLookupTable)
             {
-                if (value == card.CardNumber)
+                if (keyValue.Value == card.CardNumber)
                 {
-                    slotIndex = value;
+                    slotIndex = keyValue.Key;
                 }
             }
+
             GameObject slotToRemove = spellSlots[slotIndex];
             Sprite spellSprite = slotToRemove.GetComponent<Image>().sprite;
             if (spellSprite == card.CardSprite) // slot is occupied 
