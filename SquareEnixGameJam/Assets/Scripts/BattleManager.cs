@@ -62,11 +62,11 @@ public class BattleManager : MonoBehaviour
         while (playerOne.healthPoint >= 0.0f && playerTwo.healthPoint >= 0.0f)
         {
             playerTwo.TakeDamageFromPlayer(playerOne);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
             UIManager.Instance.P2HpSlider.value = playerTwo.healthPoint;
             Debug.Log("Player two " + playerTwo.healthPoint);
             playerOne.TakeDamageFromPlayer(playerTwo);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
             UIManager.Instance.P1HpSlider.value = playerOne.healthPoint;
             Debug.Log("Player one " + playerOne.healthPoint);
         }
@@ -95,14 +95,13 @@ public class BattleManager : MonoBehaviour
         {
 
             monsterCardCopy.TakeDamage(player);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
             Debug.Log("Monster " + monsterCardCopy.Health);
             player.TakeDamageFromMonster(monsterCardCopy);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
             UIManager.Instance.P1HpSlider.value = player.healthPoint;
             Debug.Log("Player one " + player.healthPoint);
             UIManager.Instance.P2HpSlider.value = monsterCardCopy.Health;
-            yield return new WaitForSeconds(0.5f);
         }
         //playerTwo.TakeDamageFromPlayer(playerOne);
         //playerOne.TakeDamageFromPlayer(playerTwo);
