@@ -71,7 +71,6 @@ public class InventoryManager : MonoBehaviour
         heroDefenseText.text = myHero.defencePoint.ToString();
         heroLuckText.text = myHero.luck.ToString();
         //spellcard name?
-
     }
 
     public void PopulateSpell(SpellCard card)
