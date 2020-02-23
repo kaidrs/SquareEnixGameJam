@@ -90,14 +90,12 @@ public class HeroManager : MonoBehaviour
     public void PickWarrior()
     {
         PlayerManager.Instance.ownerPlayer.hero = CreateWarrior();
-        PMi.BroadcastUpdate();
         GameScene();
     }
 
     public void PickPaladin()
     {
         PlayerManager.Instance.ownerPlayer.hero = CreatePaladin();
-        PMi.BroadcastUpdate();
         GameScene();
     }
 
@@ -105,7 +103,6 @@ public class HeroManager : MonoBehaviour
     {
 
         PlayerManager.Instance.ownerPlayer.hero = CreateThief();
-        PMi.BroadcastUpdate();
         GameScene();
     }
 
@@ -143,7 +140,14 @@ public class HeroManager : MonoBehaviour
     public void GameScene()
     {
         //jeff need help
+        PMi.ownerPlayer.punReady = true;
+
+        PMi.BroadcastUpdate();
+
         isPanelOn = false;
-        SceneManager.LoadScene("Jeff");
+        if (NetworkManager.Instance.AreAllReady())
+        {
+            NetworkManager.Instance.BroadcastLoadScene("Jeff"); 
+        }
     }
 }
