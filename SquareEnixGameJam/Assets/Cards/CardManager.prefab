@@ -86,9 +86,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   spellCardColletion:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 7671b974056a1b14db884e68bd6ce3cd, type: 2}
+  - {fileID: 11400000, guid: bba4b5a193ba6d84fa29000240881147, type: 2}
+  - {fileID: 11400000, guid: 1a8eb20ad514d124e9677cc5d2b0117b, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
