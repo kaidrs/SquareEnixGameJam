@@ -18,3 +18,5 @@ MonoBehaviour:
   health: 100
   defence: 100
   attack: 40
+  bossCard: 1
+  zone: 1

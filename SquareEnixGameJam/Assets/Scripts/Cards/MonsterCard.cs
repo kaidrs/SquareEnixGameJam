@@ -9,7 +9,8 @@ public class MonsterCard : Card
     [SerializeField] private float health;
     [SerializeField] private int defence;
     [SerializeField] private int attack;
-
+    public bool bossCard = false;
+    public ZoneType zone;
     public int Attack { get => attack; set => attack = value; }
     public int Defence { get => defence; set => defence = value; }
     public float Health { get => health; set => health = value; }
