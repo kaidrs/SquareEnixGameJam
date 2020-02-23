@@ -111,7 +111,7 @@ public class UIManager : MonoBehaviour
         promptRewardText.text = "You have received " + card.CardName + " !";
         if (card is SpellCard)
         {
-            InventoryManager.Instance.PopulateSpell(card as SpellCard);
+            SpellActions.Instance.AddSpellToUI(card as SpellCard);
         }
         // UPdate incv InventoryManager.Instance.InitInventoryUI();
     }
