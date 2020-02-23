@@ -1105,7 +1105,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textsToDisplay:
   - Greetings, adventurer.
-  - Who may you be?
+  - '{randomtext}'
+  - But first... who may you be?
+  randomGreetingText:
+  - Will you raise to the challenge of defeating evil?
+  - Will you be the one to become the hero?
+  - Do you desire to bask in the glory of heroic prestige?
+  - Are you seeking fame, power or wealth?
   panel: {fileID: 262316417}
 --- !u!114 &486776310
 MonoBehaviour:
