@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 [Serializable]
 public class Hero
 {
-    public Sprite heroSprite;
+    public int heroSprite;
     public float healthPoint;
     public int attackPoint;
     public int defencePoint;
@@ -22,7 +22,7 @@ public class Hero
     //public string classText { get => classText; set => classText = value; }
     //public List<int> spellCards { get => spellCards; set => spellCards = value; }
 
-    public Hero(float healthPoint, int attackPoint, int defencePoint, int luck, string classText, Sprite heroSprite)
+    public Hero(float healthPoint, int attackPoint, int defencePoint, int luck, string classText, int heroSprite)
     {
         this.healthPoint = healthPoint;
         this.attackPoint = attackPoint;

@@ -76,6 +76,9 @@ public class BattleManager : MonoBehaviour
         //Debug.Log("Final Player two " + playerTwo.healthPoint);
         bool result = playerOne.healthPoint > playerTwo.healthPoint;
         Debug.Log(result);
+        UIManager.Instance.HidePrompts();
+        UIManager.Instance.ShowInventory();
+        NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
         // push player back;
     }
 
@@ -93,7 +96,7 @@ public class BattleManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             UIManager.Instance.P1HpSlider.value = player.healthPoint;
             Debug.Log("Player one " + player.healthPoint);
-            UIManager.Instance.P2HpSlider.value = monster.Health;
+            UIManager.Instance.P2HpSlider.value = monsterCardCopy.Health;
             yield return new WaitForSeconds(0.5f);
         }
         //playerTwo.TakeDamageFromPlayer(playerOne);
@@ -101,11 +104,13 @@ public class BattleManager : MonoBehaviour
         //Debug.Log("Final Player" + player.healthPoint);
         //Debug.Log("Final monster" + monsterCardCopy.Health);
         bool result = player.healthPoint > monsterCardCopy.Health;
+        UIManager.Instance.HidePrompts();
         if (result)
         {
             LootCard rewardCardLooted = CardManager.Instance.GetRandomLoot();
             UIManager.Instance.PromptReward(rewardCardLooted);
         }
+        UIManager.Instance.ShowInventory();
         NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
 
     }

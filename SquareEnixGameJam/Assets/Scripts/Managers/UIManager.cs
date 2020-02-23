@@ -95,9 +95,9 @@ public class UIManager : MonoBehaviour
         promptBattle.SetActive(true);
         promptBattleText.text = "Encountered a Player! Choose to battle?";
         promptBattle.GetComponent<Animator>().Play("promptBattle");
-        battleRetreatBtn.enabled = true;
-        p1SpriteObject.sprite = player.heroSprite;
-        p2SpriteObject.sprite = player2.heroSprite;
+        battleRetreatBtn.interactable = true;
+        p1SpriteObject.sprite = HeroManager.Instance.spriteList[player.heroSprite];
+        p2SpriteObject.sprite = HeroManager.Instance.spriteList[player2.heroSprite];
 
         PlayerHolder = player;
         PlayerHolder2 = player2;
@@ -113,9 +113,9 @@ public class UIManager : MonoBehaviour
         promptBattle.SetActive(true);
         promptBattleText.text = "Encountered a Monster! Prepare to engage!";
         promptBattle.GetComponent<Animator>().Play("promptBattle");
-        battleRetreatBtn.enabled = false;
+        battleRetreatBtn.interactable = false;
         BattleCanvas.GetComponent<Canvas>().enabled = false;
-        p1SpriteObject.sprite = player.heroSprite;
+        p1SpriteObject.sprite = HeroManager.Instance.spriteList[player.heroSprite];
         p2SpriteObject.sprite = monster.CardSprite;
         PlayerHolder = player;
         monsterHolder = monster;
@@ -131,8 +131,9 @@ public class UIManager : MonoBehaviour
     public void DoBattle()
     {
         inBattle = true;
-        BattleCanvas.GetComponent<Canvas>().enabled = true;
         InventoryCanvas.SetActive(false);
+        HidePrompts();
+        BattleCanvas.GetComponent<Canvas>().enabled = true;
         if (TileManager.Instance.battleAgainstPlayer)
         {
             StartCoroutine(BattleManager.Instance.PlayerVsPlayer(PlayerHolder, PlayerHolder2));
@@ -178,7 +179,7 @@ public class UIManager : MonoBehaviour
         promptReward.SetActive(false);
         promptMessage.SetActive(false);
         promptBattle.SetActive(false);
-        BattleCanvas.SetActive(false);
+        BattleCanvas.GetComponent<Canvas>().enabled = false;
 
     }
 
