@@ -47,8 +47,8 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //hero = HeroManager.playerChoice[0];
-        hero = new Hero(1, 1, 1, 1);
+        hero = HeroManager.playerChoice[0];
+        //hero = new Hero(1, 1, 1, 1);
         InitInventoryUI();
         
     }
