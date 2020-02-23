@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Minotaur
   cardNumber: 132
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: -5230631362329218474, guid: 2a99076c5925b0148b4558c6303f5d0e,
+    type: 3}
   health: 7
   defence: 4
   attack: 5

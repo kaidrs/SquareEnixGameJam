@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Wolf
   cardNumber: 125
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: -7812895251157414391, guid: e19c3aa64beab334baa1e73f1eb32c22,
+    type: 3}
   health: 10
   defence: 3
   attack: 6

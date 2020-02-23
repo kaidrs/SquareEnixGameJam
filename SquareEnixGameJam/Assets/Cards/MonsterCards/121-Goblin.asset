@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Goblin
   cardNumber: 121
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 1880763209359424529, guid: a6fff84f2ccf276428e8778adfc539b2,
+    type: 3}
   health: 4
   defence: 4
   attack: 4
