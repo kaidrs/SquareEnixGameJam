@@ -6,14 +6,16 @@ using UnityEngine.UI;
 public class DiceScript : MonoBehaviour {
 
 	public static Vector3 diceVelocity;
+    public static bool isRolling;
 
 	private Rigidbody rigidbody;
-    private bool isRolling;
 
 	// Use this for initialization
 	void Start () 
     {
 		rigidbody = GetComponent<Rigidbody> ();
+
+        RollDice();
 	}
 
     private void Update()
