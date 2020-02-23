@@ -49,9 +49,15 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myHero = PlayerManager.Instance.ownerPlayer.hero;
-        availableSpellSlots = spells.Count;
-        InitInventoryUI();
+        if (PlayerManager.Instance != null)
+        {
+            hero = PlayerManager.Instance.ownerPlayer.hero;
+            InitInventoryUI();
+        }
+
+        if (spells != null) {
+          availableSpellSlots = spells.Count;
+        }
     }
 
 

@@ -5,12 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 
 {
-    //[SerializeField] private List<Player> players;
 
-    private int MAX_PLAYERS = 6;
-    private int MIN_PLAYERS = 2;
-
-    //public List<Player> Players { get => PlayerManager.Instance.allPlayers; }
 
     #region Singleton
     private static GameManager _instance = null;
@@ -46,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateTurn()
     {
+        
         int next = currentTurn + 1;
         currentTurn = next > PlayerManager.Instance.allPlayers.Count ? next - PlayerManager.Instance.allPlayers.Count : next;
         if (PlayerManager.Instance.allPlayers[currentTurn - 1].punName == PlayerManager.Instance.ownerPlayer.punName)
@@ -60,12 +56,10 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void StartGame()
+    public void StartGame()
     {
-        //if (players.Count > MIN_PLAYERS)
-        //{
-        //    print("Starting game...");
-        //}
+        PlayerManager.Instance.SetReadyToFalse();
+        NetworkManager.Instance.BroadcastUpdateTurn();
     }
 
     /// <summary>

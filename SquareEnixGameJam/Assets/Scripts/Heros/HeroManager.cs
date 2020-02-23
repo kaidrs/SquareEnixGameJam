@@ -6,12 +6,17 @@ using UnityEngine.UI;
 
 public class HeroManager : MonoBehaviour
 {
-    public static List<Hero> playerChoice = new List<Hero>();
+    [SerializeField] public Sprite warriorSprite;
+    [SerializeField] public Sprite thiefSprite;
+    [SerializeField] public Sprite paladinSprite;
+
     [SerializeField] Text characterInfo;
     [SerializeField] GameObject panelInfo;
     private bool isPanelOn = false;
     private string textForUI;
     public int characterNumber;
+    PlayerManager PMi;
+    [SerializeField] GameObject panelWaitting;
 
     #region Singleton
     private static HeroManager _instance = null;
@@ -28,12 +33,15 @@ public class HeroManager : MonoBehaviour
         }
     }
     #endregion
-
+    private void Awake()
+    {
+        PMi = PlayerManager.Instance;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       // PlayerManager.Instance.ownerPlayer.hero = new Hero();
     }
 
     // Update is called once per frame
@@ -47,26 +55,27 @@ public class HeroManager : MonoBehaviour
 
     public Hero CreateWarrior()
     {
-        Hero warrior = new Warrior(100.0f, 10, 5, 5,"Warrior");
+        Hero warrior = new Warrior(100.0f, 10, 5, 5,"Warrior", warriorSprite);
         return warrior;
     }
 
     public Hero CreatePaladin()
     {
-        Hero paladin = new Paladin(100.0f, 5, 10, 5,"Paladin");
+        Hero paladin = new Paladin(100.0f, 5, 10, 5,"Paladin", paladinSprite);
         //paladin.ClassText = "Paladin";
         return paladin;
     }
 
     public Hero CreateThief()
     {
-        Hero thief = new Thief(100.0f,5,5,10,"Thief");
+        Hero thief = new Thief(100.0f,5,5,10,"Thief", thiefSprite);
         //thief.ClassText = "Thief";
         return thief;
     }
 
     public void PickClass()
     {
+        panelWaitting.SetActive(true);
         if(characterNumber == 1)
         {
             PickWarrior();
@@ -84,19 +93,20 @@ public class HeroManager : MonoBehaviour
 
     public void PickWarrior()
     {
-        playerChoice.Add(CreateWarrior());
+        PMi.ownerPlayer.hero = CreateWarrior();
+      // BattleManager.Instance.PlayerVsPlayer(PMi.ownerPlayer.hero, PMi.ownerPlayer.hero);
         GameScene();
     }
 
     public void PickPaladin()
     {
-        playerChoice.Add(CreatePaladin());
+        PMi.ownerPlayer.hero = CreatePaladin();
         GameScene();
     }
 
     public void PickThief()
     {
-        playerChoice.Add(CreateThief());
+        PMi.ownerPlayer.hero = CreateThief();
         GameScene();
     }
 
@@ -134,7 +144,13 @@ public class HeroManager : MonoBehaviour
     public void GameScene()
     {
         //jeff need help
+        PMi.ownerPlayer.punReady = true;
+
+        PMi.BroadcastUpdate();
         isPanelOn = false;
-        SceneManager.LoadScene("Jeff");
+        if (NetworkManager.Instance.AreAllReady())
+        {
+            NetworkManager.Instance.BroadcastLoadScene("Jeff"); 
+        }
     }
 }

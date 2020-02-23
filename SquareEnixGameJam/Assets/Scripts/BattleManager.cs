@@ -21,18 +21,26 @@ public class BattleManager : MonoBehaviour
     #endregion
 
 
+    PlayerManager PMi;
+    //[SerializeField] 
+
+    private void Awake()
+    {
+        PMi = PlayerManager.Instance;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Hero thief = new Thief(100.0f, 5, 5, 25, "Thief");  
-        Hero warrior = new Warrior(100.0f, 25, 5, 5, "Warrior");
+        Hero thief = new Thief(100.0f, 5, 5, 25, "Thief", HeroManager.Instance.thiefSprite);
+        Hero warrior = new Warrior(100.0f, 25, 5, 5, "Warrior", HeroManager.Instance.warriorSprite);
         MonsterCard monster = ScriptableObject.CreateInstance<MonsterCard>();
         monster.Attack = 5;
         monster.Defence = 2;
         monster.Health = 100.0f;
 
        // PlayerVsPlayer(thief, warrior);
-        PlayerVsMonster(thief, monster);
+       // PlayerVsMonster(thief, monster);
 
     }
 
@@ -44,6 +52,10 @@ public class BattleManager : MonoBehaviour
 
     public bool PlayerVsPlayer(Hero playerOne, Hero playerTwo)
     {
+        if(PMi.ownerPlayer.hero.spellCards != null)
+        {
+            //Do you wanna use spell panel
+        }
         while (playerOne.healthPoint >= 0.0f && playerTwo.healthPoint >= 0.0f)
         {
             playerTwo.TakeDamageFromPlayer(playerOne);

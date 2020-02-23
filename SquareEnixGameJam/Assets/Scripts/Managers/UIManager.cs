@@ -26,13 +26,30 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject CameraPlane;
 
     //Battle
+    [Header("BattleUI")]
     [SerializeField] GameObject BattleCanvas;
-    [SerializeField] GameObject p1SpriteObject;
-    [SerializeField] GameObject p2SpriteObject;
+    [SerializeField] Image p1SpriteObject;
+    [SerializeField] Image p2SpriteObject;
     [SerializeField] Slider p1HpSlider;
-    [SerializeField] Slider p2HpSlider;
+    [SerializeField] Slider p2HpSlider;//
     [SerializeField] Text p1Text;
     [SerializeField] Text p2Text;
+
+    [Header("PromptUI")]
+    [SerializeField] GameObject promptCanvas;
+    [SerializeField] GameObject promptBattle;
+    [SerializeField] Text promptBattleText;
+    [SerializeField] Button battleEngageBtn;
+    [SerializeField] Button battleRetreatBtn;
+    [SerializeField] GameObject battleSpellPanel;
+    //[SerializeField] GameObject battlePlayer;
+    //[SerializeField] GameObject battleOpponent;
+    [SerializeField] GameObject promptMessage;
+    [SerializeField] Text promptMessageText;
+    [SerializeField] GameObject promptReward;
+    [SerializeField] Image rewardImage;
+    [SerializeField] Text promptRewardText;
+    //[SerializeField] Animator promptAnim;
 
     public void ShowQR()
     {
@@ -48,27 +65,86 @@ public class UIManager : MonoBehaviour
         CameraPlane.SetActive(false);
     }
 
-    public void ShowBattle(Player player, Player player2)
+
+
+    public void PromptBattle(Hero player, Hero player2)
     {
-        InventoryCanvas.SetActive(false);
-        BattleCanvas.SetActive(true);
+        promptBattle.SetActive(true);
+        promptBattleText.text = "Encountered a Player! Choose to battle?";
+        promptBattle.GetComponent<Animator>().Play("promptBattle");
+        battleRetreatBtn.enabled = true;
+        DoBattle(player.heroSprite, player2.heroSprite);
+        //yes is clicked, dobattle(), or autobattle and return winning player if not enough time 
     }
 
-    public void ShowBattle(Player player, MonsterCard monster)
+    public void PromptBattleSpellBar(Hero myHero)
     {
+       // myHero.spellCards
+    }
+
+    //Called later if time
+    public void DoBattle(Sprite playerS, Sprite player2S)
+    {
+        p1SpriteObject.sprite = playerS;
+        p2SpriteObject.sprite = player2S;
+
         InventoryCanvas.SetActive(false);
         BattleCanvas.SetActive(true);
+        //promptBattle.GetComponent<Animator>().Play("promptBattle");
+    }
+
+    public void PromptMessage(string msg)
+    {
+        promptMessage.SetActive(true);
+        promptMessage.GetComponent<Animator>().Play("PromptMessageIn");
+        promptMessageText.text = msg;
+
+    }
+
+    public void PromptReward(Card card)
+    {
+        promptReward.SetActive(true);
+        rewardImage.sprite = card.CardSprite;
+        promptRewardText.text = "You have received " + card.CardName + " !";
+    }
+
+    public void HidePrompts()
+    {
+        promptReward.SetActive(false);
+        promptMessage.SetActive(false);
+        promptBattle.SetActive(false);
+        BattleCanvas.SetActive(false);
+
+    }
+
+    //public void PromptRewardSpell(Card card)
+    //{
+        
+    //}
+
+    public void ClosePrompt()
+    {
+        promptCanvas.SetActive(false);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       // PromptMessage("hi");
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ShowDice()
+    {
+        InventoryCanvas.SetActive(false);
+        QRScanCanvas.SetActive(false);
+        CameraPlane.SetActive(false);
+        promptCanvas.SetActive(false);
+        DiceManager.Instance.diceScript.RollDice();
     }
 }

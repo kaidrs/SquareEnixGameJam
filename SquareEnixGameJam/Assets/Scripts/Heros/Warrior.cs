@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Warrior : Hero
 {
-
-    public Warrior(float healthPoint = 100.0f, int attackPoint = 10, int defencePoint = 5, int luck = 5, string classText = "Warrior") : base(healthPoint, attackPoint, defencePoint, luck, classText)
+    public Warrior(float healthPoint, int attackPoint, int defencePoint, int luck, string classText, Sprite heroSprite) : base(healthPoint, attackPoint, defencePoint, luck, classText, heroSprite)
     {
         this.healthPoint = healthPoint;
         this.attackPoint = attackPoint;
