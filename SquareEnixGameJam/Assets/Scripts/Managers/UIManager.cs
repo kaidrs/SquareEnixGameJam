@@ -38,12 +38,18 @@ public class UIManager : MonoBehaviour
     [Header("PromptUI")]
     [SerializeField] GameObject promptCanvas;
     [SerializeField] GameObject promptBattle;
+    [SerializeField] Text promptBattleText;
+    //[SerializeField] GameObject battlePlayer;
+    //[SerializeField] GameObject battleOpponent;
     [SerializeField] GameObject promptMessage;
+    [SerializeField] Text promptMessageText;
     [SerializeField] GameObject promptReward;
-    [SerializeField] Text promptText;
+    [SerializeField] Image rewardImage;
+    [SerializeField] Text promptRewardText;
 
 
-   //[SerializeField] Animator promptAnim;
+
+    //[SerializeField] Animator promptAnim;
 
     public void ShowQR()
     {
@@ -73,9 +79,9 @@ public class UIManager : MonoBehaviour
 
     public void PromptMessage(string msg)
     {
-        promptCanvas.SetActive(true);
-        promptCanvas.GetComponent<Animator>().Play("PromptIn");
-        promptText.text = msg;
+        promptMessage.SetActive(true);
+        promptMessage.GetComponent<Animator>().Play("PromptIn");
+        promptMessageText.text = msg;
 
     }
 
