@@ -649,7 +649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.30011}
+  m_AnchoredPosition: {x: 0, y: -23.300049}
   m_SizeDelta: {x: 0, y: -694.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138210474
@@ -4215,6 +4215,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882835367}
   m_CullTransparentMesh: 0
+--- !u!114 &890043423 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3770900824188292790, guid: 9f167a5a7b52c774c86170d146848b50,
+    type: 3}
+  m_PrefabInstance: {fileID: 728153580}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed6254e1ae1ed3419ba0fd3a917b926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &925644435
 GameObject:
   m_ObjectHideFlags: 0
@@ -4685,7 +4697,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1129704009}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 816975961}
+        m_MethodName: HidePrompts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1129704009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4964,7 +4987,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1187831980}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 816975961}
+        m_MethodName: HidePrompts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 816975961}
+        m_MethodName: DontDoBattle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1187831980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5500,6 +5545,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 816975961}
         m_MethodName: HidePrompts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 890043423}
+        m_MethodName: VerifyPlayerTilePosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7465,7 +7521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.30011}
+  m_AnchoredPosition: {x: 0, y: -23.300049}
   m_SizeDelta: {x: 0, y: -694.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2008444987

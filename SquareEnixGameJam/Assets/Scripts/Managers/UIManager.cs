@@ -134,6 +134,11 @@ public class UIManager : MonoBehaviour
         //promptBattle.GetComponent<Animator>().Play("promptBattle");
     }
 
+    public void DontDoBattle()
+    {
+        TileManager.Instance.VerifyPlayerTilePosition();
+    }
+
     public void PromptMessage(string msg)
     {
         promptMessage.SetActive(true);
@@ -218,4 +223,6 @@ public class UIManager : MonoBehaviour
             Debug.Log("Wait Turn");
         }
     }
+
+ 
 }
