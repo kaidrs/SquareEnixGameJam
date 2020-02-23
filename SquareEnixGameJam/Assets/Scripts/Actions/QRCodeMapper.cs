@@ -17,7 +17,13 @@ public class QRCodeMapper : MonoBehaviour
             chosenCard = CardManager.Instance.CallLootCard(code);
 
             ((LootCard)chosenCard).AddStatToPlayer(PlayerManager.Instance.ownerPlayer.hero);
-            InventoryManager.Instance.InitInventoryUI();
+            if (InventoryManager.Instance != null)
+            {
+                InventoryManager.Instance.InitInventoryUI();
+            } else
+            {
+                Debug.Log("Inventory instance does not exist");
+            }
         }
 
         else if (code <= 140)
