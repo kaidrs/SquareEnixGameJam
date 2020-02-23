@@ -65,7 +65,7 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(PMi.currentPlayer));
+        photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.AllViaServer, myPlayerJSONEcoded(PMi.currentPlayer));
         //photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, myPlayerJSONEcoded(myPlayer));
     }
 
@@ -83,7 +83,7 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     {
         Debug.Log(newPlayer.NickName);
         UpdatePunPlayersName();
-        //photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(PMi.currentPlayer));
+        photonView.RPC("ReceiveMyPlayerJSON", RpcTarget.Others, myPlayerJSONEcoded(PMi.currentPlayer));
     }
 
     public void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
@@ -122,7 +122,9 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     [PunRPC]
     public void UpdateThePs(string playerJSON, PhotonMessageInfo info)
     {
+        Debug.Log($"Add to PLayer list! {playerJSON}");
         var player = myPlayerJSONDecoded(playerJSON);
+        Debug.Log($"PLayer {player}");
         for (int i = 0; i < PMi.allPlayers.Count; i++)
         {
             if (PMi.allPlayers[i].punName == player.punName)
@@ -136,11 +138,19 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     [PunRPC]
     public void ReceiveMyPlayerJSON(string playerJSON, PhotonMessageInfo info)
     {
+        Debug.Log($"Add to PLayer list! {playerJSON}");
         Player playerJSONDecode = myPlayerJSONDecoded(playerJSON);
+        Debug.Log($"PLayer {playerJSONDecode}");
         if (!PMi.allPlayers.Exists(x => x.punName == playerJSONDecode.punName))
         {
             PMi.allPlayers.Add(playerJSONDecode);
         }
+    }
+
+    [PunRPC]
+    public void LoadScene(string sceneName, PhotonMessageInfo info)
+    {
+        PhotonNetwork.LoadLevel(sceneName);
     }
 
     private void OnEnable()
@@ -156,13 +166,30 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     public void Ready()
     {
         PMi.currentPlayer.punReady = true;
+        UpdateMyP();
         photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, myPlayerJSONEcoded(PMi.currentPlayer));
         if (!PMi.allPlayers.Exists(x => !x.punReady))
         {
-            PhotonNetwork.LoadLevel("PlayScene");
+            var sceneName = "PlayScene";
+            photonView.RPC("LoadScene", RpcTarget.AllViaServer, sceneName);
+        }
+        foreach (var item in PMi.allPlayers)
+        {
+            Debug.Log($"{item} - {item.punReady}");
         }
     }
 
+    public void UpdateMyP()
+    {
+        for (int i = 0; i < PMi.allPlayers.Count; i++)
+        {
+            if (PMi.allPlayers[i].punName == PMi.currentPlayer.punName)
+            {
+                PMi.allPlayers[i] = PMi.currentPlayer;
+                break;
+            }
+        }
+    }
 
     public void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
     {

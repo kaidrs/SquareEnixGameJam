@@ -42,6 +42,7 @@ public class PlayerManager : MonoBehaviour
     public void Init()
     {
         allPlayers = new List<Player>();
-        currentPlayer = new Player(PhotonNetwork.LocalPlayer.NickName, PhotonNetwork.LocalPlayer.ToString());
+        currentPlayer = new Player(NetworkManager.Instance.myPunPlayer.NickName, NetworkManager.Instance.myPunPlayer.ToString());
+        Debug.Log($"muPunPlayer {NetworkManager.Instance.myPunPlayer.ToString()}");
     }
 }
