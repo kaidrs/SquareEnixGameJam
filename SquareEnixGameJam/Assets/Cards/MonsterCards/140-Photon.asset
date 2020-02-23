@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Photon
   cardNumber: 140
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: -2264124212512966406, guid: 733d3563093ef88498870521ce7dfe5a,
+    type: 3}
   health: 200
   defence: 100
   attack: 100
-  bossCard: 1
-  zone: 2

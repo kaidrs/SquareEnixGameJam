@@ -1752,6 +1752,7 @@ MonoBehaviour:
   diceText: {fileID: 1300426992}
   diceScript: {fileID: 1510776056}
   value: 0
+  isSet: 0
 --- !u!4 &1949780502
 Transform:
   m_ObjectHideFlags: 0

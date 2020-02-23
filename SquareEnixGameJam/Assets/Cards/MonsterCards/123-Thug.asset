@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6de6ee95e7ec94ba339410d789868c, type: 3}
-  m_Name: 123-Mugger
+  m_Name: 123-Thug
   m_EditorClassIdentifier: 
-  cardName: Mugger
+  cardName: Thug
   cardNumber: 123
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: -8524122406137512016, guid: 7aaf05d71e6fe5742bd3be002c98d350,
+    type: 3}
   health: 8
   defence: 2
   attack: 4

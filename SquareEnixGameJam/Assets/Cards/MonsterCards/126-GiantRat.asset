@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Giant Rat
   cardNumber: 126
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 8900293050533265129, guid: 53916397f1ddd7542978cc16cfe12e92,
+    type: 3}
   health: 6
   defence: 1
   attack: 6
