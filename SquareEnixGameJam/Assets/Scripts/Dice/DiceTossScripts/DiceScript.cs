@@ -3,20 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DiceScript : MonoBehaviour {
+public class DiceScript : MonoBehaviour
+{
 
-	public Vector3 diceVelocity;
+    public Vector3 diceVelocity;
     public bool isRolling;
+    private Rigidbody rigidbody;
+    public Button rollButton;
 
-	private Rigidbody rigidbody;
-
-	// Use this for initialization
-	void Start () 
+    public Vector3 ogPosition;
+    private void Awake()
     {
-		rigidbody = GetComponent<Rigidbody> ();
-
-        RollDice();
-	}
+        ogPosition = this.transform.position;
+        rigidbody = GetComponent<Rigidbody>();
+        ResetWaitPosition();
+    }
+    // Use this for initialization
+    void Start()
+    {
+        
+        DiceManager.Instance.diceText.text = "";
+#if !UNITY_EDITOR
+        rollButton.gameObject.SetActive(false);
+#endif
+    }
 
     private void Update()
     {
@@ -31,6 +41,8 @@ public class DiceScript : MonoBehaviour {
     {
         if (!isRolling)
         {
+            DiceManager.Instance.isSet = false;
+            rigidbody.useGravity = true;
             Invoke("TextRoll", 0.1f);
             isRolling = true;
             //DiceNumberTextScript.diceNumber = 0;
@@ -44,6 +56,14 @@ public class DiceScript : MonoBehaviour {
         }
     }
 
+    public void ResetWaitPosition()
+    {
+        rigidbody.useGravity = false;
+        isRolling = false;
+        this.transform.position = ogPosition;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+    }
     private void TextRoll()
     {
         DiceManager.Instance.diceText.text = "Rolling...";

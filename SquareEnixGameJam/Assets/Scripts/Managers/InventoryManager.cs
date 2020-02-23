@@ -30,7 +30,8 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerManager.Instance.ownerPlayer.hero != null)
+
+        if(PlayerManager.Instance != null)
         {
             hero = PlayerManager.Instance.ownerPlayer.hero;
             InitInventoryUI();

@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb3df584f4c26f2468d24ed6a066709e, type: 3}
-  m_Name: 116-Breastplate
+  m_Script: {fileID: 11500000, guid: d38652bb840cf2748857af30f2f5b83a, type: 3}
+  m_Name: 52-StashedAway
   m_EditorClassIdentifier: 
-  cardName: Breastplate
-  cardNumber: 116
-  cardSprite: {fileID: 21300000, guid: e3d1f7d195afb1c43adc24fc8e3dcf07, type: 3}
-  attackStat: 0
-  defenceStat: 3
-  luckStat: 0
+  cardName: Stashed Away
+  cardNumber: 52
+  cardSprite: {fileID: 0}
+  description: You stumbled upon a hidden treasure while exploring! Receive one loot
+    card.
