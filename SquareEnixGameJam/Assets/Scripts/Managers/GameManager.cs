@@ -60,12 +60,9 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void StartGame()
+    public void StartGame()
     {
-        //if (players.Count > MIN_PLAYERS)
-        //{
-        //    print("Starting game...");
-        //}
+        NetworkManager.Instance.BroadcastUpdateTurn();
     }
 
     /// <summary>

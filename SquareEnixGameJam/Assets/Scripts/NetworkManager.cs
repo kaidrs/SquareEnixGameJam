@@ -176,6 +176,7 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
             PMi.allPlayers.Sort();
             var sceneName = "PlayScene";
             photonView.RPC("LoadScene", RpcTarget.AllViaServer, sceneName);
+            GameManager.Instance.StartGame();
         }
         foreach (var item in PMi.allPlayers)
         {

@@ -30,9 +30,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject p1SpriteObject;
     [SerializeField] GameObject p2SpriteObject;
     [SerializeField] Slider p1HpSlider;
-    [SerializeField] Slider p2HpSlider;
+    [SerializeField] Slider p2HpSlider;//
     [SerializeField] Text p1Text;
     [SerializeField] Text p2Text;
+
+    //Prompt
+    [SerializeField] GameObject promptPanel;
+    [SerializeField] Text promptText;
+   //[SerializeField] Animator promptAnim;
 
     public void ShowQR()
     {
