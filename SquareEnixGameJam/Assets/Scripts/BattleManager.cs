@@ -41,7 +41,7 @@ public class BattleManager : MonoBehaviour
 
 
         //UIManager.Instance.inBattle = true;
-        UIManager.Instance.PromptBattle(thief, warrior);
+        //UIManager.Instance.PromptBattle(thief, warrior);
        // PlayerVsPlayer(thief, warrior);
        // PlayerVsMonster(thief, monster);
 
