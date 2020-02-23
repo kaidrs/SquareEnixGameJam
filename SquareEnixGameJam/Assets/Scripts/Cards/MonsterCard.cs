@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Card", menuName = "Cards/MonsterCard")]
+[CreateAssetMenu(fileName = "New MonsterCard", menuName = "Cards/MonsterCard")]
 public class MonsterCard : Card
 {
     [Header("Monster Properties")]

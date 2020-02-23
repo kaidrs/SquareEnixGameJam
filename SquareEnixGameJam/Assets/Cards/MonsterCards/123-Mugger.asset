@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6de6ee95e7ec94ba339410d789868c, type: 3}
-  m_Name: 121-Goblin
+  m_Name: 123-Mugger
   m_EditorClassIdentifier: 
-  cardName: Goblin
-  cardNumber: 121
+  cardName: Mugger
+  cardNumber: 123
   cardSprite: {fileID: 0}
-  health: 4
-  defence: 4
+  health: 8
+  defence: 2
   attack: 4
