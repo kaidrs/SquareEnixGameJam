@@ -3491,6 +3491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2657aa4154b177418d3628e0929a9ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  QRCamera: {fileID: 1594351501}
   InventoryCanvas: {fileID: 1490134400}
   QRScanCanvas: {fileID: 2088586328}
   CameraPlane: {fileID: 294002359}
@@ -6076,6 +6077,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539375973}
   m_CullTransparentMesh: 0
+--- !u!20 &1594351501 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2055064, guid: 6dd8a13b4d36288498b7f2522ce9ba8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 764964912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1633918671
 GameObject:
   m_ObjectHideFlags: 0
@@ -6093,7 +6100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1633918672
 Transform:
   m_ObjectHideFlags: 0

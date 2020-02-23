@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] Camera QRCamera;
     [SerializeField] GameObject InventoryCanvas;
     [SerializeField] GameObject QRScanCanvas;
     [SerializeField] GameObject CameraPlane;
@@ -64,6 +65,7 @@ public class UIManager : MonoBehaviour
         InventoryCanvas.SetActive(true);
         QRScanCanvas.SetActive(false);
         CameraPlane.SetActive(false);
+        QRCamera.enabled = true;
     }
 
 
@@ -151,6 +153,7 @@ public class UIManager : MonoBehaviour
         QRScanCanvas.SetActive(false);
         CameraPlane.SetActive(false);
         promptCanvas.SetActive(false);
+        QRCamera.enabled = false;
         DiceManager.Instance.diceScript.RollDice();
     }
 
