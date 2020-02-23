@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
     public List<Player> allPlayers;
     public Player ownerPlayer;
 
-    private string trin;
+    public bool IsCurrent = false;
 
     void Awake()
     {
@@ -45,6 +45,7 @@ public class PlayerManager : MonoBehaviour
     {
         allPlayers = new List<Player>();
         ownerPlayer = new Player(NetworkManager.Instance.myPunPlayer.NickName, NetworkManager.Instance.myPunPlayer.ToString());
+        ownerPlayer.turn = Random.Range(0, 100);
         Debug.Log($"muPunPlayer {NetworkManager.Instance.myPunPlayer.ToString()}");
     }
 

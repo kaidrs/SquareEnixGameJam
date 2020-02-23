@@ -5,15 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 
 {
-    [SerializeField] private List<Player> players;
+    //[SerializeField] private List<Player> players;
 
     private int MAX_PLAYERS = 6;
     private int MIN_PLAYERS = 2;
 
-    public List<Player> Players { get => PlayerManager.Instance.allPlayers; }
+    //public List<Player> Players { get => PlayerManager.Instance.allPlayers; }
 
     #region Singleton
     private static GameManager _instance = null;
+    private int currentTurn;
 
     public static GameManager Instance
     {
@@ -43,27 +44,28 @@ public class GameManager : MonoBehaviour
         #endregion
     }
 
-    /// <summary>
-    /// When player is first connected via Photon, add player to players list
-    /// </summary>
-    /// <param name="player"></param>
-    public void AddPlayer(Player player)
+    public void UpdateTurn()
     {
-        if (players.Count < MAX_PLAYERS)
+        int next = currentTurn + 1;
+        currentTurn = next > PlayerManager.Instance.allPlayers.Count ? next - PlayerManager.Instance.allPlayers.Count : next;
+        if (PlayerManager.Instance.allPlayers[currentTurn - 1].punName == PlayerManager.Instance.ownerPlayer.punName)
         {
-            players.Add(player);
-        } else
-        {
-            print("Number of players is maximum. Cannot add more players");
+            PlayerManager.Instance.IsCurrent = true;
         }
+        else
+        {
+            PlayerManager.Instance.IsCurrent = false;
+        }
+        Debug.Log("current " + currentTurn);
     }
+
 
     void StartGame()
     {
-        if (players.Count > MIN_PLAYERS)
-        {
-            print("Starting game...");
-        }
+        //if (players.Count > MIN_PLAYERS)
+        //{
+        //    print("Starting game...");
+        //}
     }
 
     /// <summary>

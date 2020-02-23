@@ -86,30 +86,20 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    public void RetrievePlayerList()
-    {
-        if (GameManager.Instance.Players != null)
-        {
-            playerList = GameManager.Instance.Players; //retrieve the list of players set in GameManager
+    //public void RetrievePlayerList()
+    //{
+    //    if (GameManager.Instance.Players != null)
+    //    {
+    //        playerList = GameManager.Instance.Players; //retrieve the list of players set in GameManager
 
-            playerList.Sort(SortByTurn);
-        }
-    }
+    //        playerList.Sort(SortByTurn);
+    //    }
+    //}
 
     public int SortByTurn(Player p1, Player p2)
     {
         return p1.turn.CompareTo(p2.turn);
     }
-
-
-    public void UpdateTurn()
-    {
-        int next = currentTurn + 1;
-        currentTurn = next > playerList.Count ? next - playerList.Count : next;
-        currentActivePlayer = playerList[currentTurn - 1];
-        Debug.Log("current " + currentTurn);
-    }
-
 
     /// <summary>
     /// Moves the player tile location according to the dice value
@@ -117,28 +107,33 @@ public class TileManager : MonoBehaviour
     /// <param name="diceValue"></param>
     public void SetPlayerTilePosition(int diceValue)
     {
-        int nextPosition = currentActivePlayer.tilePosition + diceValue;
+        if (!PlayerManager.Instance.IsCurrent)
+        {
+            return;
+        }
+        int nextPosition = PlayerManager.Instance.ownerPlayer.tilePosition + diceValue;
         int lastTile = board.Count - 1;
 
-        if (nextPosition > (lastTile - currentActivePlayer.tilePosition))
+        if (nextPosition > (lastTile - PlayerManager.Instance.ownerPlayer.tilePosition))
         {
-            currentActivePlayer.tilePosition = lastTile;
+            PlayerManager.Instance.ownerPlayer.tilePosition = lastTile;
         }
         else
         {
-            currentActivePlayer.tilePosition = nextPosition;
+            PlayerManager.Instance.ownerPlayer.tilePosition = nextPosition;
         }
 
         UpdatePlayerZone();
+        PlayerManager.Instance.BroadcastUpdate();
     }
 
     public void UpdatePlayerZone()
     {
         for (int i = 0; i < zones.Count; i++)
         {
-            if (currentActivePlayer.tilePosition < zones[i].Tiles.Count)
+            if (PlayerManager.Instance.ownerPlayer.tilePosition < zones[i].Tiles.Count)
             {
-                currentActivePlayer.zone = zones[i].Type;
+                PlayerManager.Instance.ownerPlayer.zone = zones[i].Type;
                 break;
             }
         }

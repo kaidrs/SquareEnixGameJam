@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Goblin King
   cardNumber: 138
   cardSprite: {fileID: 0}
-  health: 25
-  defence: 20
+  health: 30
+  defence: 25
+  attack: 20
