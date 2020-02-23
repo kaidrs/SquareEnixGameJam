@@ -210,11 +210,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3770900824188292790, guid: 9f167a5a7b52c774c86170d146848b50,
-        type: 3}
-      propertyPath: zones.Array.data[0].tiles.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3770900824188292791, guid: 9f167a5a7b52c774c86170d146848b50,
         type: 3}
       propertyPath: m_LocalPosition.x
