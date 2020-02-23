@@ -82,7 +82,7 @@ public class TileManager : MonoBehaviour
     {
         board = new List<TileType>();
         Debug.Log($"Set {zones.Count} Zones in Board");
-
+        TestBattle();
 
         foreach (var zone in zones)
         {
@@ -150,26 +150,26 @@ public class TileManager : MonoBehaviour
 
     public void TestBattle()
     {
-        for (int i = 0; i < PMi.allPlayers.Count; i++)
-        {
-            PMi.allPlayers[i].tilePosition = 6;
-        }
-       // PMi.ownerPlayer.tilePosition = 6;
-        UpdatePlayerZone();
-        PlayerManager.Instance.BroadcastUpdate();
-    }
+        PMi.allPlayers.Add(PlayerManager.Instance.ownerPlayer);
+        PMi.allPlayers.Add(new Player("allo", "bye"));
+        
 
-    public void Moving()
-    {
-        PMi.ownerPlayer.tilePosition += 0;
+        PMi.ownerPlayer.tilePosition += 4;
         for (int i = 0; i < PMi.allPlayers.Count; i++)
         {
-           if(PMi.ownerPlayer.tilePosition == PMi.allPlayers[i].tilePosition)
+            //Debug.Log(PMi.allPlayers[i].tilePosition);
+            if (PMi.ownerPlayer.tilePosition == PMi.allPlayers[i].tilePosition)
             {
-                
+                Debug.Log(PMi.ownerPlayer.tilePosition);
+                Debug.Log(PMi.allPlayers[i].tilePosition);
+                UIManager.Instance.PromptBattle(PMi.ownerPlayer.hero, PMi.allPlayers[i].hero);
             }
         }
+        // PMi.ownerPlayer.tilePosition = 6;
+        //UpdatePlayerZone();
+        //PlayerManager.Instance.BroadcastUpdate();
     }
+
 
 
 

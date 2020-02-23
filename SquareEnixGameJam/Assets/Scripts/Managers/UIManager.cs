@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
 
     public void PromptBattle(Hero player, Hero player2)
     {
-        
+        promptBattle.SetActive(true);
         promptBattleText.text = "Encountered a Player! Choose to battle?";
         promptBattle.GetComponent<Animator>().Play("promptBattle");
         battleRetreatBtn.enabled = true;
