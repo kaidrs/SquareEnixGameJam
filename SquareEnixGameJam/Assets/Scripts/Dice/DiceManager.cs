@@ -45,7 +45,7 @@ public class DiceManager : MonoBehaviour
 
     void Update()
     {
-        diceText.text = "VALUE: " + value;
+        
     }
 
 
@@ -55,4 +55,9 @@ public class DiceManager : MonoBehaviour
         return rand;
     }
     
+    public void SetDiceValue(int value)
+    {
+        this.value = value;
+        diceText.text = "VALUE: " + value;
+    }
 }
