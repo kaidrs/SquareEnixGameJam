@@ -33,8 +33,10 @@ public class PlayerName : MonoBehaviour
             playersNames.text += $"\n{player}";
         }
     }
+
     private void Start()
     {
         UpdateNames();
     }
+
 }
