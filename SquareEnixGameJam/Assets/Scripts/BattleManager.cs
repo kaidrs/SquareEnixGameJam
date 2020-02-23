@@ -42,7 +42,7 @@ public class BattleManager : MonoBehaviour
         
     }
 
-    public void PlayerVsPlayer(Hero playerOne, Hero playerTwo)
+    public bool PlayerVsPlayer(Hero playerOne, Hero playerTwo)
     {
         while (playerOne.healthPoint >= 0.0f && playerTwo.healthPoint >= 0.0f)
         {
@@ -55,11 +55,18 @@ public class BattleManager : MonoBehaviour
         //playerOne.TakeDamageFromPlayer(playerTwo);
         Debug.Log("Final Player one " + playerOne.healthPoint);
         Debug.Log("Final Player two " + playerTwo.healthPoint);
-
+        if(playerOne.healthPoint > playerTwo.healthPoint)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 
-    public void PlayerVsMonster(Hero player, MonsterCard monster)
+    public bool PlayerVsMonster(Hero player, MonsterCard monster)
     {
         while (player.healthPoint >= 0.0f && monster.Health >= 0.0f)
         {
@@ -73,7 +80,14 @@ public class BattleManager : MonoBehaviour
         Debug.Log("Final Player" + player.healthPoint);
         Debug.Log("Final monster" + monster.Health);
 
-            
+        if(player.healthPoint > monster.Health)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 
