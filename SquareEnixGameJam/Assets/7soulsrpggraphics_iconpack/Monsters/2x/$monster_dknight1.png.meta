@@ -1,7 +1,49 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 5c2c5952042d09e4f982a8f96d9bd688
 TextureImporter:
   internalIDToNameTable: []
+=======
+guid: ad6da6017cd8f4c4083d3dc119975dd1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5980307738172966802
+    second: $monster_dknight1_0
+  - first:
+      213: 6252280328944222163
+    second: Demon
+  - first:
+      213: 3112058330935467713
+    second: $monster_dknight1_2
+  - first:
+      213: 2786511663589484918
+    second: $monster_dknight1_3
+  - first:
+      213: -5488585522223195024
+    second: $monster_dknight1_4
+  - first:
+      213: 7187063836529619729
+    second: $monster_dknight1_5
+  - first:
+      213: -2771133086298991294
+    second: $monster_dknight1_6
+  - first:
+      213: 4618699551219971515
+    second: $monster_dknight1_7
+  - first:
+      213: -3935481289887806038
+    second: $monster_dknight1_8
+  - first:
+      213: -915090943524171636
+    second: $monster_dknight1_9
+  - first:
+      213: -878948801524182639
+    second: $monster_dknight1_10
+  - first:
+      213: -3695297878482819845
+    second: $monster_dknight1_11
+>>>>>>> master
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +82,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +116,291 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
   spriteSheet:
     serializedVersion: 2
     sprites: []
+=======
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: $monster_dknight1_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 300
+        width: 68
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03b686970ecfe9b408a986db488387d9
+      internalID: -5980307738172966802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 300
+        width: 68
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6545f6954425f3e4ca099de2b797305b
+      internalID: 6252280328944222163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_dknight1_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 300
+        width: 68
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ff8da176aa1a4948907e35f3737bdad
+      internalID: 3112058330935467713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_dknight1_3
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 200
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b236686f6d8595347b419986926cc87a
+      internalID: 2786511663589484918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_dknight1_4
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 200
+        width: 48
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f2d9cbdbbdafe94580ba33515afba9b
+      internalID: -5488585522223195024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_dknight1_5
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 200
+        width: 52
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32fda91cd9a20f944b29f142d3517c8f
+      internalID: 7187063836529619729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_dknight1_6
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 100
+        width: 52
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 536f6a56b10664e48ab2d173fc5eb2af
+      internalID: -2771133086298991294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_dknight1_7
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 100
+        width: 48
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3c987d5dd87bbd409575decda00dd60
+      internalID: 4618699551219971515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_dknight1_8
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 100
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d77d9018b7e9f4a9332a7106f9366f
+      internalID: -3935481289887806038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_dknight1_9
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 0
+        width: 68
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d97f14f863f33cc46929e0a583246bf9
+      internalID: -915090943524171636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_dknight1_10
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 0
+        width: 68
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3869c761d2e617d40b65d7c56a1fc650
+      internalID: -878948801524182639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_dknight1_11
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 68
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2797fad682fca044b73638945eaa4a4
+      internalID: -3695297878482819845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+>>>>>>> master
     outline: []
     physicsShape: []
     bones: []

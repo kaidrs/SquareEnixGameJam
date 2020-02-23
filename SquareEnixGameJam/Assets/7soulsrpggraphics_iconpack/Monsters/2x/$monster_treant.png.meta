@@ -1,7 +1,40 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 2d56fe25ca38a2f4db0c1cd0663bc618
 TextureImporter:
   internalIDToNameTable: []
+=======
+guid: 2cacbdcf12bf4fe488bbc94526334b2b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6357518128104069392
+    second: $monster_treant_0
+  - first:
+      213: 4808329367940200081
+    second: $monster_treant_1
+  - first:
+      213: -2317216999687324566
+    second: Ent
+  - first:
+      213: -1461659549106450742
+    second: $monster_treant_3
+  - first:
+      213: -5184045029901641967
+    second: $monster_treant_4
+  - first:
+      213: -7688418312086472211
+    second: $monster_treant_5
+  - first:
+      213: 3553186817825620350
+    second: $monster_treant_6
+  - first:
+      213: -6511741923537367381
+    second: $monster_treant_7
+  - first:
+      213: -6638159713781907664
+    second: $monster_treant_8
+>>>>>>> master
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +73,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +107,228 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
   spriteSheet:
     serializedVersion: 2
     sprites: []
+=======
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: $monster_treant_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 300
+        width: 80
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ef5d1d9dbec7a4884aa667cfca3fe8
+      internalID: 6357518128104069392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_treant_1
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 301
+        width: 80
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 92, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4354e24cb006fe04b924101b8832d593
+      internalID: 4808329367940200081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 300
+        width: 80
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53ff81e48b1ad284a972e646cfde19ef
+      internalID: -2317216999687324566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_treant_3
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 200
+        width: 72
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d15385067f0ec914bb8631b07213192b
+      internalID: -1461659549106450742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_treant_4
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 200
+        width: 72
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d284f84eb305331418e730688e953fa0
+      internalID: -5184045029901641967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_treant_5
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 100
+        width: 72
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20553583380d9ec4e874df55473dfa27
+      internalID: -7688418312086472211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_treant_6
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 100
+        width: 72
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83ec442218a9ecd419040322942cac64
+      internalID: 3553186817825620350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_treant_7
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 80
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22cd8e95340b7c24b9b96c78d5120263
+      internalID: -6511741923537367381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_treant_8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 80
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3150a2f82dba1b74b8884cbbed0ad901
+      internalID: -6638159713781907664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+>>>>>>> master
     outline: []
     physicsShape: []
     bones: []

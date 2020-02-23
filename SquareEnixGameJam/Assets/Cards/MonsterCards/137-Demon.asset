@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Demon
   cardNumber: 137
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 6252280328944222163, guid: ad6da6017cd8f4c4083d3dc119975dd1,
+    type: 3}
   health: 8
   defence: 8
   attack: 4

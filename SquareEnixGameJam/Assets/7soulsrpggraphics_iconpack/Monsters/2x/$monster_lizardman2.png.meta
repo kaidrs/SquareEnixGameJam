@@ -1,7 +1,49 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: def1321b52189c14bb92a606c9b8d6ce
 TextureImporter:
   internalIDToNameTable: []
+=======
+guid: 61cdf110c8821624793d376274a0eab0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9184641780967827573
+    second: $monster_lizardman2_0
+  - first:
+      213: 5627907439732806321
+    second: Giant
+  - first:
+      213: -7406164455409597918
+    second: $monster_lizardman2_2
+  - first:
+      213: -8642861826353547437
+    second: $monster_lizardman2_3
+  - first:
+      213: 8572254286649777686
+    second: $monster_lizardman2_4
+  - first:
+      213: 3965430034692767492
+    second: $monster_lizardman2_5
+  - first:
+      213: 1120774989816733558
+    second: $monster_lizardman2_6
+  - first:
+      213: -3960173507119708751
+    second: $monster_lizardman2_7
+  - first:
+      213: -7877296268746600230
+    second: $monster_lizardman2_8
+  - first:
+      213: 5544823675468665262
+    second: $monster_lizardman2_9
+  - first:
+      213: -7119864020827133493
+    second: $monster_lizardman2_10
+  - first:
+      213: 3220167802948019280
+    second: $monster_lizardman2_11
+>>>>>>> master
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +82,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +116,291 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
   spriteSheet:
     serializedVersion: 2
     sprites: []
+=======
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: $monster_lizardman2_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 300
+        width: 54
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82f4be06214fcba4e8ba1dac91d7f15f
+      internalID: -9184641780967827573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 300
+        width: 58
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dfed6bef8a5e8649a68c03f80cfe017
+      internalID: 5627907439732806321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_lizardman2_2
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 300
+        width: 54
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59347ad579d58cb44a8ba46f4a3ca056
+      internalID: -7406164455409597918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_lizardman2_3
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 200
+        width: 56
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9046d1fc8177a434d8cb1e13a6cca8d6
+      internalID: -8642861826353547437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_lizardman2_4
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 200
+        width: 56
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f867b5fe70e14ce4c8f31a4d59f38f8e
+      internalID: 8572254286649777686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_lizardman2_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 200
+        width: 60
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914865b6c5f145c46a2849d5ad110d38
+      internalID: 3965430034692767492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_lizardman2_6
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 100
+        width: 60
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f3d8eee7ac3156468602a0ea7a5ec8e
+      internalID: 1120774989816733558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_lizardman2_7
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 100
+        width: 56
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c322c3e3c27859b4493e0e68f9910dfa
+      internalID: -3960173507119708751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_lizardman2_8
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 100
+        width: 56
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2024a8ceb5653b9498cb242e51cf2b1c
+      internalID: -7877296268746600230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_lizardman2_9
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 54
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efe93babab4518140b1ba2feadba34ae
+      internalID: 5544823675468665262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_lizardman2_10
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 0
+        width: 58
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f1771cd8abdce4a9b3a93385cc483e
+      internalID: -7119864020827133493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_lizardman2_11
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 0
+        width: 54
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe17776c4a658ca4a8cb169bf8727709
+      internalID: 3220167802948019280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+>>>>>>> master
     outline: []
     physicsShape: []
     bones: []

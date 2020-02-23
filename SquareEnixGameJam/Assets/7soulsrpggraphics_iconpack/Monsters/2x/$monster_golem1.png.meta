@@ -1,7 +1,49 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: b9bde2593e72fe24f85f8839e247f9af
 TextureImporter:
   internalIDToNameTable: []
+=======
+guid: 3df4d2df444aa2041af2eeee98f7b3d5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1840062236187733387
+    second: $monster_golem1_0
+  - first:
+      213: -675548502526096908
+    second: Golem
+  - first:
+      213: -1562120591754200339
+    second: $monster_golem1_2
+  - first:
+      213: 5763065127522116625
+    second: $monster_golem1_3
+  - first:
+      213: -8341005447651252296
+    second: $monster_golem1_4
+  - first:
+      213: -5892794902163315074
+    second: $monster_golem1_5
+  - first:
+      213: -1887041924647358296
+    second: $monster_golem1_6
+  - first:
+      213: -8514668936453070484
+    second: $monster_golem1_7
+  - first:
+      213: 4186227507852835881
+    second: $monster_golem1_8
+  - first:
+      213: -4031179233410786078
+    second: $monster_golem1_9
+  - first:
+      213: -5490334930247470062
+    second: $monster_golem1_10
+  - first:
+      213: -7173895018852616050
+    second: $monster_golem1_11
+>>>>>>> master
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +82,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +116,291 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
   spriteSheet:
     serializedVersion: 2
     sprites: []
+=======
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: $monster_golem1_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 300
+        width: 62
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82d02ecef5782ee40973b5c646fd410d
+      internalID: -1840062236187733387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 300
+        width: 70
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5863ab4e09bb834449ba7dfcf8c11f48
+      internalID: -675548502526096908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_golem1_2
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 300
+        width: 62
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df07ae6bc725d94a9a4c86bcc5c8b26
+      internalID: -1562120591754200339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_golem1_3
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 200
+        width: 50
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70cb6dd351f478548aba59ece9257be6
+      internalID: 5763065127522116625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_golem1_4
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 200
+        width: 54
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fcd6caa685426c438da70d4ca38ed0f
+      internalID: -8341005447651252296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_golem1_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 200
+        width: 66
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 076b7e0ccbbc8d447ba01ac040308b38
+      internalID: -5892794902163315074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_golem1_6
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 100
+        width: 66
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e1a8b1e4beb884fa1bc3032a37ed0e
+      internalID: -1887041924647358296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_golem1_7
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 100
+        width: 54
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09cc13a8e86ae1b4691af4d188e3a328
+      internalID: -8514668936453070484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_golem1_8
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 100
+        width: 50
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d236eedc117cf8d4084f033c464a4a97
+      internalID: 4186227507852835881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_golem1_9
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 0
+        width: 62
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b44d202edab5d164cb57eb7b91fd2120
+      internalID: -4031179233410786078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_golem1_10
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 70
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ac435e71f67b5949bc219744722bac2
+      internalID: -5490334930247470062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_golem1_11
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 0
+        width: 62
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 851d0af624719254585c2d1181b69243
+      internalID: -7173895018852616050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+>>>>>>> master
     outline: []
     physicsShape: []
     bones: []
