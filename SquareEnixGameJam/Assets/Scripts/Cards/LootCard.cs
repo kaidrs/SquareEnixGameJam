@@ -13,9 +13,15 @@ public class LootCard : Card
 	public void AddStatToPlayer()
 	{
 		var hero = PlayerManager.Instance.ownerPlayer.hero;
-		hero.attackPoint += this.attackStat;
-		hero.defencePoint += this.defenceStat;
-		hero.luck += this.luckStat;
+		int multiplier = (int)PlayerManager.Instance.ownerPlayer.zone + 1;
+		hero.attackPoint += this.attackStat * multiplier;
+		hero.defencePoint += this.defenceStat * multiplier;
+		hero.luck += this.luckStat * multiplier;
 		PlayerManager.Instance.BroadcastUpdate();
+	}
+	public override string ToString()
+	{
+		int multiplier = (int)PlayerManager.Instance.ownerPlayer.zone + 1;
+		return $"Stat:\n Attack:{attackStat * multiplier}\nDefence:{defenceStat * multiplier}\nLuck:{luckStat * multiplier}\n";
 	}
 }

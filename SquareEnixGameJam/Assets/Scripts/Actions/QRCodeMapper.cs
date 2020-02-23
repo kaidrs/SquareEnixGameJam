@@ -10,13 +10,40 @@ public class QRCodeMapper : MonoBehaviour
 
     public void MapCodeToCard(string QRResult)
     {
+        TileType playerTileType = TileManager.Instance.GetMyCurrentTile(PlayerManager.Instance.ownerPlayer.tilePosition);
         int code = int.Parse(QRResult);
+        Card myCard = CardManager.Instance.CallCard(code);
 
+        switch (playerTileType)
+        {
+            case TileType.Loot:
+                LootCard lootedCard = myCard as LootCard;
+                UIManager.Instance.PromptReward(lootedCard);
+                lootedCard.AddStatToPlayer();
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                break;
+            case TileType.Spell:
+                SpellCard spellCard = myCard as SpellCard;
+                UIManager.Instance.PromptReward(spellCard);
+                PlayerManager.Instance.ownerPlayer.hero.spellCards.Add(spellCard.CardNumber);
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                break;
+            case TileType.Monster:
+                MonsterCard monsterCard = myCard as MonsterCard;
+                bool battleResult = BattleManager.Instance.PlayerVsMonster(PlayerManager.Instance.ownerPlayer.hero, monsterCard);
+                if (battleResult)
+                {
+                    LootCard rewardCardLooted = CardManager.Instance.GetRandomLoot();
+                    UIManager.Instance.PromptReward(rewardCardLooted);
+                }
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                break;
+        }
         if (code <= 120)
         {
             chosenCard = CardManager.Instance.CallLootCard(code);
 
-            ((LootCard)chosenCard).AddStatToPlayer(PlayerManager.Instance.ownerPlayer.hero);
+            ((LootCard)chosenCard).AddStatToPlayer();
             if (InventoryManager.Instance != null)
             {
                 InventoryManager.Instance.InitInventoryUI();

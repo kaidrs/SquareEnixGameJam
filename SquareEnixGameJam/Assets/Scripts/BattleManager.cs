@@ -80,19 +80,20 @@ public class BattleManager : MonoBehaviour
 
     public bool PlayerVsMonster(Hero player, MonsterCard monster)
     {
-        while (player.healthPoint >= 0.0f && monster.Health >= 0.0f)
+        var monsterCardCopy = monster.GetCopy();
+        while (player.healthPoint >= 0.0f && monsterCardCopy.Health >= 0.0f)
         {
-            player.TakeDamageFromMonster(monster);
-            monster.TakeDamage(player);
+            player.TakeDamageFromMonster(monsterCardCopy);
+            monsterCardCopy.TakeDamage(player);
             Debug.Log("Player one " + player.healthPoint);
-            Debug.Log("Monster " + monster.Health);
+            Debug.Log("Monster " + monsterCardCopy.Health);
         }
         //playerTwo.TakeDamageFromPlayer(playerOne);
         //playerOne.TakeDamageFromPlayer(playerTwo);
         Debug.Log("Final Player" + player.healthPoint);
-        Debug.Log("Final monster" + monster.Health);
+        Debug.Log("Final monster" + monsterCardCopy.Health);
 
-        if(player.healthPoint > monster.Health)
+        if(player.healthPoint > monsterCardCopy.Health)
         {
             return true;
         }
