@@ -134,8 +134,6 @@ public class TileManager : MonoBehaviour
         else
         {
             PlayerManager.Instance.ownerPlayer.tilePosition = nextPosition;
-            
-            
         }
         UpdatePlayerZone();
         PlayerManager.Instance.BroadcastUpdate();
@@ -153,7 +151,8 @@ public class TileManager : MonoBehaviour
             } 
         }
         // call check tile postion and do aciton based postion
-
+        UIManager.Instance.PromptMessage($"Move your peon by {diceValue}.");
+        VerifyPlayerTilePosition();
     }
 
 
@@ -207,8 +206,11 @@ public class TileManager : MonoBehaviour
         switch (GetMyCurrentTile(PMi.ownerPlayer.tilePosition))
         {
             case TileType.None:
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+
                 break;
             case TileType.Event:
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.Loot:
                 ///get card number QR SHOW QR PROMT!!!
@@ -225,7 +227,7 @@ public class TileManager : MonoBehaviour
                 UIManager.Instance.PromptGoQR();
                 break;
             case TileType.Checkpoint:
-                // Nothing promet relax;
+                // Nothing prompt relax;
                 NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.MonsterBoss:
