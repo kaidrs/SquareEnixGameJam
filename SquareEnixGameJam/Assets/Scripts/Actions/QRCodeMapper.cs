@@ -68,7 +68,7 @@ public class QRCodeMapper : MonoBehaviour
         //else if (code <= 150)
         //{
         //    chosenCard = CardManager.Instance.CallSpellCard(code);
-        //    SpellActions.Instance.AddSpellToUI(card);
+        //    InventoryManager.Instance.PopulateSpell(card);
         //}
         //else
         //{

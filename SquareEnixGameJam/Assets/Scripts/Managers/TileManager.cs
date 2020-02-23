@@ -134,8 +134,6 @@ public class TileManager : MonoBehaviour
         else
         {
             PlayerManager.Instance.ownerPlayer.tilePosition = nextPosition;
-            
-            
         }
         UpdatePlayerZone();
         PlayerManager.Instance.BroadcastUpdate();
