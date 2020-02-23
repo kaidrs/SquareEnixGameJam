@@ -21,7 +21,6 @@ public class MainMenu : MonoBehaviourPunCallbacks
     //    }
     //}
     //#endregion
-
     [SerializeField] private GameObject findOpponentPanel = null;
     [SerializeField] private GameObject waitingStatusPanel = null;
     [SerializeField] private Text waitingStatusText = null;

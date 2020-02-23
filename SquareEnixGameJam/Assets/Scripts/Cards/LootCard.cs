@@ -8,10 +8,12 @@ public class LootCard : Card
 	[Header("Loot Properties")]
 	[SerializeField] private int attackStat;
 	[SerializeField] private int defenceStat;
+	[SerializeField] private int luckStat;
 
 	public void AddStatToPlayer(Hero hero)
 	{
 		hero.attackPoint += this.attackStat;
 		hero.defencePoint += this.defenceStat;
+		hero.luck += this.luckStat;
 	}
 }

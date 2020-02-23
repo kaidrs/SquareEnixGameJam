@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb3df584f4c26f2468d24ed6a066709e, type: 3}
-  m_Name: 110-GreatSword
+  m_Script: {fileID: 11500000, guid: 8e6de6ee95e7ec94ba339410d789868c, type: 3}
+  m_Name: 133-Rojeff
   m_EditorClassIdentifier: 
-  cardName: Great Sword
-  cardNumber: 110
-  cardSprite: {fileID: 21300000, guid: 0d0d0a9b4a709d94193650303104bc85, type: 3}
-  attackStat: 4
-  defenceStat: 0
+  cardName: Rojeff
+  cardNumber: 133
+  cardSprite: {fileID: 0}
+  health: 10
+  defence: 1
+  attack: 1

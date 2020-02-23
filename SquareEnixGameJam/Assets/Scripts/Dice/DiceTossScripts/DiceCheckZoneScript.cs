@@ -20,22 +20,22 @@ public class DiceCheckZoneScript : MonoBehaviour
                 switch (collider.gameObject.name)
                 {
                     case "Side1":
-                        DiceManager.Instance.CurrentValue = 6;
+                        DiceManager.Instance.value = 6;
                         break;
                     case "Side2":
-                        DiceManager.Instance.CurrentValue = 5;
+                        DiceManager.Instance.value = 5;
                         break;
                     case "Side3":
-                        DiceManager.Instance.CurrentValue = 4;
+                        DiceManager.Instance.value = 4;
                         break;
                     case "Side4":
-                        DiceManager.Instance.CurrentValue = 3;
+                        DiceManager.Instance.value = 3;
                         break;
                     case "Side5":
-                        DiceManager.Instance.CurrentValue = 2;
+                        DiceManager.Instance.value = 2;
                         break;
                     case "Side6":
-                        DiceManager.Instance.CurrentValue = 1;
+                        DiceManager.Instance.value = 1;
                         break;
                 }
             }
