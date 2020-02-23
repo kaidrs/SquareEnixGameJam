@@ -51,17 +51,29 @@ public class PlayerManager : MonoBehaviour
 
     public void BroadcastUpdate()
     {
-        UpdateMyP();
+        UpdateOwnerOnList();
         NetworkManager.Instance.photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, NetworkManager.Instance.myPlayerJSONEcoded(ownerPlayer));
     }
 
-    public void UpdateMyP()
+    public void UpdateOwnerOnList()
     {
         for (int i = 0; i < allPlayers.Count; i++)
         {
             if (allPlayers[i].punName == ownerPlayer.punName)
             {
                 allPlayers[i] = ownerPlayer;
+                break;
+            }
+        }
+    }
+
+    public void GetOwnerFromList()
+    {
+        for (int i = 0; i < allPlayers.Count; i++)
+        {
+            if (allPlayers[i].punName == ownerPlayer.punName)
+            {
+                ownerPlayer= allPlayers[i] ;
                 break;
             }
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum TileType
 {
-    None, Loot, Spell, Monster, Checkpoint, MonsterBoss
+    None, Event, Loot, Spell, Monster, Checkpoint, MonsterBoss
 }
 
 [Serializable]
