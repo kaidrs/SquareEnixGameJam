@@ -22,7 +22,9 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     public List<Player> allPlayers;
-    public Player currentPlayer;
+    public Player ownerPlayer;
+
+    public bool IsCurrent = false;
 
     void Awake()
     {
@@ -38,11 +40,47 @@ public class PlayerManager : MonoBehaviour
         }
         #endregion
     }
-    
+
     public void Init()
     {
         allPlayers = new List<Player>();
-        currentPlayer = new Player(NetworkManager.Instance.myPunPlayer.NickName, NetworkManager.Instance.myPunPlayer.ToString());
+        ownerPlayer = new Player(NetworkManager.Instance.myPunPlayer.NickName, NetworkManager.Instance.myPunPlayer.ToString());
+        ownerPlayer.turn = Random.Range(0, 100);
         Debug.Log($"muPunPlayer {NetworkManager.Instance.myPunPlayer.ToString()}");
+    }
+
+    public void BroadcastUpdate()
+    {
+        UpdateOwnerOnList();
+        NetworkManager.Instance.photonView.RPC("UpdateThePs", RpcTarget.AllViaServer, NetworkManager.Instance.myPlayerJSONEcoded(ownerPlayer));
+    }
+
+    public void UpdateOwnerOnList()
+    {
+        for (int i = 0; i < allPlayers.Count; i++)
+        {
+            if (allPlayers[i].punName == ownerPlayer.punName)
+            {
+                allPlayers[i] = ownerPlayer;
+                break;
+            }
+        }
+    }
+
+    public void GetOwnerFromList()
+    {
+        for (int i = 0; i < allPlayers.Count; i++)
+        {
+            if (allPlayers[i].punName == ownerPlayer.punName)
+            {
+                ownerPlayer= allPlayers[i] ;
+                break;
+            }
+        }
+    }
+    public void SetReadyToFalse()
+    {
+        ownerPlayer.punReady = false;
+        BroadcastUpdate();
     }
 }
