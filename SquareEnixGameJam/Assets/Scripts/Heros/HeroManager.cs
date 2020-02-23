@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class HeroManager : MonoBehaviour
 {
+    [SerializeField] Sprite warriorSprite;
+    [SerializeField] Sprite thiefSprite;
+    [SerializeField] Sprite paladinSprite;
+
     [SerializeField] Text characterInfo;
     [SerializeField] GameObject panelInfo;
     private bool isPanelOn = false;
@@ -49,22 +53,22 @@ public class HeroManager : MonoBehaviour
         }
     }
 
-    public static Hero CreateWarrior()
+    public Hero CreateWarrior()
     {
-        Hero warrior = new Warrior(100.0f, 10, 5, 5,"Warrior");
+        Hero warrior = new Warrior(100.0f, 10, 5, 5,"Warrior", warriorSprite);
         return warrior;
     }
 
     public Hero CreatePaladin()
     {
-        Hero paladin = new Paladin(100.0f, 5, 10, 5,"Paladin");
+        Hero paladin = new Paladin(100.0f, 5, 10, 5,"Paladin", paladinSprite);
         //paladin.ClassText = "Paladin";
         return paladin;
     }
 
     public Hero CreateThief()
     {
-        Hero thief = new Thief(100.0f,5,5,10,"Thief");
+        Hero thief = new Thief(100.0f,5,5,10,"Thief", thiefSprite);
         //thief.ClassText = "Thief";
         return thief;
     }

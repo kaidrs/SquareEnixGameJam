@@ -12,15 +12,17 @@ public class DiceCheckZoneScript : MonoBehaviour
     {
         collider = col;
     }
-    private void OnTriggerExit(Collider other)
-    {
-        collider = null;
-    }
+
     private void Update()
     {
+        if (DiceManager.Instance.isSet)
+        {
+            collider = null;
+            return;
+        }
         if (diceScript.diceVelocity == Vector3.zero)
         {
-            if (collider != null && collider.gameObject.tag == "DiceZone")
+            if (collider != null && diceScript.isRolling && collider.gameObject.tag == "DiceZone")
             {
                 switch (collider.gameObject.name)
                 {
@@ -46,8 +48,11 @@ public class DiceCheckZoneScript : MonoBehaviour
             }
             else
             {
-                diceScript.isRolling = false;
-                diceScript.RollDice();
+                if (diceScript.isRolling)
+                {
+                    diceScript.isRolling = false;
+                    diceScript.RollDice(); 
+                }
             }
         }
     }
