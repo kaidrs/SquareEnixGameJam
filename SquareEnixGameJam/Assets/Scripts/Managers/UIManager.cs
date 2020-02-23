@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject CameraPlane;
 
     //Battle
+    [Header("BattleUI")]
     [SerializeField] GameObject BattleCanvas;
     [SerializeField] GameObject p1SpriteObject;
     [SerializeField] GameObject p2SpriteObject;
@@ -34,9 +35,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text p1Text;
     [SerializeField] Text p2Text;
 
-    //Prompt
-    [SerializeField] GameObject promptPanel;
+    [Header("PromptUI")]
+    [SerializeField] GameObject promptCanvas;
+    [SerializeField] GameObject promptBattle;
+    [SerializeField] GameObject promptMessage;
+    [SerializeField] GameObject promptReward;
     [SerializeField] Text promptText;
+
+
    //[SerializeField] Animator promptAnim;
 
     public void ShowQR()
@@ -65,10 +71,28 @@ public class UIManager : MonoBehaviour
         BattleCanvas.SetActive(true);
     }
 
+    public void PromptMessage(string msg)
+    {
+        promptCanvas.SetActive(true);
+        promptCanvas.GetComponent<Animator>().Play("PromptIn");
+        promptText.text = msg;
+
+    }
+
+    public void PromptReward(int num)
+    {
+
+    }
+
+    public void ClosePrompt()
+    {
+        promptCanvas.SetActive(false);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        PromptMessage("Hey");
     }
 
     // Update is called once per frame
