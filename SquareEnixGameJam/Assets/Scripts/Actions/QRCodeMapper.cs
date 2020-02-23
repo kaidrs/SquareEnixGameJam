@@ -12,6 +12,7 @@ public class QRCodeMapper : MonoBehaviour
     {
         TileType playerTileType = TileManager.Instance.GetMyCurrentTile(PlayerManager.Instance.ownerPlayer.tilePosition);
         int code = int.Parse(QRResult);
+        Debug.Log($"YOU GOT CARD #{code}");
         #region passTURN
         if (code == 198)
         {

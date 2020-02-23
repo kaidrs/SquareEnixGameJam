@@ -3211,8 +3211,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 155064, guid: 6dd8a13b4d36288498b7f2522ce9ba8e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_Name
+      value: DeviceCamera
       objectReference: {fileID: 0}
     - target: {fileID: 455064, guid: 6dd8a13b4d36288498b7f2522ce9ba8e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3246,20 +3246,19 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 2055064, guid: 6dd8a13b4d36288498b7f2522ce9ba8e, type: 3}
-      propertyPath: m_Depth
-      value: 20
+    - target: {fileID: 455064, guid: 6dd8a13b4d36288498b7f2522ce9ba8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2355064, guid: 6dd8a13b4d36288498b7f2522ce9ba8e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 455064, guid: 6dd8a13b4d36288498b7f2522ce9ba8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6455064, guid: 6dd8a13b4d36288498b7f2522ce9ba8e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 455064, guid: 6dd8a13b4d36288498b7f2522ce9ba8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9255064, guid: 6dd8a13b4d36288498b7f2522ce9ba8e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dd8a13b4d36288498b7f2522ce9ba8e, type: 3}
 --- !u!114 &764964913 stripped
 MonoBehaviour:
@@ -3661,14 +3660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2eff2b9ad5ce1f438e0a355f3365764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myHero:
-    heroSprite: {fileID: 0}
-    healthPoint: 0
-    attackPoint: 0
-    defencePoint: 0
-    luck: 0
-    classText: 
-    spellCards: 
   warriorObject: {fileID: 1014815845}
   thiefObject: {fileID: 872468034}
   paladinObject: {fileID: 441589814}
@@ -7802,8 +7793,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088586328}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 183.625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 735899494}
@@ -7819,7 +7810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -94.35491, y: -189.39449}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &2123392362

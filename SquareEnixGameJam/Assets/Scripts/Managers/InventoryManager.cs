@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public Hero myHero;
 
     // [SerializeField] Animator spriteAnimator;
     // [SerializeField] Image heroSprite;
@@ -48,7 +47,6 @@ public class InventoryManager : MonoBehaviour
     {
         if (PlayerManager.Instance != null)
         {
-            myHero = PlayerManager.Instance.ownerPlayer.hero;
             InitInventoryUI();
         }
     }
@@ -56,6 +54,7 @@ public class InventoryManager : MonoBehaviour
 
     public void InitInventoryUI()
     {
+        var myHero = PlayerManager.Instance.ownerPlayer.hero;
         heroNameText.text = PlayerManager.Instance.ownerPlayer.displayName;
         heroClassText.text = myHero.classText;
         UpdateSprite(myHero.classText);

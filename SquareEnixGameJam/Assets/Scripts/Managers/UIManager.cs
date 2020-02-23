@@ -214,12 +214,20 @@ public class UIManager : MonoBehaviour
         {
             currentTurnPanel.color = yourTurn;
             diceButton.interactable = true;
+            foreach (var spellSlot in SpellActions.Instance.spellSlots)
+            {
+                spellSlot.GetComponent<Button>().interactable = true;
+            }
             Debug.Log("Your Turn");
         }
         else
         {
             currentTurnPanel.color = waitTurn;
             diceButton.interactable = false;
+            foreach (var spellSlot in SpellActions.Instance.spellSlots)
+            {
+                spellSlot.GetComponent<Button>().interactable = false;
+            }
             Debug.Log("Wait Turn");
         }
     }
