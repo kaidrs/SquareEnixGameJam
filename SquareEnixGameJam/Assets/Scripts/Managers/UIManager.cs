@@ -137,4 +137,13 @@ public class UIManager : MonoBehaviour
     {
         
     }
+
+    public void ShowDice()
+    {
+        InventoryCanvas.SetActive(false);
+        QRScanCanvas.SetActive(false);
+        CameraPlane.SetActive(false);
+        promptCanvas.SetActive(false);
+        DiceManager.Instance.diceScript.RollDice();
+    }
 }
