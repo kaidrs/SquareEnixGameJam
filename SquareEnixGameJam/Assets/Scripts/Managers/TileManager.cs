@@ -82,7 +82,7 @@ public class TileManager : MonoBehaviour
     {
         board = new List<TileType>();
         Debug.Log($"Set {zones.Count} Zones in Board");
-        TestBattle();
+      //  TestBattle();
 
         foreach (var zone in zones)
         {
