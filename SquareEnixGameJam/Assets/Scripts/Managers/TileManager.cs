@@ -86,6 +86,10 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    public TileType GetMyCurrentTile(int tilePosition)
+    {
+        return board[tilePosition];
+    }
     //public void RetrievePlayerList()
     //{
     //    if (GameManager.Instance.Players != null)
