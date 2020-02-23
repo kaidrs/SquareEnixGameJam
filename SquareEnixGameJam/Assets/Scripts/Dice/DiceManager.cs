@@ -62,6 +62,7 @@ public class DiceManager : MonoBehaviour
     {
         Debug.Log("Advance");
         UIManager.Instance.ShowInventory();
+     
         diceScript.ResetWaitPosition();
         Debug.Log($"Send value:{value} to tile manager");
         TileManager.Instance.SetPlayerTilePosition(value);
