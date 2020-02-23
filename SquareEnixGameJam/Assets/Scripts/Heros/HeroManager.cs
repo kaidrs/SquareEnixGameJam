@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class HeroManager : MonoBehaviour
 {
-    public static List<Hero> playerChoice = new List<Hero>();
+    Hero ok;
+    // static List<Hero> playerChoice = new List<Hero>();
     [SerializeField] Text characterInfo;
     [SerializeField] GameObject panelInfo;
     private bool isPanelOn = false;
@@ -33,7 +34,7 @@ public class HeroManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       // PlayerManager.Instance.ownerPlayer.hero = new Hero();
     }
 
     // Update is called once per frame
@@ -45,7 +46,7 @@ public class HeroManager : MonoBehaviour
         }
     }
 
-    public Hero CreateWarrior()
+    public static Hero CreateWarrior()
     {
         Hero warrior = new Warrior(100.0f, 10, 5, 5,"Warrior");
         return warrior;
@@ -84,19 +85,20 @@ public class HeroManager : MonoBehaviour
 
     public void PickWarrior()
     {
-        playerChoice.Add(CreateWarrior());
+        PlayerManager.Instance.ownerPlayer.hero = CreateWarrior();
         GameScene();
     }
 
     public void PickPaladin()
     {
-        playerChoice.Add(CreatePaladin());
+        PlayerManager.Instance.ownerPlayer.hero = CreatePaladin();
         GameScene();
     }
 
     public void PickThief()
     {
-        playerChoice.Add(CreateThief());
+
+        PlayerManager.Instance.ownerPlayer.hero = CreateThief();
         GameScene();
     }
 
