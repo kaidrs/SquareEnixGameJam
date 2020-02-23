@@ -4,48 +4,20 @@ using UnityEngine;
 
 public class DiceCheckZoneScript : MonoBehaviour
 {
-
-    Vector3 diceVelocity;
-    float timer = 2f;
-    bool rollComplete;
-
-    public float Timer { get => timer; set => timer = value; }
-    public bool RollComplete { get => rollComplete; set => rollComplete = value; }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        diceVelocity = DiceScript.diceVelocity;
-    }
-
-    void OnTriggerExit(Collider col)
-    {
-        if(col.gameObject.tag == "DiceZone")
-        {
-            Timer = 2f;
-            Debug.Log("timer reset");
-        }
-
-    }
+    Collider collider;
 
     void OnTriggerStay(Collider col)
     {
-       // Debug.LogError("timer is : " + timer);
+        collider = col;
+    }
 
-        if (timer >= 0)
+    private void Update()
+    {
+        if (DiceScript.diceVelocity == Vector3.zero)
         {
-            Timer -= Time.deltaTime;
-            //Debug.Log(Timer);
-        }
-
-        else if (Timer <= 0 && !RollComplete)
-        {
-            RollComplete = true;
-           // Timer = 2f;
-            if (col.gameObject.tag == "DiceZone")
+            if (collider.gameObject.tag == "DiceZone")
             {
-                Debug.LogError("col.gameObject.name: " + col.gameObject.name);
-                switch (col.gameObject.name)
+                switch (collider.gameObject.name)
                 {
                     case "Side1":
                         DiceManager.Instance.CurrentValue = 6;
@@ -66,14 +38,7 @@ public class DiceCheckZoneScript : MonoBehaviour
                         DiceManager.Instance.CurrentValue = 1;
                         break;
                 }
-                Debug.Log("Upper side is now: " + DiceManager.Instance.CurrentValue);
-                Debug.Log(timer); 
             }
-
-
-
         }
-
-
     }
 }
