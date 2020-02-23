@@ -31,8 +31,8 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Hero thief = new Thief(100.0f, 5, 5, 25, "Thief");       missing heroSprite if want to use these for test
-        //Hero warrior = new Warrior(100.0f, 25, 5, 5, "Warrior");
+        Hero thief = new Thief(100.0f, 5, 5, 25, "Thief", HeroManager.Instance.thiefSprite);
+        Hero warrior = new Warrior(100.0f, 25, 5, 5, "Warrior", HeroManager.Instance.warriorSprite);
         MonsterCard monster = ScriptableObject.CreateInstance<MonsterCard>();
         monster.Attack = 5;
         monster.Defence = 2;
