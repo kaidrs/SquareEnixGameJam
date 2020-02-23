@@ -89,21 +89,20 @@ public class HeroManager : MonoBehaviour
 
     public void PickWarrior()
     {
-        PlayerManager.Instance.ownerPlayer.hero = CreateWarrior();
+        PMi.ownerPlayer.hero = CreateWarrior();
       // BattleManager.Instance.PlayerVsPlayer(PMi.ownerPlayer.hero, PMi.ownerPlayer.hero);
         GameScene();
     }
 
     public void PickPaladin()
     {
-        PlayerManager.Instance.ownerPlayer.hero = CreatePaladin();
+        PMi.ownerPlayer.hero = CreatePaladin();
         GameScene();
     }
 
     public void PickThief()
     {
-
-        PlayerManager.Instance.ownerPlayer.hero = CreateThief();
+        PMi.ownerPlayer.hero = CreateThief();
         GameScene();
     }
 

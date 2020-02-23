@@ -20,6 +20,7 @@ public class BattleManager : MonoBehaviour
     }
     #endregion
 
+
     PlayerManager PMi;
     //[SerializeField] 
 
