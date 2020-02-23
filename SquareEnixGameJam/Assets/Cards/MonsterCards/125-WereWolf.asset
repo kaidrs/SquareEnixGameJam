@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb3df584f4c26f2468d24ed6a066709e, type: 3}
-  m_Name: 120-KnightArmor
+  m_Script: {fileID: 11500000, guid: 8e6de6ee95e7ec94ba339410d789868c, type: 3}
+  m_Name: 125-WereWolf
   m_EditorClassIdentifier: 
-  cardName: Knight Armor
-  cardNumber: 120
-  cardSprite: {fileID: 21300000, guid: 11110b43f0a07c145a3dcfaad7cee395, type: 3}
-  attackStat: 0
-  defenceStat: 4
+  cardName: Werewolf
+  cardNumber: 126
+  cardSprite: {fileID: 0}
+  health: 10
+  defence: 3
+  attack: 6

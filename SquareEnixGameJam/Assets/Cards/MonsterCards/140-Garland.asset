@@ -16,4 +16,5 @@ MonoBehaviour:
   cardNumber: 140
   cardSprite: {fileID: 0}
   health: 200
-  defence: 200
+  defence: 100
+  attack: 100

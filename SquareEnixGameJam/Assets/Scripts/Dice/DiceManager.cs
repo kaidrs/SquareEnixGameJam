@@ -8,9 +8,9 @@ public class DiceManager : MonoBehaviour
     public Text diceText;
 
     // Value 1 - 6
-    public int CurrentValue;
+    public int value;
 
-    public GameObject Dice;
+    //public GameObject Dice;
 
     #region Singleton
     private static DiceManager _instance = null;
@@ -45,7 +45,7 @@ public class DiceManager : MonoBehaviour
 
     void Update()
     {
-        diceText.text = "Value: " + CurrentValue;
+        diceText.text = "VALUE: " + value;
     }
 
 

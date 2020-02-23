@@ -11,7 +11,8 @@ public class DiceScript : MonoBehaviour {
     private bool isRolling;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
 		rigidbody = GetComponent<Rigidbody> ();
 	}
 
@@ -20,8 +21,7 @@ public class DiceScript : MonoBehaviour {
         diceVelocity = rigidbody.velocity;
 
         //DEBUG
-        if (Input.GetKeyDown(KeyCode.K))
-            isRolling = false;
+        if (Input.GetKeyDown(KeyCode.K)) { isRolling = false; }
     }
 
     public void RollDice()
