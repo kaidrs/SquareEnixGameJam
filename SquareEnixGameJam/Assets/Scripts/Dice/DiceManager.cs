@@ -51,17 +51,20 @@ public class DiceManager : MonoBehaviour
 
     public void SetDiceValue(int value)
     {
+        isSet = true;
         Debug.Log("SetDiceValue");
         this.value = value;
         diceText.text = "VALUE: " + value;
-        //TODOPUN
         Invoke("Advance", 3.0f);
     }
+
     public void Advance()
     {
-        isSet = false;
         Debug.Log("Advance");
         UIManager.Instance.ShowInventory();
         diceScript.ResetWaitPosition();
+        Debug.Log($"Send value:{value} to tile manager");
+        TileManager.Instance.SetPlayerTilePosition(value);
+
     }
 }

@@ -73,6 +73,7 @@ public class UIManager : MonoBehaviour
         promptBattleText.text = "Encountered a Player! Choose to battle?";
         promptBattle.GetComponent<Animator>().Play("promptBattle");
         battleRetreatBtn.enabled = true;
+        DoBattle(player.heroSprite, player2.heroSprite);
         //yes is clicked, dobattle(), or autobattle and return winning player if not enough time 
     }
 
@@ -82,10 +83,10 @@ public class UIManager : MonoBehaviour
     }
 
     //Called later if time
-    public void DoBattle(Hero player, Hero player2)
+    public void DoBattle(Sprite playerS, Sprite player2S)
     {
-        p1SpriteObject.sprite = player.heroSprite;
-        p2SpriteObject.sprite = player2.heroSprite;
+        p1SpriteObject.sprite = playerS;
+        p2SpriteObject.sprite = player2S;
 
         InventoryCanvas.SetActive(false);
         BattleCanvas.SetActive(true);
