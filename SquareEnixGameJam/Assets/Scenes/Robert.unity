@@ -401,7 +401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &179840914
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1928,6 +1928,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9e5d0c08eebdb49808f1224aae8164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warriorSprite: {fileID: 0}
+  thiefSprite: {fileID: 0}
+  paladinSprite: {fileID: 0}
   characterInfo: {fileID: 1492322762}
   panelInfo: {fileID: 1395751491}
   characterNumber: 0
