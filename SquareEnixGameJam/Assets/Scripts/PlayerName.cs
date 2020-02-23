@@ -22,7 +22,7 @@ public class PlayerName : MonoBehaviour
     #endregion
     [SerializeField] private Text playersNames;
     [SerializeField] private Text playerHP;
-    [SerializeField] private Text playerName;
+    [SerializeField] private Text isyourturn;
     // Start is called before the first frame update
     public void UpdateNames()
     {
@@ -32,9 +32,13 @@ public class PlayerName : MonoBehaviour
         {
             playersNames.text += $"\n{player}";
         }
+        isyourturn.text = $"Is your turn: {PlayerManager.Instance.IsCurrent }";
+        playerHP.text = $"{PlayerManager.Instance.ownerPlayer}";
     }
-    private void Start()
+
+    private void Update()
     {
         UpdateNames();
     }
+
 }

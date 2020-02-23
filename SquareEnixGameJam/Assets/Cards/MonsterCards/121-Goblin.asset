@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Goblin
   cardNumber: 121
   cardSprite: {fileID: 0}
-  health: 5
-  defence: 5
+  health: 4
+  defence: 4
+  attack: 4
