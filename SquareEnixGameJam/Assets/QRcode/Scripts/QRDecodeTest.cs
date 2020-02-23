@@ -6,7 +6,23 @@ using TBEasyWebCam;
 
 public class QRDecodeTest : MonoBehaviour
 {
-	public QRCodeDecodeController e_qrController;
+    #region Singleton
+    private static QRDecodeTest _instance = null;
+
+    public static QRDecodeTest Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<QRDecodeTest>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
+    public QRCodeDecodeController e_qrController;
 
 	public Text UiText;
 
@@ -33,7 +49,7 @@ public class QRDecodeTest : MonoBehaviour
 			this.e_qrController.onQRScanFinished += new QRCodeDecodeController.QRScanFinished(this.qrScanFinished);
 		}
 
-        Invoke("Play", 3f);
+        //Invoke("Play", 3f);
 	}
 
 	private void Update()
