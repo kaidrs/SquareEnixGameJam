@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 [Serializable]
 public class Hero
 {
+    public Sprite heroSprite;
     public float healthPoint;
     public int attackPoint;
     public int defencePoint;
@@ -21,13 +22,14 @@ public class Hero
     //public string classText { get => classText; set => classText = value; }
     //public List<int> spellCards { get => spellCards; set => spellCards = value; }
 
-    public Hero(float healthPoint, int attackPoint, int defencePoint, int luck, string classText)
+    public Hero(float healthPoint, int attackPoint, int defencePoint, int luck, string classText, Sprite heroSprite)
     {
         this.healthPoint = healthPoint;
         this.attackPoint = attackPoint;
         this.defencePoint = defencePoint;
         this.luck = luck;
         this.classText = classText;
+        this.heroSprite = heroSprite;
     }
 
     public Hero()
@@ -59,5 +61,10 @@ public class Hero
             this.healthPoint -= 0;
         }
         this.healthPoint -= ((float)monster.Attack * damageMultiplier);
+    }
+
+    public override string ToString()
+    {
+        return $"Hero Stats:: Health: {healthPoint}, Attack: {attackPoint}, Defense: {defencePoint}, Luck: {luck}, ClassText: {classText}";
     }
 }

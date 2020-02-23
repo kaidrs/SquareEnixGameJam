@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class HeroManager : MonoBehaviour
 {
+    [SerializeField] public Sprite warriorSprite;
+    [SerializeField] public Sprite thiefSprite;
+    [SerializeField] public Sprite paladinSprite;
+
     [SerializeField] Text characterInfo;
     [SerializeField] GameObject panelInfo;
     private bool isPanelOn = false;
@@ -49,22 +53,22 @@ public class HeroManager : MonoBehaviour
         }
     }
 
-    public static Hero CreateWarrior()
+    public Hero CreateWarrior()
     {
-        Hero warrior = new Warrior(100.0f, 10, 5, 5,"Warrior");
+        Hero warrior = new Warrior(100.0f, 10, 5, 5,"Warrior", warriorSprite);
         return warrior;
     }
 
     public Hero CreatePaladin()
     {
-        Hero paladin = new Paladin(100.0f, 5, 10, 5,"Paladin");
+        Hero paladin = new Paladin(100.0f, 5, 10, 5,"Paladin", paladinSprite);
         //paladin.ClassText = "Paladin";
         return paladin;
     }
 
     public Hero CreateThief()
     {
-        Hero thief = new Thief(100.0f,5,5,10,"Thief");
+        Hero thief = new Thief(100.0f,5,5,10,"Thief", thiefSprite);
         //thief.ClassText = "Thief";
         return thief;
     }
@@ -89,21 +93,20 @@ public class HeroManager : MonoBehaviour
 
     public void PickWarrior()
     {
-        PlayerManager.Instance.ownerPlayer.hero = CreateWarrior();
+        PMi.ownerPlayer.hero = CreateWarrior();
       // BattleManager.Instance.PlayerVsPlayer(PMi.ownerPlayer.hero, PMi.ownerPlayer.hero);
         GameScene();
     }
 
     public void PickPaladin()
     {
-        PlayerManager.Instance.ownerPlayer.hero = CreatePaladin();
+        PMi.ownerPlayer.hero = CreatePaladin();
         GameScene();
     }
 
     public void PickThief()
     {
-
-        PlayerManager.Instance.ownerPlayer.hero = CreateThief();
+        PMi.ownerPlayer.hero = CreateThief();
         GameScene();
     }
 

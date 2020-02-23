@@ -28,8 +28,8 @@ public class UIManager : MonoBehaviour
     //Battle
     [Header("BattleUI")]
     [SerializeField] GameObject BattleCanvas;
-    [SerializeField] GameObject p1SpriteObject;
-    [SerializeField] GameObject p2SpriteObject;
+    [SerializeField] Image p1SpriteObject;
+    [SerializeField] Image p2SpriteObject;
     [SerializeField] Slider p1HpSlider;
     [SerializeField] Slider p2HpSlider;//
     [SerializeField] Text p1Text;
@@ -41,6 +41,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text promptBattleText;
     [SerializeField] Button battleEngageBtn;
     [SerializeField] Button battleRetreatBtn;
+    [SerializeField] GameObject battleSpellPanel;
     //[SerializeField] GameObject battlePlayer;
     //[SerializeField] GameObject battleOpponent;
     [SerializeField] GameObject promptMessage;
@@ -64,23 +65,32 @@ public class UIManager : MonoBehaviour
         CameraPlane.SetActive(false);
     }
 
-    public void ShowBattle(Player player, Player player2)
+
+
+    public void PromptBattle(Hero player, Hero player2)
     {
-        InventoryCanvas.SetActive(false);
-        BattleCanvas.SetActive(true);
-        promptBattleText.text = "Encountered a Player!";
-        battleRetreatBtn.enabled = false;
+        promptBattle.SetActive(true);
+        promptBattleText.text = "Encountered a Player! Choose to battle?";
         promptBattle.GetComponent<Animator>().Play("promptBattle");
+        battleRetreatBtn.enabled = true;
+        DoBattle(player.heroSprite, player2.heroSprite);
+        //yes is clicked, dobattle(), or autobattle and return winning player if not enough time 
     }
 
-    //dontneed, autobattle
-    public void ShowBattle(Player player, MonsterCard monster)
+    public void PromptBattleSpellBar(Hero myHero)
     {
+       // myHero.spellCards
+    }
+
+    //Called later if time
+    public void DoBattle(Sprite playerS, Sprite player2S)
+    {
+        p1SpriteObject.sprite = playerS;
+        p2SpriteObject.sprite = player2S;
+
         InventoryCanvas.SetActive(false);
         BattleCanvas.SetActive(true);
-        battleRetreatBtn.enabled = true;
-        promptBattleText.text = "Encountered a Player!";
-        promptBattle.GetComponent<Animator>().Play("promptBattle");
+        //promptBattle.GetComponent<Animator>().Play("promptBattle");
     }
 
     public void PromptMessage(string msg)
@@ -102,6 +112,7 @@ public class UIManager : MonoBehaviour
     {
         promptReward.SetActive(false);
         promptMessage.SetActive(false);
+        promptBattle.SetActive(false);
         BattleCanvas.SetActive(false);
 
     }
@@ -119,12 +130,21 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PromptMessage("hi");
+       // PromptMessage("hi");
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ShowDice()
+    {
+        InventoryCanvas.SetActive(false);
+        QRScanCanvas.SetActive(false);
+        CameraPlane.SetActive(false);
+        promptCanvas.SetActive(false);
+        DiceManager.Instance.diceScript.RollDice();
     }
 }

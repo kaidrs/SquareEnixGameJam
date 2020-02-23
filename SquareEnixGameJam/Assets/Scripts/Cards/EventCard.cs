@@ -10,10 +10,23 @@ public class EventCard : Card
     [TextArea(2,5)]
     [SerializeField] private string description = "Event Description";
 
+    public enum Category
+    {
+        None, PlayerDisplacement, InventoryChange
+    }
+
+    public Category eventType;
 
     public void Event()
     {
-
+        switch(eventType)
+        {
+            case Category.PlayerDisplacement:
+                //get currentplayer, set tile position
+                break;
+            case Category.InventoryChange:
+                break;
+        }
     }
 
 }

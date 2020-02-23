@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38652bb840cf2748857af30f2f5b83a, type: 3}
+  m_Name: 52-StashedAway
+  m_EditorClassIdentifier: 
+  cardName: Stashed Away
+  cardNumber: 52
+  cardSprite: {fileID: 0}
+  description: You stumbled upon a hidden treasure while exploring! Receive one loot
+    card.

@@ -4,16 +4,7 @@ using UnityEngine;
 
 public class Paladin : Hero
 {
-    public Paladin()
-    {
-        this.healthPoint = 100.0f;
-        this.attackPoint = 5;
-        this.defencePoint = 10;
-        this.luck = 5;
-        this.classText = "Paladin";
-    }
-
-    public Paladin(float healthPoint, int attackPoint, int defencePoint, int luck, string classText) : base(healthPoint, attackPoint, defencePoint, luck, classText)
+    public Paladin(float healthPoint, int attackPoint, int defencePoint, int luck, string classText, Sprite heroSprite) : base(healthPoint, attackPoint, defencePoint, luck, classText, heroSprite)
     {
         healthPoint = 1.0f;
         attackPoint = 5;
