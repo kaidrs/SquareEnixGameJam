@@ -13,6 +13,7 @@ public class HeroManager : MonoBehaviour
     private bool isPanelOn = false;
     private string textForUI;
     public int characterNumber;
+    PlayerManager PMi;
 
     #region Singleton
     private static HeroManager _instance = null;
@@ -29,7 +30,10 @@ public class HeroManager : MonoBehaviour
         }
     }
     #endregion
-
+    private void Awake()
+    {
+        PMi = PlayerManager.Instance;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -86,12 +90,14 @@ public class HeroManager : MonoBehaviour
     public void PickWarrior()
     {
         PlayerManager.Instance.ownerPlayer.hero = CreateWarrior();
+        PMi.BroadcastUpdate();
         GameScene();
     }
 
     public void PickPaladin()
     {
         PlayerManager.Instance.ownerPlayer.hero = CreatePaladin();
+        PMi.BroadcastUpdate();
         GameScene();
     }
 
@@ -99,6 +105,7 @@ public class HeroManager : MonoBehaviour
     {
 
         PlayerManager.Instance.ownerPlayer.hero = CreateThief();
+        PMi.BroadcastUpdate();
         GameScene();
     }
 
