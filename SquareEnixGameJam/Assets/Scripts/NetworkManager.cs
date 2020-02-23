@@ -174,7 +174,7 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
         if (!PMi.allPlayers.Exists(x => !x.punReady))
         {
             PMi.allPlayers.Sort();
-            var sceneName = "PlayScene";
+            var sceneName = "Robert";
             photonView.RPC("LoadScene", RpcTarget.AllViaServer, sceneName);
             GameManager.Instance.StartGame();
         }
