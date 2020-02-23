@@ -15,11 +15,6 @@ public class DiceCheckZoneScript : MonoBehaviour
 
     private void Update()
     {
-        if (DiceManager.Instance.isSet)
-        {
-            collider = null;
-            return;
-        }
         if (diceScript.diceVelocity == Vector3.zero)
         {
             if (collider != null && diceScript.isRolling && collider.gameObject.tag == "DiceZone")

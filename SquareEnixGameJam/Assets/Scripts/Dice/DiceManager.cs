@@ -51,7 +51,6 @@ public class DiceManager : MonoBehaviour
 
     public void SetDiceValue(int value)
     {
-        isSet = true;
         Debug.Log("SetDiceValue");
         this.value = value;
         diceText.text = "VALUE: " + value;
