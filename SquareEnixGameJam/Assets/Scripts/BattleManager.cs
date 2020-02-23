@@ -75,6 +75,11 @@ public class BattleManager : MonoBehaviour
         //Debug.Log("Final Player one " + playerOne.healthPoint);
         //Debug.Log("Final Player two " + playerTwo.healthPoint);
         bool result = playerOne.healthPoint > playerTwo.healthPoint;
+        if (result)
+        {
+            LootCard rewardCardLooted = CardManager.Instance.GetRandomLoot();
+            UIManager.Instance.PromptReward(rewardCardLooted);
+        }
         Debug.Log(result);
         UIManager.Instance.HidePrompts();
         UIManager.Instance.ShowInventory();

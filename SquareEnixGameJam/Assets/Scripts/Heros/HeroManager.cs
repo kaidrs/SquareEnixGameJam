@@ -11,6 +11,7 @@ public class HeroManager : MonoBehaviour
     [SerializeField] public Sprite paladinSprite;
 
     public List<Sprite> spriteList;
+
     [SerializeField] Text characterInfo;
     [SerializeField] GameObject panelInfo;
     private bool isPanelOn = false;
@@ -37,17 +38,25 @@ public class HeroManager : MonoBehaviour
     private void Awake()
     {
         PMi = PlayerManager.Instance;
-        List<Sprite> spriteList = new List<Sprite>();
-        spriteList.Add(warriorSprite);
-        spriteList.Add(thiefSprite);
-        spriteList.Add(paladinSprite);
+        
+        #region Dont Destroy On Load
+        var objects = FindObjectsOfType(this.GetType());
+        if (objects.Length > 1)
+        {
+            DestroyImmediate(this.gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+        #endregion
 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-       // PlayerManager.Instance.ownerPlayer.hero = new Hero();
+
     }
 
     // Update is called once per frame

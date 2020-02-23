@@ -121,21 +121,31 @@ public class TileManager : MonoBehaviour
     /// 
     public void SetPlayerTilePosition(int diceValue)
     {
+
         battleAgainstPlayer = false;
         if (!PlayerManager.Instance.IsCurrent)
         {
             return;
         }
-        int nextPosition = PlayerManager.Instance.ownerPlayer.tilePosition + diceValue;
-        int lastTile = board.Count - 1;
+        int addMove = 1;
+        while (addMove <= diceValue)
+        {
+            int nextPosition = PlayerManager.Instance.ownerPlayer.tilePosition + addMove;
+            int lastTile = board.Count - 1;
 
-        if (nextPosition > (lastTile - PlayerManager.Instance.ownerPlayer.tilePosition))
-        {
-            PlayerManager.Instance.ownerPlayer.tilePosition = lastTile;
-        }
-        else
-        {
-            PlayerManager.Instance.ownerPlayer.tilePosition = nextPosition;
+            if (nextPosition > (lastTile - PlayerManager.Instance.ownerPlayer.tilePosition))
+            {
+                PlayerManager.Instance.ownerPlayer.tilePosition = lastTile;
+            }
+            else
+            {
+                PlayerManager.Instance.ownerPlayer.tilePosition = nextPosition;
+            }
+            if (GetMyCurrentTile(PlayerManager.Instance.ownerPlayer.tilePosition) == TileType.MonsterBoss)
+            {
+                break;
+            }
+            addMove++;
         }
         UpdatePlayerZone();
         PlayerManager.Instance.BroadcastUpdate();
@@ -225,7 +235,7 @@ public class TileManager : MonoBehaviour
                 UIManager.Instance.PromptGoQR();
                 break;
             case TileType.Monster:
-                ///get card number QR SHOW QR PROMT!!!
+                ///get card number QR SHOW QR PROMT!!!S
                 UIManager.Instance.PromptGoQR();
                 break;
             case TileType.Checkpoint:
