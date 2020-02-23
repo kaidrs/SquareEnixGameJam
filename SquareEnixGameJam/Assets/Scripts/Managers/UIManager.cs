@@ -28,8 +28,8 @@ public class UIManager : MonoBehaviour
     //Battle
     [Header("BattleUI")]
     [SerializeField] GameObject BattleCanvas;
-    [SerializeField] GameObject p1SpriteObject;
-    [SerializeField] GameObject p2SpriteObject;
+    [SerializeField] Image p1SpriteObject;
+    [SerializeField] Image p2SpriteObject;
     [SerializeField] Slider p1HpSlider;
     [SerializeField] Slider p2HpSlider;//
     [SerializeField] Text p1Text;
@@ -84,27 +84,11 @@ public class UIManager : MonoBehaviour
     //Called later if time
     public void DoBattle(Hero player, Hero player2)
     {
-        /*
-        if (player.classText == "Thief")
-        {
-            thiefObject.SetActive(true);
-            Debug.Log("switch to thief");
-        }
-        else if (classText == "Warrior")
-        {
-            warriorObject.SetActive(true);
-            Debug.Log("switch to " + classText);
-        }
-        else
-        {
-            paladinObject.SetActive(true);
-            Debug.Log("switch to paladin");
-        }*/
+        p1SpriteObject.sprite = player.heroSprite;
+        p2SpriteObject.sprite = player2.heroSprite;
 
         InventoryCanvas.SetActive(false);
         BattleCanvas.SetActive(true);
-      //  p1SpriteObject = player.hero.
-        battleRetreatBtn.enabled = false;
         //promptBattle.GetComponent<Animator>().Play("promptBattle");
     }
 
@@ -126,8 +110,8 @@ public class UIManager : MonoBehaviour
     public void HidePrompts()
     {
         promptReward.SetActive(false);
-        ///promptBattleSpellBar.SetActive(false);
         promptMessage.SetActive(false);
+        promptBattle.SetActive(false);
         BattleCanvas.SetActive(false);
 
     }
