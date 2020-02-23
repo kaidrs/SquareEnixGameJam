@@ -212,45 +212,32 @@ public class TileManager : MonoBehaviour
                 break;
             case TileType.Loot:
                 ///get card number QR SHOW QR PROMT!!!
-                //int cardmnumber = QRPROMT()
-                //LootCard lootedCard = CardManager.Instance.CallLootCard(cardmnumber)
-                //UIManager.Instance.PromptReward(lootedCard);
-                //lootedCard.AddStatToPlayer();
-                //NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                //QRPROMT()
+                UIManager.Instance.PromptGoQR();
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.Spell:
                 ///get card number QR SHOW QR PROMT!!!
                 //int cardmnumber = QRPROMT()
-                //SpellCard spellCard = CardManager.Instance.CallSpellCard(cardnumber);
-                //UIManager.Instance.PromptReward(spellCard);
-                //PMi.ownerPlayer.hero.spellCards.Add(spellCard.CardNumber);
-                //NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                UIManager.Instance.PromptGoQR();
                 break;
             case TileType.Monster:
                 ///get card number QR SHOW QR PROMT!!!
-                //int cardmnumber = QRPROMT()
-                //MonsterCard monsterCard = CardManager.Instance.CallSpellCard(cardnumber);
-                //bool battleResult = BattleManager.Instance.PlayerVsMonster(PMi.ownerPlayer.hero, monsterCard);
-                //if (battleResult)
-                //{
-                //    LootCard lootedCard = CardManager.Instance.GetRandomLoot();
-                //    //UIManager.Instance.PromptReward(lootedCard);
-                //}
-                //NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                UIManager.Instance.PromptGoQR();
                 break;
             case TileType.Checkpoint:
                 // Nothing promet relax;
-                //NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.MonsterBoss:
-                //MonsterCard bossCard = CardManager.Instance.GetBossCard();
-                //bool battleResult = BattleManager.Instance.PlayerVsMonster(PMi.ownerPlayer.hero, bossCard);
-                //if (battleResult)
-                //{
-                //    LootCard lootedCard = CardManager.Instance.GetRandomLoot();
-                //    //UIManager.Instance.PromptReward(lootedCard);
-                //}
-                //NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                MonsterCard bossCard = CardManager.Instance.GetBossCard();
+                bool battleResult = BattleManager.Instance.PlayerVsMonster(PMi.ownerPlayer.hero, bossCard);
+                if (battleResult)
+                {
+                    LootCard lootedCard = CardManager.Instance.GetRandomLoot();
+                    //UIManager.Instance.PromptReward(lootedCard);
+                }
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             default:
                 break;
