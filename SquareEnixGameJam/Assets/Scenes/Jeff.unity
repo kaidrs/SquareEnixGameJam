@@ -522,7 +522,7 @@ PrefabInstance:
     - target: {fileID: 3493893870401635332, guid: 89b159e01cbbcae4da4c7bd7caa0187b,
         type: 3}
       propertyPath: monsterCardColletion.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3493893870401635332, guid: 89b159e01cbbcae4da4c7bd7caa0187b,
         type: 3}
@@ -551,6 +551,12 @@ PrefabInstance:
       propertyPath: spellCardColletion.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 1a8eb20ad514d124e9677cc5d2b0117b,
+        type: 2}
+    - target: {fileID: 3493893870401635332, guid: 89b159e01cbbcae4da4c7bd7caa0187b,
+        type: 3}
+      propertyPath: monsterCardColletion.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b103fab33b9fd844cb8c9107a781b704,
         type: 2}
     - target: {fileID: 8971226795204477985, guid: 89b159e01cbbcae4da4c7bd7caa0187b,
         type: 3}

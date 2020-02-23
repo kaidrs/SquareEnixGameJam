@@ -191,7 +191,7 @@ public class UIManager : MonoBehaviour
         InventoryCanvas.SetActive(false);
         QRScanCanvas.SetActive(false);
         CameraPlane.SetActive(false);
-        promptCanvas.SetActive(false);
+        HidePrompts();
         QRCamera.enabled = false;
         DiceManager.Instance.diceScript.RollDice();
     }
@@ -200,7 +200,6 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("we cool");
         QRDecodeTest.Instance.Play();
-      
     }
 
     public void EnableTurn()
