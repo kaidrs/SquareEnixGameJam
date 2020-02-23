@@ -214,7 +214,6 @@ public class TileManager : MonoBehaviour
                 ///get card number QR SHOW QR PROMT!!!
                 //QRPROMT()
                 UIManager.Instance.PromptGoQR();
-                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.Spell:
                 ///get card number QR SHOW QR PROMT!!!
@@ -235,7 +234,7 @@ public class TileManager : MonoBehaviour
                 if (battleResult)
                 {
                     LootCard lootedCard = CardManager.Instance.GetRandomLoot();
-                    //UIManager.Instance.PromptReward(lootedCard);
+                    UIManager.Instance.PromptReward(lootedCard);
                 }
                 NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
