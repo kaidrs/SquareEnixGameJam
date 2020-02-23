@@ -6,14 +6,13 @@ using UnityEngine.UI;
 
 public class HeroManager : MonoBehaviour
 {
-    Hero ok;
-    // static List<Hero> playerChoice = new List<Hero>();
     [SerializeField] Text characterInfo;
     [SerializeField] GameObject panelInfo;
     private bool isPanelOn = false;
     private string textForUI;
     public int characterNumber;
     PlayerManager PMi;
+    [SerializeField] GameObject panelWaitting;
 
     #region Singleton
     private static HeroManager _instance = null;
@@ -72,6 +71,7 @@ public class HeroManager : MonoBehaviour
 
     public void PickClass()
     {
+        panelWaitting.SetActive(true);
         if(characterNumber == 1)
         {
             PickWarrior();
@@ -143,7 +143,6 @@ public class HeroManager : MonoBehaviour
         PMi.ownerPlayer.punReady = true;
 
         PMi.BroadcastUpdate();
-
         isPanelOn = false;
         if (NetworkManager.Instance.AreAllReady())
         {
