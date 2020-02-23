@@ -16,7 +16,7 @@ public class QRCodeMapper : MonoBehaviour
         if (code == 141)
         {
             SpellCard spellCard = CardManager.Instance.CallSpellCard(141);
-            //PlayerManager.Instance.ownerPlayer.hero.spellCards.Add(spellCard.CardNumber);
+            PlayerManager.Instance.ownerPlayer.hero.spellCards.Add(spellCard.CardNumber);
             UIManager.Instance.PromptReward(spellCard);
             NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
             return;
