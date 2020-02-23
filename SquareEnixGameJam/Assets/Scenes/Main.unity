@@ -1426,7 +1426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3870ff0cb628401fa5a0931ecb256c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: []
 --- !u!4 &1521348576
 Transform:
   m_ObjectHideFlags: 0
@@ -1590,6 +1589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848c83bed6bdb42dc987ae998ab9b755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceScript: {fileID: 1510776056}
 --- !u!1 &1803695530
 GameObject:
   m_ObjectHideFlags: 0

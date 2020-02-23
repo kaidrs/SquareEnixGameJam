@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class DiceCheckZoneScript : MonoBehaviour
 {
-    Collider collider;
+    [SerializeField] private DiceScript diceScript;
+    
+    private Collider collider;
 
     void OnTriggerStay(Collider col)
     {
@@ -15,7 +17,7 @@ public class DiceCheckZoneScript : MonoBehaviour
     {
         if (DiceScript.diceVelocity == Vector3.zero)
         {
-            if (collider.gameObject.tag == "DiceZone")
+            if (collider != null && collider.gameObject.tag == "DiceZone")
             {
                 switch (collider.gameObject.name)
                 {
@@ -38,6 +40,10 @@ public class DiceCheckZoneScript : MonoBehaviour
                         DiceManager.Instance.value = 1;
                         break;
                 }
+            }
+            else
+            {
+                diceScript.RollDice();
             }
         }
     }
