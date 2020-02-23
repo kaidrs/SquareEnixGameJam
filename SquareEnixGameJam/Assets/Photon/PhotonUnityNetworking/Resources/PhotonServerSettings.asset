@@ -44,5 +44,6 @@ MonoBehaviour:
   - SendmyPlayerJSON
   - ReceivemyPlayerJSON
   - ReceiveMyPlayerJSON
+  - LoadScene
   DisableAutoOpenWizard: 1
   ShowSettings: 1

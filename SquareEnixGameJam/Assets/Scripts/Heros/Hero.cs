@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public class Hero
@@ -36,14 +37,27 @@ public class Hero
 
     public void TakeDamageFromPlayer(Hero hero)
     {
-        float damageMultiplier = (100 / (100 + (float)hero.defencePoint)); //Clamp to 0-100 percentage reduction
-        this.healthPoint -= ((float)hero.attackPoint * damageMultiplier)/100.0f;
-    
+        int dodgeChange = Random.Range(0, 100);
+        float damageMultiplier = (100.0f / (100.0f + (float)hero.defencePoint)); //Clamp to 0-100 percentage reduction
+        if (dodgeChange <= this.luck)
+        {
+            this.healthPoint -= 0;
+            Debug.Log("MISS NOOB");
+        }
+        else
+        {
+            this.healthPoint -= ((float)hero.attackPoint * damageMultiplier);
+        }
     }
 
     public void TakeDamageFromMonster(MonsterCard monster)
     {
+        int dodgeChange = Random.Range(0, 100);
         float damageMultiplier = (100 / (100 + (float)this.defencePoint)); //Clamp to 0-100 percentage reduction
+        if (dodgeChange <= this.luck)
+        {
+            this.healthPoint -= 0;
+        }
         this.healthPoint -= ((float)monster.Attack * damageMultiplier);
     }
 }
