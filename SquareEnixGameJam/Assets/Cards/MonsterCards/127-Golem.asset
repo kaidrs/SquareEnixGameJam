@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 127-Golem
   m_EditorClassIdentifier: 
   cardName: Golem
-  cardNumber: 0
+  cardNumber: 127
   cardSprite: {fileID: 0}
   health: 15
   defence: 12
