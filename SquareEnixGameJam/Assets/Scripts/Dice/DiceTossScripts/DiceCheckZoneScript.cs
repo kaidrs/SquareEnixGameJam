@@ -2,22 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiceCheckZoneScript : MonoBehaviour {
+public class DiceCheckZoneScript : MonoBehaviour
+{
 
-	Vector3 diceVelocity;
+    Vector3 diceVelocity;
+    float timer = 2f;
+    bool rollComplete;
+
+    public float Timer { get => timer; set => timer = value; }
+    public bool RollComplete { get => rollComplete; set => rollComplete = value; }
 
     // Update is called once per frame
-    void FixedUpdate () {
-		diceVelocity = DiceScript.diceVelocity;
-	}
+    void FixedUpdate()
+    {
+        diceVelocity = DiceScript.diceVelocity;
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if(col.gameObject.tag == "DiceZone")
+        {
+            Timer = 2f;
+            Debug.Log("timer reset");
+        }
+
+    }
 
     void OnTriggerStay(Collider col)
-	{
-        if (diceVelocity.x == 0f && diceVelocity.y == 0f && diceVelocity.z == 0f)
+    {
+       // Debug.LogError("timer is : " + timer);
+
+        if (timer >= 0)
         {
+            Timer -= Time.deltaTime;
+            //Debug.Log(Timer);
+        }
+
+        else if (Timer <= 0 && !RollComplete)
+        {
+            RollComplete = true;
+           // Timer = 2f;
             if (col.gameObject.tag == "DiceZone")
             {
-                Debug.Log("col.gameObject.name: " + col.gameObject.name);
+                Debug.LogError("col.gameObject.name: " + col.gameObject.name);
                 switch (col.gameObject.name)
                 {
                     case "Side1":
@@ -40,10 +67,13 @@ public class DiceCheckZoneScript : MonoBehaviour {
                         break;
                 }
                 Debug.Log("Upper side is now: " + DiceManager.Instance.CurrentValue);
+                Debug.Log(timer); 
             }
 
 
+
         }
+
 
     }
 }

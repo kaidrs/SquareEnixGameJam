@@ -17,12 +17,14 @@ public class DiceScript : MonoBehaviour {
     {
         diceVelocity = rb.velocity;
         DiceNumberTextScript.diceNumber = 0;
-        float dirX = Random.Range(0, 500);
-        float dirY = Random.Range(0, 500);
-        float dirZ = Random.Range(0, 500);
+        float dirX = Random.Range(550, 700);
+        float dirY = Random.Range(250, 700);
+        float dirZ = Random.Range(550, 700);
         transform.position = new Vector3(0, 2, 0);
         transform.rotation = Quaternion.identity;
-        rb.AddForce(transform.up * 500);
+        rb.AddForce(transform.up * 750);
         rb.AddTorque(dirX, dirY, dirZ);
+        FindObjectOfType<DiceCheckZoneScript>().Timer = 2f;
+        FindObjectOfType<DiceCheckZoneScript>().RollComplete = false;
     }
 }
