@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Norman Helmet
   cardNumber: 117
-  cardSprite: {fileID: -4628747989415327827, guid: 094ef5e7cc1f9d049a26198ed7efb031,
-    type: 3}
+  cardSprite: {fileID: 21300000, guid: 5bac1792372c43041b1896f40b206b8e, type: 3}
   attackStat: 0
   defenceStat: 1
+  luckStat: 0
