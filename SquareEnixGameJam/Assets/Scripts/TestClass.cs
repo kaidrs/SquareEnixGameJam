@@ -11,7 +11,7 @@ public class TestClass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerClass = HeroManager.playerChoice[0].luck.ToString(); 
+        playerClass = PlayerManager.Instance.ownerPlayer.hero.classText;
     }
 
     // Update is called once per frame

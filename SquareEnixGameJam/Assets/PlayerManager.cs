@@ -66,4 +66,9 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
+    public void SetReadyToFalse()
+    {
+        ownerPlayer.punReady = false;
+        BroadcastUpdate();
+    }
 }

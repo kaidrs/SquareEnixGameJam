@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        PlayerManager.Instance.SetReadyToFalse();
         NetworkManager.Instance.BroadcastUpdateTurn();
     }
 
