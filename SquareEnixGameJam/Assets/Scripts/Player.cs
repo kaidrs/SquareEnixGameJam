@@ -30,6 +30,7 @@ public class Player: IComparable
     public Player(string displayName, string punName)
     {
         this.displayName = displayName;
+        this.punName = punName;
         this.tilePosition = 0;
         this.zone = ZoneType.StarterZone;
     }
