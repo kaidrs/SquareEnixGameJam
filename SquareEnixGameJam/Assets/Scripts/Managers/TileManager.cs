@@ -68,13 +68,21 @@ public class TileManager : MonoBehaviour
     private Player currentActivePlayer;
     private int currentTurn = 1;
     public List<TileType> board;
+    PlayerManager PMi;
+    DiceManager DMi;
+    [SerializeField] GameObject panelBattle;
 
+    private void Awake()
+    {
+        PMi = PlayerManager.Instance;
+        DMi = DiceManager.Instance;
+    }
 
     public void Start()
     {
         board = new List<TileType>();
         Debug.Log($"Set {zones.Count} Zones in Board");
-
+      //  TestBattle();
 
         foreach (var zone in zones)
         {
@@ -105,8 +113,10 @@ public class TileManager : MonoBehaviour
     /// Moves the player tile location according to the dice value
     /// </summary>
     /// <param name="diceValue"></param>
+    /// 
     public void SetPlayerTilePosition(int diceValue)
     {
+        bool battleChoice = false;
         if (!PlayerManager.Instance.IsCurrent)
         {
             return;
@@ -120,12 +130,48 @@ public class TileManager : MonoBehaviour
         }
         else
         {
+            for (int i = 0; i < PMi.allPlayers.Count; i++)
+            {
+                if(PMi.allPlayers[i].tilePosition == PMi.ownerPlayer.tilePosition + nextPosition)
+                {
+                    battleChoice = true;
+                }
+            }
             PlayerManager.Instance.ownerPlayer.tilePosition = nextPosition;
+            if (battleChoice)
+            {
+                panelBattle.SetActive(true);
+            }
         }
-
         UpdatePlayerZone();
         PlayerManager.Instance.BroadcastUpdate();
     }
+
+
+    public void TestBattle()
+    {
+        PMi.allPlayers.Add(PlayerManager.Instance.ownerPlayer);
+        PMi.allPlayers.Add(new Player("allo", "bye"));
+        
+
+        PMi.ownerPlayer.tilePosition += 4;
+        for (int i = 0; i < PMi.allPlayers.Count; i++)
+        {
+            //Debug.Log(PMi.allPlayers[i].tilePosition);
+            if (PMi.ownerPlayer.tilePosition == PMi.allPlayers[i].tilePosition)
+            {
+                Debug.Log(PMi.ownerPlayer.tilePosition);
+                Debug.Log(PMi.allPlayers[i].tilePosition);
+                UIManager.Instance.PromptBattle(PMi.ownerPlayer.hero, PMi.allPlayers[i].hero);
+            }
+        }
+        // PMi.ownerPlayer.tilePosition = 6;
+        //UpdatePlayerZone();
+        //PlayerManager.Instance.BroadcastUpdate();
+    }
+
+
+
 
     public void UpdatePlayerZone()
     {
@@ -149,6 +195,6 @@ public class TileManager : MonoBehaviour
 
     public void VerifyPlayerTilePosition()
     {
-
+        
     }
 }
