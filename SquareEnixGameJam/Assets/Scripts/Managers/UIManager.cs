@@ -134,6 +134,11 @@ public class UIManager : MonoBehaviour
         //promptBattle.GetComponent<Animator>().Play("promptBattle");
     }
 
+    public void DontDoBattle()
+    {
+        TileManager.Instance.VerifyPlayerTilePosition();
+    }
+
     public void PromptMessage(string msg)
     {
         promptMessage.SetActive(true);
@@ -144,6 +149,11 @@ public class UIManager : MonoBehaviour
 
     public void PromptReward(Card card)
     {
+        if (card is LootCard)
+        {
+            var lootedCard = card as LootCard;
+            lootedCard.AddStatToPlayer(); 
+        }
         promptReward.SetActive(true);
         rewardImage.sprite = card.CardSprite;
         promptRewardText.text = "You have received " + card.CardName + " !";
@@ -209,13 +219,23 @@ public class UIManager : MonoBehaviour
         {
             currentTurnPanel.color = yourTurn;
             diceButton.interactable = true;
+            foreach (var spellSlot in SpellActions.Instance.spellSlots)
+            {
+                spellSlot.GetComponent<Button>().interactable = true;
+            }
             Debug.Log("Your Turn");
         }
         else
         {
             currentTurnPanel.color = waitTurn;
             diceButton.interactable = false;
+            foreach (var spellSlot in SpellActions.Instance.spellSlots)
+            {
+                spellSlot.GetComponent<Button>().interactable = false;
+            }
             Debug.Log("Wait Turn");
         }
     }
+
+ 
 }

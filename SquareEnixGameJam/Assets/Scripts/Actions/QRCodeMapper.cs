@@ -12,6 +12,7 @@ public class QRCodeMapper : MonoBehaviour
     {
         TileType playerTileType = TileManager.Instance.GetMyCurrentTile(PlayerManager.Instance.ownerPlayer.tilePosition);
         int code = int.Parse(QRResult);
+        Debug.Log($"YOU GOT CARD #{code}");
         #region passTURN
         if (code == 198)
         {
@@ -26,7 +27,6 @@ public class QRCodeMapper : MonoBehaviour
             case TileType.Loot:
                 LootCard lootedCard = myCard as LootCard;
                 UIManager.Instance.PromptReward(lootedCard);
-                lootedCard.AddStatToPlayer();
                 NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.Spell:
@@ -68,7 +68,7 @@ public class QRCodeMapper : MonoBehaviour
         //else if (code <= 150)
         //{
         //    chosenCard = CardManager.Instance.CallSpellCard(code);
-        //    SpellActions.Instance.AddSpellToUI(card);
+        //    InventoryManager.Instance.PopulateSpell(card);
         //}
         //else
         //{

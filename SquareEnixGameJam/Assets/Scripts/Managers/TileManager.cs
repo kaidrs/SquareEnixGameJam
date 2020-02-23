@@ -134,8 +134,6 @@ public class TileManager : MonoBehaviour
         else
         {
             PlayerManager.Instance.ownerPlayer.tilePosition = nextPosition;
-            
-            
         }
         UpdatePlayerZone();
         PlayerManager.Instance.BroadcastUpdate();
@@ -154,7 +152,6 @@ public class TileManager : MonoBehaviour
         }
         // call check tile postion and do aciton based postion
         UIManager.Instance.PromptMessage($"Move your peon by {diceValue}.");
-        VerifyPlayerTilePosition();
     }
 
 
