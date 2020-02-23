@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Thief : Hero
 {
-    public Thief(float healthPoint, int attackPoint, int defencePoint, int luck, string classText) : base(healthPoint, attackPoint, defencePoint, luck, classText)
+    public Thief(float healthPoint, int attackPoint, int defencePoint, int luck, string classText, Sprite heroSprite) : base(healthPoint, attackPoint, defencePoint, luck, classText, heroSprite)
     {
         healthPoint = 100.0f;
         attackPoint = 5;
