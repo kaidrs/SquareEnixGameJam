@@ -34,6 +34,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text p1Text;
     [SerializeField] Text p2Text;
 
+    //Prompt
+    [SerializeField] GameObject promptPanel;
+    [SerializeField] Text promptText;
+   //[SerializeField] Animator promptAnim;
+
     public void ShowQR()
     {
         InventoryCanvas.SetActive(false);
