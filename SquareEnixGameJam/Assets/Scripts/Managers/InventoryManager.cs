@@ -51,7 +51,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (PlayerManager.Instance != null)
         {
-            hero = PlayerManager.Instance.ownerPlayer.hero;
+            myHero = PlayerManager.Instance.ownerPlayer.hero;
             InitInventoryUI();
         }
 
