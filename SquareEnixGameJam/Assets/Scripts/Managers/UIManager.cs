@@ -25,6 +25,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject QRScanCanvas;
     [SerializeField] GameObject CameraPlane;
 
+    //Battle
+    [SerializeField] GameObject BattleCanvas;
+    [SerializeField] GameObject p1SpriteObject;
+    [SerializeField] GameObject p2SpriteObject;
+    [SerializeField] Slider p1HpSlider;
+    [SerializeField] Slider p2HpSlider;
+    [SerializeField] Text p1Text;
+    [SerializeField] Text p2Text;
+
     public void ShowQR()
     {
         InventoryCanvas.SetActive(false);
@@ -37,6 +46,18 @@ public class UIManager : MonoBehaviour
         InventoryCanvas.SetActive(true);
         QRScanCanvas.SetActive(false);
         CameraPlane.SetActive(false);
+    }
+
+    public void ShowBattle(Player player, Player player2)
+    {
+        InventoryCanvas.SetActive(false);
+        BattleCanvas.SetActive(true);
+    }
+
+    public void ShowBattle(Player player, MonsterCard monster)
+    {
+        InventoryCanvas.SetActive(false);
+        BattleCanvas.SetActive(true);
     }
 
     // Start is called before the first frame update
