@@ -6,7 +6,7 @@ using UnityEngine;
 public class MonsterCard : Card
 {
     [Header("Monster Properties")]
-    [SerializeField] private float health;
+    private float health = 100;
     [SerializeField] private int defence;
     [SerializeField] private int attack;
     public bool bossCard = false;
@@ -19,7 +19,7 @@ public class MonsterCard : Card
     {
         this.attack = attack;
         this.defence = defence;
-        this.health = health;
+        this.health = 100;
     }
 
     public void TakeDamage(Hero hero)
