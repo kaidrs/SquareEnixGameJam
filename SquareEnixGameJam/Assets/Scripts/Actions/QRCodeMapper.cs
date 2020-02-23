@@ -12,16 +12,13 @@ public class QRCodeMapper : MonoBehaviour
     {
         TileType playerTileType = TileManager.Instance.GetMyCurrentTile(PlayerManager.Instance.ownerPlayer.tilePosition);
         int code = int.Parse(QRResult);
-
-        if (code == 141)
+        #region passTURN
+        if (code == 198)
         {
-            SpellCard spellCard = CardManager.Instance.CallSpellCard(141);
-            //PlayerManager.Instance.ownerPlayer.hero.spellCards.Add(spellCard.CardNumber);
-            UIManager.Instance.PromptReward(spellCard);
             NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
             return;
-        }
-
+        } 
+        #endregion
         Card myCard = CardManager.Instance.CallCard(code);
 
         switch (playerTileType)

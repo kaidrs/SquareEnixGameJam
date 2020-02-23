@@ -64,6 +64,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text promptRewardText;
     //[SerializeField] Animator promptAnim;
 
+    [Header("Inventory Canvas")]
+    public Color yourTurn = Color.green;
+    public Color waitTurn = Color.red;
+    public Image currentTurnPanel;
+    public Button diceButton;
+
     public void ShowQR()
     {
         InventoryCanvas.SetActive(false);
@@ -170,7 +176,8 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // PromptMessage("hi");
+        // PromptMessage("hi");
+        EnableTurn();
     }
 
     // Update is called once per frame
@@ -194,5 +201,22 @@ public class UIManager : MonoBehaviour
         Debug.Log("we cool");
         QRDecodeTest.Instance.Play();
       
+    }
+
+    public void EnableTurn()
+    {
+        bool myTurn = PlayerManager.Instance.IsCurrent;
+        if (myTurn)
+        {
+            currentTurnPanel.color = yourTurn;
+            diceButton.interactable = true;
+            Debug.Log("Your Turn");
+        }
+        else
+        {
+            currentTurnPanel.color = waitTurn;
+            diceButton.interactable = false;
+            Debug.Log("Wait Turn");
+        }
     }
 }

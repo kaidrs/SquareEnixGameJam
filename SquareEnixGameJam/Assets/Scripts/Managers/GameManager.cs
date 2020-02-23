@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class GameManager : MonoBehaviour
 
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateTurn()
     {
-        
+
         int next = currentTurn + 1;
         currentTurn = next > PlayerManager.Instance.allPlayers.Count ? next - PlayerManager.Instance.allPlayers.Count : next;
         if (PlayerManager.Instance.allPlayers[currentTurn - 1].punName == PlayerManager.Instance.ownerPlayer.punName)
@@ -53,13 +54,20 @@ public class GameManager : MonoBehaviour
             PlayerManager.Instance.IsCurrent = false;
         }
         Debug.Log("current " + currentTurn);
+        UIManager.Instance?.EnableTurn();
+        Debug.Log(UIManager.Instance);
     }
 
 
     public void StartGame()
     {
         PlayerManager.Instance.SetReadyToFalse();
-        NetworkManager.Instance.BroadcastUpdateTurn();
+        if (PhotonNetwork.PlayerList[0] == NetworkManager.Instance.myPunPlayer)
+        {
+            
+            NetworkManager.Instance.BroadcastUpdateTurn(); 
+        }
+        Debug.Log("StartGAME!!!");
     }
 
     /// <summary>
