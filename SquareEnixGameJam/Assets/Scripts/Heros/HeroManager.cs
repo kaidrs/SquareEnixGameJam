@@ -90,6 +90,7 @@ public class HeroManager : MonoBehaviour
     public void PickWarrior()
     {
         PlayerManager.Instance.ownerPlayer.hero = CreateWarrior();
+      // BattleManager.Instance.PlayerVsPlayer(PMi.ownerPlayer.hero, PMi.ownerPlayer.hero);
         GameScene();
     }
 
