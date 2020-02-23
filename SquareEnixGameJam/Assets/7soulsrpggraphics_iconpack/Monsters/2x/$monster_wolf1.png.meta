@@ -1,9 +1,4 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: c656043e9b73c294ab4785585d11c762
-TextureImporter:
-  internalIDToNameTable: []
-=======
 guid: e19c3aa64beab334baa1e73f1eb32c22
 TextureImporter:
   internalIDToNameTable:
@@ -43,7 +38,6 @@ TextureImporter:
   - first:
       213: 7058945231075712283
     second: $monster_wolf1_11
->>>>>>> master
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -82,11 +76,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,11 +106,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD
-  spriteSheet:
-    serializedVersion: 2
-    sprites: []
-=======
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -400,7 +385,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
->>>>>>> master
     outline: []
     physicsShape: []
     bones: []

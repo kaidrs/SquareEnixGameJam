@@ -1,9 +1,4 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 04453d42452d83649b14835664b64417
-TextureImporter:
-  internalIDToNameTable: []
-=======
 guid: 8b3ae9a929cc3994a938b4d0ba62d397
 TextureImporter:
   internalIDToNameTable:
@@ -43,7 +38,6 @@ TextureImporter:
   - first:
       213: 3118184681560204446
     second: $monster_dknight2_11
->>>>>>> master
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -82,11 +76,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,11 +106,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD
-  spriteSheet:
-    serializedVersion: 2
-    sprites: []
-=======
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -400,7 +385,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
->>>>>>> master
     outline: []
     physicsShape: []
     bones: []

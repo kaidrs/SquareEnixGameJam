@@ -1,9 +1,4 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 2d56fe25ca38a2f4db0c1cd0663bc618
-TextureImporter:
-  internalIDToNameTable: []
-=======
 guid: 2cacbdcf12bf4fe488bbc94526334b2b
 TextureImporter:
   internalIDToNameTable:
@@ -34,7 +29,6 @@ TextureImporter:
   - first:
       213: -6638159713781907664
     second: $monster_treant_8
->>>>>>> master
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -73,11 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -107,11 +97,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD
-  spriteSheet:
-    serializedVersion: 2
-    sprites: []
-=======
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -328,7 +313,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
->>>>>>> master
     outline: []
     physicsShape: []
     bones: []

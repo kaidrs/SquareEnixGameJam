@@ -1,9 +1,4 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: def1321b52189c14bb92a606c9b8d6ce
-TextureImporter:
-  internalIDToNameTable: []
-=======
 guid: 61cdf110c8821624793d376274a0eab0
 TextureImporter:
   internalIDToNameTable:
@@ -43,7 +38,6 @@ TextureImporter:
   - first:
       213: 3220167802948019280
     second: $monster_lizardman2_11
->>>>>>> master
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -82,11 +76,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,11 +106,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD
-  spriteSheet:
-    serializedVersion: 2
-    sprites: []
-=======
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -400,7 +385,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
->>>>>>> master
     outline: []
     physicsShape: []
     bones: []
