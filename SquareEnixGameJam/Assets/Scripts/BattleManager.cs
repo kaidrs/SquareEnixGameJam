@@ -32,13 +32,16 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Hero thief = new Thief(100.0f, 5, 5, 25, "Thief", HeroManager.Instance.thiefSprite);
-        Hero warrior = new Warrior(100.0f, 25, 5, 5, "Warrior", HeroManager.Instance.warriorSprite);
-        MonsterCard monster = ScriptableObject.CreateInstance<MonsterCard>();
-        monster.Attack = 5;
-        monster.Defence = 2;
-        monster.Health = 100.0f;
+        //Hero thief = new Thief(100.0f, 5, 5, 25, "Thief", HeroManager.Instance.thiefSprite);
+        //Hero warrior = new Warrior(100.0f, 25, 5, 5, "Warrior", HeroManager.Instance.warriorSprite);
+        //MonsterCard monster = ScriptableObject.CreateInstance<MonsterCard>();
+        //monster.Attack = 5;
+        //monster.Defence = 2;
+        //monster.Health = 100.0f;
 
+
+        //UIManager.Instance.inBattle = true;
+        UIManager.Instance.PromptBattle(thief, warrior);
        // PlayerVsPlayer(thief, warrior);
        // PlayerVsMonster(thief, monster);
 
@@ -47,7 +50,6 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public bool PlayerVsPlayer(Hero playerOne, Hero playerTwo)
@@ -56,12 +58,16 @@ public class BattleManager : MonoBehaviour
         {
             //Do you wanna use spell panel
         }
+
         while (playerOne.healthPoint >= 0.0f && playerTwo.healthPoint >= 0.0f)
         {
             playerTwo.TakeDamageFromPlayer(playerOne);
             playerOne.TakeDamageFromPlayer(playerTwo);
             Debug.Log("Player one " + playerOne.healthPoint);
             Debug.Log("Player two " + playerTwo.healthPoint);
+
+            UIManager.Instance.P1HpSlider.value = playerTwo.healthPoint;
+            UIManager.Instance.P2HpSlider.value = playerOne.healthPoint;
         }
         //playerTwo.TakeDamageFromPlayer(playerOne);
         //playerOne.TakeDamageFromPlayer(playerTwo);

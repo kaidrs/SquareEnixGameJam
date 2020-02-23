@@ -20,7 +20,16 @@ public class UIManager : MonoBehaviour
             return _instance;
         }
     }
+
+    public Slider P1HpSlider { get => p1HpSlider; set => p1HpSlider = value; }
+    public Slider P2HpSlider { get => p2HpSlider; set => p2HpSlider = value; }
+    public Hero PlayerHolder { get => playerHolder; set => playerHolder = value; }
+    public Hero PlayerHolder2 { get => playerHolder2; set => playerHolder2 = value; }
     #endregion
+
+
+    Hero playerHolder;
+    Hero playerHolder2;
 
     [SerializeField] Camera QRCamera;
     [SerializeField] GameObject InventoryCanvas;
@@ -36,6 +45,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider p2HpSlider;//
     [SerializeField] Text p1Text;
     [SerializeField] Text p2Text;
+    public bool inBattle;
+
 
     [Header("PromptUI")]
     [SerializeField] GameObject promptCanvas;
@@ -76,8 +87,29 @@ public class UIManager : MonoBehaviour
         promptBattleText.text = "Encountered a Player! Choose to battle?";
         promptBattle.GetComponent<Animator>().Play("promptBattle");
         battleRetreatBtn.enabled = true;
-        DoBattle(player.heroSprite, player2.heroSprite);
-        //yes is clicked, dobattle(), or autobattle and return winning player if not enough time 
+        p1SpriteObject.sprite = player.heroSprite;
+        p2SpriteObject.sprite = player2.heroSprite;
+
+        PlayerHolder = player;
+        PlayerHolder2 = player2;
+
+
+        //DoBattle();
+
+
+    }
+
+    public void PromptBattle(Hero player, MonsterCard monster)
+    {
+        promptBattle.SetActive(true);
+        promptBattleText.text = "Encountered a Monster! Prepare to engage!";
+        promptBattle.GetComponent<Animator>().Play("promptBattle");
+        battleRetreatBtn.enabled = false;
+        BattleCanvas.GetComponent<Canvas>().enabled = false;
+        p1SpriteObject.sprite = player.heroSprite;
+        p2SpriteObject.sprite = monster.CardSprite;
+       
+        //DoBattle();
     }
 
     public void PromptBattleSpellBar(Hero myHero)
@@ -86,13 +118,13 @@ public class UIManager : MonoBehaviour
     }
 
     //Called later if time
-    public void DoBattle(Sprite playerS, Sprite player2S)
+    public void DoBattle()
     {
-        p1SpriteObject.sprite = playerS;
-        p2SpriteObject.sprite = player2S;
-
+        inBattle = true;
+        BattleCanvas.GetComponent<Canvas>().enabled = true;
         InventoryCanvas.SetActive(false);
-        BattleCanvas.SetActive(true);
+        BattleManager.Instance.PlayerVsPlayer(PlayerHolder, PlayerHolder2);
+        // BattleCanvas.SetActive(true);
         //promptBattle.GetComponent<Animator>().Play("promptBattle");
     }
 
