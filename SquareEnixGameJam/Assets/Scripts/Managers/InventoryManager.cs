@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    private Hero hero; //change later
+    public Hero hero; //change later
+
+    //public Hero CurrentHero { get => hero; set => CurrentHero = value; }
 
     // [SerializeField] Animator spriteAnimator;
     // [SerializeField] Image heroSprite;
@@ -18,19 +20,35 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] Text heroAttackText;
     [SerializeField] Text heroDefenseText;
     [SerializeField] Text heroLuckText;
-   // [SerializeField] Text heroSpellText;
+    // [SerializeField] Text heroSpellText;
 
-  //  [SerializeField] Image heroWeaponImage;
-   // [SerializeField] Image heroDefenseImage;
-   // [SerializeField] Image heroLuckImage;
+    //  [SerializeField] Image heroWeaponImage;
+    // [SerializeField] Image heroDefenseImage;
+    // [SerializeField] Image heroLuckImage;
     //[SerializeField] Image heroSpellImage;
 
+    #region Singleton
+    private static InventoryManager _instance = null;
+
+    public static InventoryManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<InventoryManager>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
 
 
     // Start is called before the first frame update
     void Start()
     {
-        hero = HeroManager.playerChoice[0];
+        //hero = HeroManager.playerChoice[0];
+        hero = new Hero(1, 1, 1, 1);
         InitInventoryUI();
         
     }
