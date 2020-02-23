@@ -8,6 +8,7 @@ public enum TileType
     None, Loot, Spell, Monster, Checkpoint, MonsterBoss
 }
 
+[Serializable]
 public enum ZoneType
 {
     StarterZone, MiddleZone, FinalZone
@@ -97,7 +98,7 @@ public class TileManager : MonoBehaviour
 
     public int SortByTurn(Player p1, Player p2)
     {
-        return p1.Turn.CompareTo(p2.Turn);
+        return p1.turn.CompareTo(p2.turn);
     }
 
 
@@ -116,16 +117,16 @@ public class TileManager : MonoBehaviour
     /// <param name="diceValue"></param>
     public void SetPlayerTilePosition(int diceValue)
     {
-        int nextPosition = currentActivePlayer.TilePosition + diceValue;
+        int nextPosition = currentActivePlayer.tilePosition + diceValue;
         int lastTile = board.Count - 1;
 
-        if (nextPosition > (lastTile - currentActivePlayer.TilePosition))
+        if (nextPosition > (lastTile - currentActivePlayer.tilePosition))
         {
-            currentActivePlayer.TilePosition = lastTile;
+            currentActivePlayer.tilePosition = lastTile;
         }
         else
         {
-            currentActivePlayer.TilePosition = nextPosition;
+            currentActivePlayer.tilePosition = nextPosition;
         }
 
         UpdatePlayerZone();
@@ -135,9 +136,9 @@ public class TileManager : MonoBehaviour
     {
         for (int i = 0; i < zones.Count; i++)
         {
-            if (currentActivePlayer.TilePosition < zones[i].Tiles.Count)
+            if (currentActivePlayer.tilePosition < zones[i].Tiles.Count)
             {
-                currentActivePlayer.Zone = zones[i].Type;
+                currentActivePlayer.zone = zones[i].Type;
                 break;
             }
         }

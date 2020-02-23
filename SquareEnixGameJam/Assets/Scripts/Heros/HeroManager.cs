@@ -47,33 +47,20 @@ public class HeroManager : MonoBehaviour
 
     public Hero CreateWarrior()
     {
-        Hero warrior = new Thief(1.0f, 10, 5, 5);
-        //warrior.HealthPoint = 1.0f;
-        //warrior.AttackPoint = 10;
-        //warrior.DefencePoint = 5;
-        //warrior.Luck = 5;
-        //warrior.ClassText = "Warrior";
+        Hero warrior = new Warrior(100.0f, 10, 5, 5,"Warrior");
         return warrior;
     }
 
     public Hero CreatePaladin()
     {
-        Hero paladin = new Thief(1.0f, 5, 10, 5);
-        //paladin.HealthPoint = 1.0f;
-        //paladin.AttackPoint = 10;
-        //paladin.DefencePoint = 5;
-        //paladin.Luck = 5;
+        Hero paladin = new Paladin(100.0f, 5, 10, 5,"Paladin");
         //paladin.ClassText = "Paladin";
         return paladin;
     }
 
     public Hero CreateThief()
     {
-        Hero thief = new Thief(1.0f,5,5,10);
-        //thief.HealthPoint = 1.0f;
-        //thief.AttackPoint = 5;
-        //thief.DefencePoint = 5;
-        //thief.Luck = 10;
+        Hero thief = new Thief(100.0f,5,5,10,"Thief");
         //thief.ClassText = "Thief";
         return thief;
     }

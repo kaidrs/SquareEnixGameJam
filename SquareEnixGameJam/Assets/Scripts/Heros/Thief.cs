@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Thief : Hero
 {
-
-    public Thief(float healthPoint, int attackPoint, int defencePoint, int luck) : base(healthPoint, attackPoint, defencePoint, luck)
+    public Thief(float healthPoint, int attackPoint, int defencePoint, int luck, string classText) : base(healthPoint, attackPoint, defencePoint, luck, classText)
     {
-        healthPoint = 1.0f;
-        attackPoint = 2;
-        DefencePoint = 2;
-        luck = 5;
+        healthPoint = 100.0f;
+        attackPoint = 5;
+        base.defencePoint = 5;
+        luck = 10;
+        classText = "Thief";
     }
 }

@@ -28,9 +28,13 @@ public class PlayerName : MonoBehaviour
     {
         NetworkManager.Instance.SortPlayers();
         playersNames.text = "";
-        foreach (var player in NetworkManager.Instance.thePlayers)
+        foreach (var player in PlayerManager.Instance.allPlayers)
         {
             playersNames.text += $"\n{player}";
         }
+    }
+    private void Start()
+    {
+        UpdateNames();
     }
 }

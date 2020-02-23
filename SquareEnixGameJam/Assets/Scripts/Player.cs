@@ -1,33 +1,60 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class Player : MonoBehaviour
+[Serializable]
+public class Player: IComparable
 {
+
+    //PUN
+    public string punName;
+    public bool punReady = false;
+
     // Name the player registers with
-    [SerializeField] private string displayName;
-
+    public string displayName;
+    
     // Turn order of the player. Starts with 1, end with GameManager.players.Count
-    private int turn;
-    private int tilePosition; //stores tile position 
-    private ZoneType zone;
+    public int turn;
+    public int tilePosition; //stores tile position 
+    public ZoneType zone;
 
-    // The character player chooses at the beginning
-    [SerializeField] Hero character;
+    // The hero player chooses at the beginning
+    public Hero hero;
 
-    public int Turn { get => turn; set => turn = value; }
-    public int TilePosition { get => tilePosition; set => TilePosition = value; }
-    public ZoneType Zone { get => zone; set => Zone = value; }
-    public string DisplayName { get => displayName; set => displayName = value; }
-    public Hero Character { get => character; set => character = value; }
+    //public int turn { get => turn; set => turn = value; }
+    //public int tilePosition { get => tilePosition; set => tilePosition = value; }
+    //public ZoneType zone { get => zone; set => zone = value; }
+    //public string displayName { get => displayName; set => displayName = value; }
 
-    public Player(string displayName)
+    public Player(string displayName, string punName)
     {
         this.displayName = displayName;
+        this.punName = punName;
         this.tilePosition = 0;
         this.zone = ZoneType.StarterZone;
     }
 
-    public Player() { }
+    public Player()
+    {
 
+    }
+
+    public int CompareTo(object obj)
+    {
+        if (obj == null) return 1;
+
+        if (obj is Player otherPlayer)
+        {
+            return punName.CompareTo(otherPlayer.punName);
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    public override string ToString()
+    {
+        return displayName;
+    }
 }
