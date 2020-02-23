@@ -56,8 +56,7 @@ public class InventoryManager : MonoBehaviour
 
     public void InitInventoryUI()
     {
-        //heroNameText.text = hero.name;
-        
+        heroNameText.text = PlayerManager.Instance.ownerPlayer.displayName;
         heroClassText.text = myHero.classText;
         UpdateSprite(myHero.classText);
         heroAttackText.text = myHero.attackPoint.ToString();
