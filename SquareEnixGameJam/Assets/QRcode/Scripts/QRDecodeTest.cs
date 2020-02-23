@@ -12,6 +12,8 @@ public class QRDecodeTest : MonoBehaviour
 
 	public GameObject resetBtn;
 
+    public string QRResult;
+
 	public GameObject scanLineObj;
 	#if (UNITY_ANDROID||UNITY_IOS) && !UNITY_EDITOR
 	bool isTorchOn = false;
@@ -51,6 +53,9 @@ public class QRDecodeTest : MonoBehaviour
 			}
 		}
 		this.UiText.text = dataText;
+
+        GetComponent<QRCodeMapper>().MapCodeToCard(dataText);
+
 		if (this.resetBtn != null)
 		{
 			this.resetBtn.SetActive(true);

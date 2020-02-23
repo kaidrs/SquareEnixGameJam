@@ -62,4 +62,9 @@ public class Hero
         }
         this.healthPoint -= ((float)monster.Attack * damageMultiplier);
     }
+
+    public override string ToString()
+    {
+        return $"Hero Stats:: Health: {healthPoint}, Attack: {attackPoint}, Defense: {defencePoint}, Luck: {luck}, ClassText: {classText}";
+    }
 }
