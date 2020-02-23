@@ -149,6 +149,11 @@ public class UIManager : MonoBehaviour
 
     public void PromptReward(Card card)
     {
+        if (card is LootCard)
+        {
+            var lootedCard = card as LootCard;
+            lootedCard.AddStatToPlayer(); 
+        }
         promptReward.SetActive(true);
         rewardImage.sprite = card.CardSprite;
         promptRewardText.text = "You have received " + card.CardName + " !";

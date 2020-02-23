@@ -27,7 +27,6 @@ public class QRCodeMapper : MonoBehaviour
             case TileType.Loot:
                 LootCard lootedCard = myCard as LootCard;
                 UIManager.Instance.PromptReward(lootedCard);
-                lootedCard.AddStatToPlayer();
                 NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.Spell:

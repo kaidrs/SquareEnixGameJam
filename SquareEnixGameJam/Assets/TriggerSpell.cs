@@ -10,6 +10,10 @@ public class TriggerSpell : MonoBehaviour
         GameObject slot = transform.gameObject;
 
         int indexOfSlot = SpellActions.Instance.spellSlots.IndexOf(slot);
+        if (SpellActions.Instance.spellsLookupTable.Count == 0)
+        {
+            return;
+        }
         int spellNumber = SpellActions.Instance.spellsLookupTable[indexOfSlot];
         SpellCard card = CardManager.Instance.CallSpellCard(spellNumber);
         Debug.Log("TriggerThisSpell:: spellNumber " + spellNumber);
