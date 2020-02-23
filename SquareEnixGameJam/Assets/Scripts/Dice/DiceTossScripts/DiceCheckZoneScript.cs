@@ -39,6 +39,10 @@ public class DiceCheckZoneScript : MonoBehaviour
                         break;
                 }
             }
+            else
+            {
+             
+            }
         }
     }
 }
