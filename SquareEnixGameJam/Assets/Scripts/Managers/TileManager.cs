@@ -71,6 +71,7 @@ public class TileManager : MonoBehaviour
     PlayerManager PMi;
     DiceManager DMi;
     [SerializeField] GameObject panelBattle;
+    public bool battleAgainstPlayer;
 
     private void Awake()
     {
@@ -120,6 +121,7 @@ public class TileManager : MonoBehaviour
     /// 
     public void SetPlayerTilePosition(int diceValue)
     {
+        battleAgainstPlayer = false;
         if (!PlayerManager.Instance.IsCurrent)
         {
             return;
@@ -145,6 +147,7 @@ public class TileManager : MonoBehaviour
                 if (player.punName != PMi.ownerPlayer.punName && player.tilePosition == PMi.ownerPlayer.tilePosition)
                 {
                     pvpHeroForBattle = player;
+                    battleAgainstPlayer = true;
                     UIManager.Instance.PromptBattle(PMi.ownerPlayer.hero, player.hero);
                     return;
                 }
@@ -231,13 +234,7 @@ public class TileManager : MonoBehaviour
                 break;
             case TileType.MonsterBoss:
                 MonsterCard bossCard = CardManager.Instance.GetBossCard();
-                bool battleResult = BattleManager.Instance.PlayerVsMonster(PMi.ownerPlayer.hero, bossCard);
-                if (battleResult)
-                {
-                    LootCard lootedCard = CardManager.Instance.GetRandomLoot();
-                    UIManager.Instance.PromptReward(lootedCard);
-                }
-                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                UIManager.Instance.PromptBattle(PlayerManager.Instance.ownerPlayer.hero, bossCard);
                 break;
             default:
                 break;

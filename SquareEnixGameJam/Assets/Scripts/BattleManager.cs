@@ -52,7 +52,7 @@ public class BattleManager : MonoBehaviour
     {
     }
 
-    public bool PlayerVsPlayer(Hero playerOne, Hero playerTwo)
+    public IEnumerator PlayerVsPlayer(Hero playerOne, Hero playerTwo)
     {
         if(PMi.ownerPlayer.hero.spellCards != null)
         {
@@ -62,51 +62,52 @@ public class BattleManager : MonoBehaviour
         while (playerOne.healthPoint >= 0.0f && playerTwo.healthPoint >= 0.0f)
         {
             playerTwo.TakeDamageFromPlayer(playerOne);
-            playerOne.TakeDamageFromPlayer(playerTwo);
-            Debug.Log("Player one " + playerOne.healthPoint);
+            yield return new WaitForSeconds(0.5f);
+            UIManager.Instance.P2HpSlider.value = playerTwo.healthPoint;
             Debug.Log("Player two " + playerTwo.healthPoint);
-
-            UIManager.Instance.P1HpSlider.value = playerTwo.healthPoint;
-            UIManager.Instance.P2HpSlider.value = playerOne.healthPoint;
+            playerOne.TakeDamageFromPlayer(playerTwo);
+            yield return new WaitForSeconds(0.5f);
+            UIManager.Instance.P1HpSlider.value = playerOne.healthPoint;
+            Debug.Log("Player one " + playerOne.healthPoint);
         }
         //playerTwo.TakeDamageFromPlayer(playerOne);
         //playerOne.TakeDamageFromPlayer(playerTwo);
-        Debug.Log("Final Player one " + playerOne.healthPoint);
-        Debug.Log("Final Player two " + playerTwo.healthPoint);
-        if(playerOne.healthPoint > playerTwo.healthPoint)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        //Debug.Log("Final Player one " + playerOne.healthPoint);
+        //Debug.Log("Final Player two " + playerTwo.healthPoint);
+        bool result = playerOne.healthPoint > playerTwo.healthPoint;
+        Debug.Log(result);
+        // push player back;
     }
 
 
-    public bool PlayerVsMonster(Hero player, MonsterCard monster)
+    public IEnumerator PlayerVsMonster(Hero player, MonsterCard monster)
     {
         var monsterCardCopy = monster.GetCopy();
         while (player.healthPoint >= 0.0f && monsterCardCopy.Health >= 0.0f)
         {
-            player.TakeDamageFromMonster(monsterCardCopy);
+
             monsterCardCopy.TakeDamage(player);
-            Debug.Log("Player one " + player.healthPoint);
+            yield return new WaitForSeconds(0.5f);
             Debug.Log("Monster " + monsterCardCopy.Health);
+            player.TakeDamageFromMonster(monsterCardCopy);
+            yield return new WaitForSeconds(0.5f);
+            UIManager.Instance.P1HpSlider.value = player.healthPoint;
+            Debug.Log("Player one " + player.healthPoint);
+            UIManager.Instance.P2HpSlider.value = monster.Health;
+            yield return new WaitForSeconds(0.5f);
         }
         //playerTwo.TakeDamageFromPlayer(playerOne);
         //playerOne.TakeDamageFromPlayer(playerTwo);
-        Debug.Log("Final Player" + player.healthPoint);
-        Debug.Log("Final monster" + monsterCardCopy.Health);
+        //Debug.Log("Final Player" + player.healthPoint);
+        //Debug.Log("Final monster" + monsterCardCopy.Health);
+        bool result = player.healthPoint > monsterCardCopy.Health;
+        if (result)
+        {
+            LootCard rewardCardLooted = CardManager.Instance.GetRandomLoot();
+            UIManager.Instance.PromptReward(rewardCardLooted);
+        }
+        NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
 
-        if(player.healthPoint > monsterCardCopy.Health)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 
 

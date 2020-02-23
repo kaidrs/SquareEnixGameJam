@@ -24,6 +24,9 @@ public class UIManager : MonoBehaviour
     public Slider P1HpSlider { get => p1HpSlider; set => p1HpSlider = value; }
     public Slider P2HpSlider { get => p2HpSlider; set => p2HpSlider = value; }
     public Hero PlayerHolder { get => playerHolder; set => playerHolder = value; }
+
+    public  MonsterCard monsterHolder;
+
     public Hero PlayerHolder2 { get => playerHolder2; set => playerHolder2 = value; }
     #endregion
 
@@ -114,7 +117,8 @@ public class UIManager : MonoBehaviour
         BattleCanvas.GetComponent<Canvas>().enabled = false;
         p1SpriteObject.sprite = player.heroSprite;
         p2SpriteObject.sprite = monster.CardSprite;
-       
+        PlayerHolder = player;
+        monsterHolder = monster;
         //DoBattle();
     }
 
@@ -129,9 +133,14 @@ public class UIManager : MonoBehaviour
         inBattle = true;
         BattleCanvas.GetComponent<Canvas>().enabled = true;
         InventoryCanvas.SetActive(false);
-        BattleManager.Instance.PlayerVsPlayer(PlayerHolder, PlayerHolder2);
-        // BattleCanvas.SetActive(true);
-        //promptBattle.GetComponent<Animator>().Play("promptBattle");
+        if (TileManager.Instance.battleAgainstPlayer)
+        {
+            StartCoroutine(BattleManager.Instance.PlayerVsPlayer(PlayerHolder, PlayerHolder2));
+        }
+        else
+        {
+            StartCoroutine(BattleManager.Instance.PlayerVsMonster(PlayerHolder, monsterHolder));
+        }
     }
 
     public void DontDoBattle()
