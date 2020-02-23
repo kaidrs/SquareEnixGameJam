@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3df584f4c26f2468d24ed6a066709e, type: 3}
   m_Name: 104-Hatchet
   m_EditorClassIdentifier: 
-  cardName: Splitting Axe
+  cardName: Hatchet
   cardNumber: 104
   cardSprite: {fileID: 21300000, guid: 7dbc13b206034fd45b9d199c481a41fc, type: 3}
   attackStat: 1
   defenceStat: 0
+  luckStat: 0
