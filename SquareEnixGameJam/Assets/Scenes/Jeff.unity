@@ -514,6 +514,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3493893870401635332, guid: 89b159e01cbbcae4da4c7bd7caa0187b,
+        type: 3}
+      propertyPath: spellCardColletion.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493893870401635332, guid: 89b159e01cbbcae4da4c7bd7caa0187b,
+        type: 3}
+      propertyPath: spellCardColletion.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 13aa88d5bdd4549c5be1a55a624127c4,
+        type: 2}
+    - target: {fileID: 3493893870401635332, guid: 89b159e01cbbcae4da4c7bd7caa0187b,
+        type: 3}
+      propertyPath: spellCardColletion.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 02ececf48e0ae4a5aaa5ee27d25d9147,
+        type: 2}
     - target: {fileID: 8971226795204477985, guid: 89b159e01cbbcae4da4c7bd7caa0187b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4495,7 +4512,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014815845
 GameObject:
