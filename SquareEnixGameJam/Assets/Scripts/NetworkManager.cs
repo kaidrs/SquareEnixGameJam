@@ -203,6 +203,7 @@ public class NetworkManager : MonoBehaviour, IInRoomCallbacks
     [PunRPC]
     public void EndTurn()
     {
+        PlayerManager.Instance.GetOwnerFromList();
         GameManager.Instance.UpdateTurn();
     }
 
