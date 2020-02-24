@@ -56,54 +56,36 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6e6bf78e57e571a4c8b4e94568e38380, type: 2}
   - {fileID: 11400000, guid: 3b4b81914cd14b444ab1450e4b32d409, type: 2}
   - {fileID: 11400000, guid: 71477c8570ce3a040958aaea7c1bfb71, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 6ef009dd2c77515468dacf0f13db0416, type: 2}
+  - {fileID: 11400000, guid: 45f692b60b1230b42bbe4df6d45fe0ee, type: 2}
+  - {fileID: 11400000, guid: 8f41157f2b190104193a0d0907319eeb, type: 2}
+  - {fileID: 11400000, guid: ca8441419ab053e40b4a18da6cf2020b, type: 2}
+  - {fileID: 11400000, guid: ecc556aedaada5044bf673c1b1217665, type: 2}
+  - {fileID: 11400000, guid: e931ba38f9641cb41ac9a8ca2fceb9bc, type: 2}
+  - {fileID: 11400000, guid: 22b32cf37ff94a9439854141b43acb2f, type: 2}
+  - {fileID: 11400000, guid: b26bfded595062a48ae5c082dd4e8020, type: 2}
   monsterCardColletion:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 97be3b61882b0554abaec423d1939460, type: 2}
+  - {fileID: 11400000, guid: d144f15397804f3449f1f46a862584be, type: 2}
+  - {fileID: 11400000, guid: 555d8d8ec654cb64c84f939bc70512cb, type: 2}
+  - {fileID: 11400000, guid: b103fab33b9fd844cb8c9107a781b704, type: 2}
+  - {fileID: 11400000, guid: 977756cd44074314ba4b85901e2a02d6, type: 2}
+  - {fileID: 11400000, guid: 9cfce20a33d08bc42867606d8da90399, type: 2}
+  - {fileID: 11400000, guid: a184387608c224d428aeeeeb3f327969, type: 2}
+  - {fileID: 11400000, guid: f7a1c241d67cacc469697922095d80ca, type: 2}
+  - {fileID: 11400000, guid: 1b59b00cdcaf9e445bedcd6448320e84, type: 2}
+  - {fileID: 11400000, guid: 8c2e58ceb782c524aaba134dfbb0027c, type: 2}
+  - {fileID: 11400000, guid: a47f654a449f37a4ab6c86d6c1642ee9, type: 2}
+  - {fileID: 11400000, guid: 9ddbd19aec6ca9843900ed0bdfee1631, type: 2}
+  - {fileID: 11400000, guid: e103437d9b6d48b438613a061452366a, type: 2}
+  - {fileID: 11400000, guid: 0a91e39d6936a7547b11f89207b94478, type: 2}
+  - {fileID: 11400000, guid: eed2025e8acafdc4ca21fd7773056c9f, type: 2}
+  - {fileID: 11400000, guid: b53855a58915c5b4e93981f7a4caf93f, type: 2}
+  - {fileID: 11400000, guid: 774f794db8f01dd4594e1bea99d1271d, type: 2}
   spellCardColletion:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  eventCardColletion:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 7671b974056a1b14db884e68bd6ce3cd, type: 2}
+  - {fileID: 11400000, guid: bba4b5a193ba6d84fa29000240881147, type: 2}
+  - {fileID: 11400000, guid: 1a8eb20ad514d124e9677cc5d2b0117b, type: 2}
+  - {fileID: 11400000, guid: 13aa88d5bdd4549c5be1a55a624127c4, type: 2}
+  - {fileID: 11400000, guid: 02ececf48e0ae4a5aaa5ee27d25d9147, type: 2}
+  eventCardColletion: []

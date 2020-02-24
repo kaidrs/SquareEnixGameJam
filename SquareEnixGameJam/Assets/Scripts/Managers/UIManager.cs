@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,8 +20,18 @@ public class UIManager : MonoBehaviour
             return _instance;
         }
     }
+
+    public Slider P1HpSlider { get => p1HpSlider; set => p1HpSlider = value; }
+    public Slider P2HpSlider { get => p2HpSlider; set => p2HpSlider = value; }
+    public Hero PlayerHolder { get => playerHolder; set => playerHolder = value; }
+    public Hero PlayerHolder2 { get => playerHolder2; set => playerHolder2 = value; }
     #endregion
 
+
+    Hero playerHolder;
+    Hero playerHolder2;
+
+    [SerializeField] Camera QRCamera;
     [SerializeField] GameObject InventoryCanvas;
     [SerializeField] GameObject QRScanCanvas;
     [SerializeField] GameObject CameraPlane;
@@ -34,6 +45,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider p2HpSlider;//
     [SerializeField] Text p1Text;
     [SerializeField] Text p2Text;
+    public bool inBattle;
+
 
     [Header("PromptUI")]
     [SerializeField] GameObject promptCanvas;
@@ -51,6 +64,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text promptRewardText;
     //[SerializeField] Animator promptAnim;
 
+    [Header("Inventory Canvas")]
+    public Color yourTurn = Color.green;
+    public Color waitTurn = Color.red;
+    public Image currentTurnPanel;
+    public Button diceButton;
+
     public void ShowQR()
     {
         InventoryCanvas.SetActive(false);
@@ -63,17 +82,40 @@ public class UIManager : MonoBehaviour
         InventoryCanvas.SetActive(true);
         QRScanCanvas.SetActive(false);
         CameraPlane.SetActive(false);
+        QRCamera.enabled = true;
     }
 
 
 
     public void PromptBattle(Hero player, Hero player2)
     {
-        
+        promptBattle.SetActive(true);
         promptBattleText.text = "Encountered a Player! Choose to battle?";
         promptBattle.GetComponent<Animator>().Play("promptBattle");
         battleRetreatBtn.enabled = true;
-        //yes is clicked, dobattle(), or autobattle and return winning player if not enough time 
+        p1SpriteObject.sprite = player.heroSprite;
+        p2SpriteObject.sprite = player2.heroSprite;
+
+        PlayerHolder = player;
+        PlayerHolder2 = player2;
+
+
+        //DoBattle();
+
+
+    }
+
+    public void PromptBattle(Hero player, MonsterCard monster)
+    {
+        promptBattle.SetActive(true);
+        promptBattleText.text = "Encountered a Monster! Prepare to engage!";
+        promptBattle.GetComponent<Animator>().Play("promptBattle");
+        battleRetreatBtn.enabled = false;
+        BattleCanvas.GetComponent<Canvas>().enabled = false;
+        p1SpriteObject.sprite = player.heroSprite;
+        p2SpriteObject.sprite = monster.CardSprite;
+       
+        //DoBattle();
     }
 
     public void PromptBattleSpellBar(Hero myHero)
@@ -82,14 +124,19 @@ public class UIManager : MonoBehaviour
     }
 
     //Called later if time
-    public void DoBattle(Hero player, Hero player2)
+    public void DoBattle()
     {
-        p1SpriteObject.sprite = player.heroSprite;
-        p2SpriteObject.sprite = player2.heroSprite;
-
+        inBattle = true;
+        BattleCanvas.GetComponent<Canvas>().enabled = true;
         InventoryCanvas.SetActive(false);
-        BattleCanvas.SetActive(true);
+        BattleManager.Instance.PlayerVsPlayer(PlayerHolder, PlayerHolder2);
+        // BattleCanvas.SetActive(true);
         //promptBattle.GetComponent<Animator>().Play("promptBattle");
+    }
+
+    public void DontDoBattle()
+    {
+        TileManager.Instance.VerifyPlayerTilePosition();
     }
 
     public void PromptMessage(string msg)
@@ -102,9 +149,19 @@ public class UIManager : MonoBehaviour
 
     public void PromptReward(Card card)
     {
+        if (card is LootCard)
+        {
+            var lootedCard = card as LootCard;
+            lootedCard.AddStatToPlayer(); 
+        }
         promptReward.SetActive(true);
         rewardImage.sprite = card.CardSprite;
         promptRewardText.text = "You have received " + card.CardName + " !";
+        if (card is SpellCard)
+        {
+            SpellActions.Instance.AddSpellToUI(card as SpellCard);
+        }
+        InventoryManager.Instance.InitInventoryUI();
     }
 
     public void HidePrompts()
@@ -129,7 +186,8 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // PromptMessage("hi");
+        // PromptMessage("hi");
+        EnableTurn();
     }
 
     // Update is called once per frame
@@ -143,7 +201,41 @@ public class UIManager : MonoBehaviour
         InventoryCanvas.SetActive(false);
         QRScanCanvas.SetActive(false);
         CameraPlane.SetActive(false);
-        promptCanvas.SetActive(false);
+        HidePrompts();
+        QRCamera.enabled = false;
         DiceManager.Instance.diceScript.RollDice();
     }
+
+    public void PromptGoQR()
+    {
+        Debug.Log("we cool");
+        QRDecodeTest.Instance.Play();
+    }
+
+    public void EnableTurn()
+    {
+        bool myTurn = PlayerManager.Instance.IsCurrent;
+        if (myTurn)
+        {
+            currentTurnPanel.color = yourTurn;
+            diceButton.interactable = true;
+            foreach (var spellSlot in SpellActions.Instance.spellSlots)
+            {
+                spellSlot.GetComponent<Button>().interactable = true;
+            }
+            Debug.Log("Your Turn");
+        }
+        else
+        {
+            currentTurnPanel.color = waitTurn;
+            diceButton.interactable = false;
+            foreach (var spellSlot in SpellActions.Instance.spellSlots)
+            {
+                spellSlot.GetComponent<Button>().interactable = false;
+            }
+            Debug.Log("Wait Turn");
+        }
+    }
+
+ 
 }

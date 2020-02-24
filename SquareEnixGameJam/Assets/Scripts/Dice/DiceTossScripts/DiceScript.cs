@@ -41,6 +41,7 @@ public class DiceScript : MonoBehaviour
     {
         if (!isRolling)
         {
+            DiceManager.Instance.isSet = false;
             rigidbody.useGravity = true;
             Invoke("TextRoll", 0.1f);
             isRolling = true;
@@ -58,6 +59,7 @@ public class DiceScript : MonoBehaviour
     public void ResetWaitPosition()
     {
         rigidbody.useGravity = false;
+        isRolling = false;
         this.transform.position = ogPosition;
         rigidbody.velocity = Vector3.zero;
         rigidbody.angularVelocity = Vector3.zero;

@@ -20,6 +20,7 @@ public class BattleManager : MonoBehaviour
     }
     #endregion
 
+
     PlayerManager PMi;
     //[SerializeField] 
 
@@ -31,13 +32,16 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Hero thief = new Thief(100.0f, 5, 5, 25, "Thief");       missing heroSprite if want to use these for test
-        //Hero warrior = new Warrior(100.0f, 25, 5, 5, "Warrior");
-        MonsterCard monster = ScriptableObject.CreateInstance<MonsterCard>();
-        monster.Attack = 5;
-        monster.Defence = 2;
-        monster.Health = 100.0f;
+        //Hero thief = new Thief(100.0f, 5, 5, 25, "Thief", HeroManager.Instance.thiefSprite);
+        //Hero warrior = new Warrior(100.0f, 25, 5, 5, "Warrior", HeroManager.Instance.warriorSprite);
+        //MonsterCard monster = ScriptableObject.CreateInstance<MonsterCard>();
+        //monster.Attack = 5;
+        //monster.Defence = 2;
+        //monster.Health = 100.0f;
 
+
+        //UIManager.Instance.inBattle = true;
+        //UIManager.Instance.PromptBattle(thief, warrior);
        // PlayerVsPlayer(thief, warrior);
        // PlayerVsMonster(thief, monster);
 
@@ -46,7 +50,6 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public bool PlayerVsPlayer(Hero playerOne, Hero playerTwo)
@@ -55,12 +58,16 @@ public class BattleManager : MonoBehaviour
         {
             //Do you wanna use spell panel
         }
+
         while (playerOne.healthPoint >= 0.0f && playerTwo.healthPoint >= 0.0f)
         {
             playerTwo.TakeDamageFromPlayer(playerOne);
             playerOne.TakeDamageFromPlayer(playerTwo);
             Debug.Log("Player one " + playerOne.healthPoint);
             Debug.Log("Player two " + playerTwo.healthPoint);
+
+            UIManager.Instance.P1HpSlider.value = playerTwo.healthPoint;
+            UIManager.Instance.P2HpSlider.value = playerOne.healthPoint;
         }
         //playerTwo.TakeDamageFromPlayer(playerOne);
         //playerOne.TakeDamageFromPlayer(playerTwo);
@@ -79,19 +86,20 @@ public class BattleManager : MonoBehaviour
 
     public bool PlayerVsMonster(Hero player, MonsterCard monster)
     {
-        while (player.healthPoint >= 0.0f && monster.Health >= 0.0f)
+        var monsterCardCopy = monster.GetCopy();
+        while (player.healthPoint >= 0.0f && monsterCardCopy.Health >= 0.0f)
         {
-            player.TakeDamageFromMonster(monster);
-            monster.TakeDamage(player);
+            player.TakeDamageFromMonster(monsterCardCopy);
+            monsterCardCopy.TakeDamage(player);
             Debug.Log("Player one " + player.healthPoint);
-            Debug.Log("Monster " + monster.Health);
+            Debug.Log("Monster " + monsterCardCopy.Health);
         }
         //playerTwo.TakeDamageFromPlayer(playerOne);
         //playerOne.TakeDamageFromPlayer(playerTwo);
         Debug.Log("Final Player" + player.healthPoint);
-        Debug.Log("Final monster" + monster.Health);
+        Debug.Log("Final monster" + monsterCardCopy.Health);
 
-        if(player.healthPoint > monster.Health)
+        if(player.healthPoint > monsterCardCopy.Health)
         {
             return true;
         }

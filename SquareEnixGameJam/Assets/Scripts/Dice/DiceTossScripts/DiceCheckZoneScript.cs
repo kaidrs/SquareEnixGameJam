@@ -24,6 +24,7 @@ public class DiceCheckZoneScript : MonoBehaviour
         {
             if (collider != null && diceScript.isRolling && collider.gameObject.tag == "DiceZone")
             {
+
                 switch (collider.gameObject.name)
                 {
                     case "Side1":

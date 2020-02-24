@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6de6ee95e7ec94ba339410d789868c, type: 3}
   m_Name: 125-WereWolf
   m_EditorClassIdentifier: 
-  cardName: Werewolf
-  cardNumber: 126
-  cardSprite: {fileID: 0}
+  cardName: Wolf
+  cardNumber: 125
+  cardSprite: {fileID: -7812895251157414391, guid: e19c3aa64beab334baa1e73f1eb32c22,
+    type: 3}
   health: 10
   defence: 3
   attack: 6

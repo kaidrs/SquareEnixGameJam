@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6de6ee95e7ec94ba339410d789868c, type: 3}
+  m_Name: 140-Photon
+  m_EditorClassIdentifier: 
+  cardName: Photon
+  cardNumber: 140
+  cardSprite: {fileID: -2264124212512966406, guid: 733d3563093ef88498870521ce7dfe5a,
+    type: 3}
+  health: 200
+  defence: 100
+  attack: 100

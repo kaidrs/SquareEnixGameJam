@@ -68,13 +68,21 @@ public class TileManager : MonoBehaviour
     private Player currentActivePlayer;
     private int currentTurn = 1;
     public List<TileType> board;
+    PlayerManager PMi;
+    DiceManager DMi;
+    [SerializeField] GameObject panelBattle;
 
+    private void Awake()
+    {
+        PMi = PlayerManager.Instance;
+        DMi = DiceManager.Instance;
+    }
 
     public void Start()
     {
         board = new List<TileType>();
         Debug.Log($"Set {zones.Count} Zones in Board");
-
+      //  TestBattle();
 
         foreach (var zone in zones)
         {
@@ -86,6 +94,10 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    public TileType GetMyCurrentTile(int tilePosition)
+    {
+        return board[tilePosition];
+    }
     //public void RetrievePlayerList()
     //{
     //    if (GameManager.Instance.Players != null)
@@ -105,6 +117,7 @@ public class TileManager : MonoBehaviour
     /// Moves the player tile location according to the dice value
     /// </summary>
     /// <param name="diceValue"></param>
+    /// 
     public void SetPlayerTilePosition(int diceValue)
     {
         if (!PlayerManager.Instance.IsCurrent)
@@ -122,10 +135,50 @@ public class TileManager : MonoBehaviour
         {
             PlayerManager.Instance.ownerPlayer.tilePosition = nextPosition;
         }
-
         UpdatePlayerZone();
         PlayerManager.Instance.BroadcastUpdate();
+        if (GetMyCurrentTile(PMi.ownerPlayer.tilePosition)!= TileType.Checkpoint)
+        {
+            Player pvpHeroForBattle;
+            foreach (var player in PMi.allPlayers)
+            {
+                if (player.punName != PMi.ownerPlayer.punName && player.tilePosition == PMi.ownerPlayer.tilePosition)
+                {
+                    pvpHeroForBattle = player;
+                    UIManager.Instance.PromptBattle(PMi.ownerPlayer.hero, player.hero);
+                    return;
+                }
+            } 
+        }
+        // call check tile postion and do aciton based postion
+        UIManager.Instance.PromptMessage($"Move your peon by {diceValue}.");
     }
+
+
+    public void TestBattle()
+    {
+        PMi.allPlayers.Add(PlayerManager.Instance.ownerPlayer);
+        PMi.allPlayers.Add(new Player("allo", "bye"));
+        
+
+        PMi.ownerPlayer.tilePosition += 4;
+        for (int i = 0; i < PMi.allPlayers.Count; i++)
+        {
+            //Debug.Log(PMi.allPlayers[i].tilePosition);
+            if (PMi.ownerPlayer.tilePosition == PMi.allPlayers[i].tilePosition)
+            {
+                Debug.Log(PMi.ownerPlayer.tilePosition);
+                Debug.Log(PMi.allPlayers[i].tilePosition);
+                UIManager.Instance.PromptBattle(PMi.ownerPlayer.hero, PMi.allPlayers[i].hero);
+            }
+        }
+        // PMi.ownerPlayer.tilePosition = 6;
+        //UpdatePlayerZone();
+        //PlayerManager.Instance.BroadcastUpdate();
+    }
+
+
+
 
     public void UpdatePlayerZone()
     {
@@ -149,6 +202,45 @@ public class TileManager : MonoBehaviour
 
     public void VerifyPlayerTilePosition()
     {
+        switch (GetMyCurrentTile(PMi.ownerPlayer.tilePosition))
+        {
+            case TileType.None:
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
 
+                break;
+            case TileType.Event:
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                break;
+            case TileType.Loot:
+                ///get card number QR SHOW QR PROMT!!!
+                //QRPROMT()
+                UIManager.Instance.PromptGoQR();
+                break;
+            case TileType.Spell:
+                ///get card number QR SHOW QR PROMT!!!
+                //int cardmnumber = QRPROMT()
+                UIManager.Instance.PromptGoQR();
+                break;
+            case TileType.Monster:
+                ///get card number QR SHOW QR PROMT!!!
+                UIManager.Instance.PromptGoQR();
+                break;
+            case TileType.Checkpoint:
+                // Nothing prompt relax;
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                break;
+            case TileType.MonsterBoss:
+                MonsterCard bossCard = CardManager.Instance.GetBossCard();
+                bool battleResult = BattleManager.Instance.PlayerVsMonster(PMi.ownerPlayer.hero, bossCard);
+                if (battleResult)
+                {
+                    LootCard lootedCard = CardManager.Instance.GetRandomLoot();
+                    UIManager.Instance.PromptReward(lootedCard);
+                }
+                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                break;
+            default:
+                break;
+        }
     }
 }

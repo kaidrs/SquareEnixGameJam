@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    private Hero hero; //change later
 
     // [SerializeField] Animator spriteAnimator;
     // [SerializeField] Image heroSprite;
@@ -18,39 +17,51 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] Text heroAttackText;
     [SerializeField] Text heroDefenseText;
     [SerializeField] Text heroLuckText;
-   // [SerializeField] Text heroSpellText;
 
-  //  [SerializeField] Image heroWeaponImage;
-   // [SerializeField] Image heroDefenseImage;
-   // [SerializeField] Image heroLuckImage;
+    // [SerializeField] Text heroSpellText;
+
+    //  [SerializeField] Image heroWeaponImage;
+    // [SerializeField] Image heroDefenseImage;
+    // [SerializeField] Image heroLuckImage;
     //[SerializeField] Image heroSpellImage;
 
+    #region Singleton
+    private static InventoryManager _instance = null;
+
+    public static InventoryManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<InventoryManager>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
 
 
     // Start is called before the first frame update
     void Start()
     {
-
-        if(PlayerManager.Instance != null)
+        if (PlayerManager.Instance != null)
         {
-            hero = PlayerManager.Instance.ownerPlayer.hero;
             InitInventoryUI();
         }
-     
     }
 
 
     public void InitInventoryUI()
     {
-        //heroNameText.text = hero.name;
-        
-        heroClassText.text = hero.classText;
-        UpdateSprite(hero.classText);
-        heroAttackText.text = hero.attackPoint.ToString();
-        heroDefenseText.text = hero.defencePoint.ToString();
-        heroLuckText.text = hero.luck.ToString();
+        var myHero = PlayerManager.Instance.ownerPlayer.hero;
+        heroNameText.text = PlayerManager.Instance.ownerPlayer.displayName;
+        heroClassText.text = myHero.classText;
+        UpdateSprite(myHero.classText);
+        heroAttackText.text = myHero.attackPoint.ToString();
+        heroDefenseText.text = myHero.defencePoint.ToString();
+        heroLuckText.text = myHero.luck.ToString();
         //spellcard name?
-
     }
 
 
@@ -71,11 +82,5 @@ public class InventoryManager : MonoBehaviour
             paladinObject.SetActive(true);
             Debug.Log("switch to paladin");
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

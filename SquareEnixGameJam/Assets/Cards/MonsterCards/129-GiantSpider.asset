@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6de6ee95e7ec94ba339410d789868c, type: 3}
+  m_Name: 129-GiantSpider
+  m_EditorClassIdentifier: 
+  cardName: Giant Spider
+  cardNumber: 129
+  cardSprite: {fileID: 8103384103951996000, guid: 53916397f1ddd7542978cc16cfe12e92,
+    type: 3}
+  health: 3
+  defence: 1
+  attack: 6

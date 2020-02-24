@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Holy Bolt
   cardNumber: 143
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 21300000, guid: a6fcc101db1f96e4f9341e2e81f6b314, type: 3}
   damage: 2
   heal: 2

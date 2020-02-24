@@ -9,7 +9,7 @@ public class CardManager : MonoBehaviour
     #region Singleton
 
     private static CardManager instance = null;
-  
+
     public static CardManager Instance
     {
         get
@@ -32,6 +32,12 @@ public class CardManager : MonoBehaviour
     [SerializeField] private SpellCard[] spellCardColletion;
     [SerializeField] private EventCard[] eventCardColletion;
 
+    [SerializeField] private Dictionary<int, LootCard> lootCardDict = new Dictionary<int, LootCard>();
+    public LootCard GetRandomLoot()
+    {
+        return lootCardColletion[Random.Range(0, lootCardColletion.Length)];
+    }
+
 
     private void Start()
     {
@@ -40,6 +46,16 @@ public class CardManager : MonoBehaviour
         cardColletion.Add(monsterCardColletion);
         cardColletion.Add(spellCardColletion);
         cardColletion.Add(eventCardColletion);
+
+    }
+
+    private void PopulateLootDict()
+    {
+        foreach (var lootCard in lootCardColletion)
+        {
+            lootCardDict.Add(lootCard.CardNumber, lootCard);
+            Debug.Log(lootCard.CardName);
+        }
     }
 
     public LootCard CallLootCard(int cardNumber)
@@ -48,6 +64,7 @@ public class CardManager : MonoBehaviour
         {
             if (lootCardColletion[i].CardNumber == cardNumber)
             {
+                Debug.Log("Call loot card found card: " + lootCardColletion[i].CardName);
                 return lootCardColletion[i];
             }
         }
@@ -106,6 +123,55 @@ public class CardManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public Card CallCard(int cardNumber, List<Card> collection)
+    {
+        foreach (var card in collection)
+        {
+            if (card.CardNumber == cardNumber)
+            {
+                return card;
+            }
+        }
+
+        return null;
+    }
+
+    public MonsterCard GetBossCard()
+    {
+        switch (PlayerManager.Instance.ownerPlayer.zone)
+        {
+            case ZoneType.StarterZone:
+                foreach (var monster in monsterCardColletion)
+                {
+                    if (monster.zone == ZoneType.StarterZone && monster.bossCard)
+                    {
+                        return monster;
+                    }
+                }
+                break;
+            case ZoneType.MiddleZone:
+                foreach (var monster in monsterCardColletion)
+                {
+                    if (monster.zone == ZoneType.MiddleZone && monster.bossCard)
+                    {
+                        return monster;
+                    }
+                }
+                break;
+            case ZoneType.FinalZone:
+                foreach (var monster in monsterCardColletion)
+                {
+                    if (monster.zone == ZoneType.FinalZone && monster.bossCard)
+                    {
+                        return monster;
+                    }
+                }
+                break;
+        }
+        return null;
+
     }
 
 }

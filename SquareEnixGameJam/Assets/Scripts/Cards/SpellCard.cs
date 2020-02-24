@@ -23,6 +23,8 @@ public class SpellCard : Card
 		{
 			otherHero.healthPoint -= damage;
 		}
+
+        Debug.Log("hero health point: " + hero.healthPoint);
 	}
 
 	public override string ToString()

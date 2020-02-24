@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: 127-Golem
   m_EditorClassIdentifier: 
   cardName: Golem
-  cardNumber: 0
-  cardSprite: {fileID: 0}
+  cardNumber: 127
+  cardSprite: {fileID: -675548502526096908, guid: 3df4d2df444aa2041af2eeee98f7b3d5,
+    type: 3}
   health: 15
   defence: 12
   attack: 1

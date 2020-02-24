@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Rojeff
   cardNumber: 133
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 6340324888440879112, guid: c934dc4333e451f4183fb4118f52f418,
+    type: 3}
   health: 10
   defence: 1
   attack: 1

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Giant
   cardNumber: 139
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: -104318093193691585, guid: 8b3ae9a929cc3994a938b4d0ba62d397,
+    type: 3}
   health: 100
   defence: 100
   attack: 40
