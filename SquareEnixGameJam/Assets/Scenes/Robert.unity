@@ -152,11 +152,11 @@ RectTransform:
   m_Father: {fileID: 1051797324}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -9}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 180.6}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &15378721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,11 +491,11 @@ RectTransform:
   m_Father: {fileID: 308686607}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -9}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 180.6}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &216719893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,8 +574,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -843}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 420.44992, y: -929.1}
+  m_SizeDelta: {x: 200, y: 372.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &308686608
 MonoBehaviour:
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2053133172}
+      - m_Target: {fileID: 1451917670}
         m_MethodName: PaladinChoice
         m_Mode: 1
         m_Arguments:
@@ -912,7 +912,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2053133172}
+      - m_Target: {fileID: 1451917670}
         m_MethodName: BackToSelection
         m_Mode: 1
         m_Arguments:
@@ -1224,8 +1224,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 635.55005, y: -843}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 656, y: -929.1}
+  m_SizeDelta: {x: 200, y: 372.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1051797325
 MonoBehaviour:
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2053133172}
+      - m_Target: {fileID: 1451917670}
         m_MethodName: ThiefChoice
         m_Mode: 1
         m_Arguments:
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2053133172}
+      - m_Target: {fileID: 1451917670}
         m_MethodName: PickClass
         m_Mode: 1
         m_Arguments:
@@ -1632,6 +1632,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1451917669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1451917671}
+  - component: {fileID: 1451917670}
+  m_Layer: 0
+  m_Name: HeroManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1451917670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451917669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9e5d0c08eebdb49808f1224aae8164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warriorSprite: {fileID: -4806895554902726311, guid: f127514ab4b855f4ab1dd7994dff091e,
+    type: 3}
+  thiefSprite: {fileID: 6135241366046143507, guid: f127514ab4b855f4ab1dd7994dff091e,
+    type: 3}
+  paladinSprite: {fileID: 5844441815044378561, guid: f127514ab4b855f4ab1dd7994dff091e,
+    type: 3}
+  spriteList:
+  - {fileID: -4806895554902726311, guid: f127514ab4b855f4ab1dd7994dff091e, type: 3}
+  - {fileID: 6135241366046143507, guid: f127514ab4b855f4ab1dd7994dff091e, type: 3}
+  - {fileID: 5844441815044378561, guid: f127514ab4b855f4ab1dd7994dff091e, type: 3}
+  characterInfo: {fileID: 1492322762}
+  panelInfo: {fileID: 1395751491}
+  characterNumber: 0
+  panelWaitting: {fileID: 179840913}
+--- !u!4 &1451917671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451917669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 65.25, y: 319.875, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1492322760
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,11 +1875,11 @@ RectTransform:
   m_Father: {fileID: 2062772814}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -9}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 180.6}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1894101698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1941,7 +1998,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2053133171}
   - component: {fileID: 2053133170}
-  - component: {fileID: 2053133172}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2006,25 +2062,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2053133172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053133168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e9e5d0c08eebdb49808f1224aae8164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  warriorSprite: {fileID: 0}
-  thiefSprite: {fileID: 0}
-  paladinSprite: {fileID: 0}
-  characterInfo: {fileID: 1492322762}
-  panelInfo: {fileID: 1395751491}
-  characterNumber: 0
-  panelWaitting: {fileID: 179840913}
 --- !u!1 &2062772813
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,8 +2098,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 164.45001, y: -843}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 184.89995, y: -929.1}
+  m_SizeDelta: {x: 200, y: 372.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2062772815
 MonoBehaviour:
@@ -2107,7 +2144,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2053133172}
+      - m_Target: {fileID: 1451917670}
         m_MethodName: WarriorChoice
         m_Mode: 1
         m_Arguments:

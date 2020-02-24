@@ -71,6 +71,7 @@ public class TileManager : MonoBehaviour
     PlayerManager PMi;
     DiceManager DMi;
     [SerializeField] GameObject panelBattle;
+    public bool battleAgainstPlayer;
 
     private void Awake()
     {
@@ -120,20 +121,31 @@ public class TileManager : MonoBehaviour
     /// 
     public void SetPlayerTilePosition(int diceValue)
     {
+
+        battleAgainstPlayer = false;
         if (!PlayerManager.Instance.IsCurrent)
         {
             return;
         }
-        int nextPosition = PlayerManager.Instance.ownerPlayer.tilePosition + diceValue;
-        int lastTile = board.Count - 1;
+        int addMove = 1;
+        while (addMove <= diceValue)
+        {
+            int nextPosition = PlayerManager.Instance.ownerPlayer.tilePosition + addMove;
+            int lastTile = board.Count - 1;
 
-        if (nextPosition > (lastTile - PlayerManager.Instance.ownerPlayer.tilePosition))
-        {
-            PlayerManager.Instance.ownerPlayer.tilePosition = lastTile;
-        }
-        else
-        {
-            PlayerManager.Instance.ownerPlayer.tilePosition = nextPosition;
+            if (nextPosition > (lastTile - PlayerManager.Instance.ownerPlayer.tilePosition))
+            {
+                PlayerManager.Instance.ownerPlayer.tilePosition = lastTile;
+            }
+            else
+            {
+                PlayerManager.Instance.ownerPlayer.tilePosition = nextPosition;
+            }
+            if (GetMyCurrentTile(PlayerManager.Instance.ownerPlayer.tilePosition) == TileType.MonsterBoss)
+            {
+                break;
+            }
+            addMove++;
         }
         UpdatePlayerZone();
         PlayerManager.Instance.BroadcastUpdate();
@@ -145,6 +157,7 @@ public class TileManager : MonoBehaviour
                 if (player.punName != PMi.ownerPlayer.punName && player.tilePosition == PMi.ownerPlayer.tilePosition)
                 {
                     pvpHeroForBattle = player;
+                    battleAgainstPlayer = true;
                     UIManager.Instance.PromptBattle(PMi.ownerPlayer.hero, player.hero);
                     return;
                 }
@@ -222,7 +235,7 @@ public class TileManager : MonoBehaviour
                 UIManager.Instance.PromptGoQR();
                 break;
             case TileType.Monster:
-                ///get card number QR SHOW QR PROMT!!!
+                ///get card number QR SHOW QR PROMT!!!S
                 UIManager.Instance.PromptGoQR();
                 break;
             case TileType.Checkpoint:
@@ -231,13 +244,7 @@ public class TileManager : MonoBehaviour
                 break;
             case TileType.MonsterBoss:
                 MonsterCard bossCard = CardManager.Instance.GetBossCard();
-                bool battleResult = BattleManager.Instance.PlayerVsMonster(PMi.ownerPlayer.hero, bossCard);
-                if (battleResult)
-                {
-                    LootCard lootedCard = CardManager.Instance.GetRandomLoot();
-                    UIManager.Instance.PromptReward(lootedCard);
-                }
-                NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
+                UIManager.Instance.PromptBattle(PlayerManager.Instance.ownerPlayer.hero, bossCard);
                 break;
             default:
                 break;

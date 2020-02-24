@@ -10,6 +10,8 @@ public class HeroManager : MonoBehaviour
     [SerializeField] public Sprite thiefSprite;
     [SerializeField] public Sprite paladinSprite;
 
+    public List<Sprite> spriteList;
+
     [SerializeField] Text characterInfo;
     [SerializeField] GameObject panelInfo;
     private bool isPanelOn = false;
@@ -36,12 +38,25 @@ public class HeroManager : MonoBehaviour
     private void Awake()
     {
         PMi = PlayerManager.Instance;
+        
+        #region Dont Destroy On Load
+        var objects = FindObjectsOfType(this.GetType());
+        if (objects.Length > 1)
+        {
+            DestroyImmediate(this.gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+        #endregion
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-       // PlayerManager.Instance.ownerPlayer.hero = new Hero();
+
     }
 
     // Update is called once per frame
@@ -55,20 +70,20 @@ public class HeroManager : MonoBehaviour
 
     public Hero CreateWarrior()
     {
-        Hero warrior = new Warrior(100.0f, 10, 5, 5,"Warrior", warriorSprite);
+        Hero warrior = new Warrior(100.0f, 10, 5, 5,"Warrior", 0);
         return warrior;
     }
 
     public Hero CreatePaladin()
     {
-        Hero paladin = new Paladin(100.0f, 5, 10, 5,"Paladin", paladinSprite);
+        Hero paladin = new Paladin(100.0f, 5, 10, 5,"Paladin", 2);
         //paladin.ClassText = "Paladin";
         return paladin;
     }
 
     public Hero CreateThief()
     {
-        Hero thief = new Thief(100.0f,5,5,10,"Thief", thiefSprite);
+        Hero thief = new Thief(100.0f,5,5,10,"Thief", 1);
         //thief.ClassText = "Thief";
         return thief;
     }

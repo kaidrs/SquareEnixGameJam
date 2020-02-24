@@ -36,6 +36,7 @@ public class MonsterCard : Card
         MonsterCard newCard = new MonsterCard(attack, defence, health);
         newCard.CardName = this.CardName;
         newCard.CardNumber = this.CardNumber;
+        newCard.CardSprite = this.CardSprite;
         Debug.Log(newCard);
         return newCard;
     }

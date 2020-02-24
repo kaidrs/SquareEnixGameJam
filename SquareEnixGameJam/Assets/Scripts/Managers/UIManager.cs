@@ -24,6 +24,9 @@ public class UIManager : MonoBehaviour
     public Slider P1HpSlider { get => p1HpSlider; set => p1HpSlider = value; }
     public Slider P2HpSlider { get => p2HpSlider; set => p2HpSlider = value; }
     public Hero PlayerHolder { get => playerHolder; set => playerHolder = value; }
+
+    public  MonsterCard monsterHolder;
+
     public Hero PlayerHolder2 { get => playerHolder2; set => playerHolder2 = value; }
     #endregion
 
@@ -92,9 +95,9 @@ public class UIManager : MonoBehaviour
         promptBattle.SetActive(true);
         promptBattleText.text = "Encountered a Player! Choose to battle?";
         promptBattle.GetComponent<Animator>().Play("promptBattle");
-        battleRetreatBtn.enabled = true;
-        p1SpriteObject.sprite = player.heroSprite;
-        p2SpriteObject.sprite = player2.heroSprite;
+        battleRetreatBtn.interactable = true;
+        p1SpriteObject.sprite = HeroManager.Instance.spriteList[player.heroSprite];
+        p2SpriteObject.sprite = HeroManager.Instance.spriteList[player2.heroSprite];
 
         PlayerHolder = player;
         PlayerHolder2 = player2;
@@ -110,11 +113,12 @@ public class UIManager : MonoBehaviour
         promptBattle.SetActive(true);
         promptBattleText.text = "Encountered a Monster! Prepare to engage!";
         promptBattle.GetComponent<Animator>().Play("promptBattle");
-        battleRetreatBtn.enabled = false;
+        battleRetreatBtn.interactable = false;
         BattleCanvas.GetComponent<Canvas>().enabled = false;
-        p1SpriteObject.sprite = player.heroSprite;
+        p1SpriteObject.sprite = HeroManager.Instance.spriteList[player.heroSprite];
         p2SpriteObject.sprite = monster.CardSprite;
-       
+        PlayerHolder = player;
+        monsterHolder = monster;
         //DoBattle();
     }
 
@@ -127,11 +131,17 @@ public class UIManager : MonoBehaviour
     public void DoBattle()
     {
         inBattle = true;
-        BattleCanvas.GetComponent<Canvas>().enabled = true;
         InventoryCanvas.SetActive(false);
-        BattleManager.Instance.PlayerVsPlayer(PlayerHolder, PlayerHolder2);
-        // BattleCanvas.SetActive(true);
-        //promptBattle.GetComponent<Animator>().Play("promptBattle");
+        HidePrompts();
+        BattleCanvas.GetComponent<Canvas>().enabled = true;
+        if (TileManager.Instance.battleAgainstPlayer)
+        {
+            StartCoroutine(BattleManager.Instance.PlayerVsPlayer(PlayerHolder, PlayerHolder2));
+        }
+        else
+        {
+            StartCoroutine(BattleManager.Instance.PlayerVsMonster(PlayerHolder, monsterHolder));
+        }
     }
 
     public void DontDoBattle()
@@ -169,7 +179,7 @@ public class UIManager : MonoBehaviour
         promptReward.SetActive(false);
         promptMessage.SetActive(false);
         promptBattle.SetActive(false);
-        BattleCanvas.SetActive(false);
+        BattleCanvas.GetComponent<Canvas>().enabled = false;
 
     }
 
