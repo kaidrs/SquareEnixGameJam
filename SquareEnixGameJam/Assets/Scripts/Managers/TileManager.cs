@@ -112,7 +112,7 @@ public class TileManager : MonoBehaviour
     /// 
     public void SetPlayerTilePosition(int diceValue)
     {
-        string message = $"Move your peon by {diceValue}.";
+        string message = $"Move your pawn by {diceValue}.";
         battleAgainstPlayer = false;
         if (!PlayerManager.Instance.IsCurrent)
         {
@@ -137,7 +137,7 @@ public class TileManager : MonoBehaviour
             UpdatePlayerZone();
             if (GetMyCurrentTile(PlayerManager.Instance.ownerPlayer.tilePosition) == TileType.MonsterBoss)
             {
-                message = $"Move your peon by {totalMoves}, you have reached the boss of the {PlayerManager.Instance.ownerPlayer.zone}.";
+                message = $"Move your pawn by {totalMoves}, you have reached the boss of the {PlayerManager.Instance.ownerPlayer.zone}.";
                 break;
             }
             addMove++;
