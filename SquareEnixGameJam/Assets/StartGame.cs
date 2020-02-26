@@ -10,5 +10,4 @@ public class StartGame : MonoBehaviour
         NetworkManager.Instance.SortPlayers();
         GameManager.Instance.StartGame();
     }
-
 }

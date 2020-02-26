@@ -82,6 +82,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eed2025e8acafdc4ca21fd7773056c9f, type: 2}
   - {fileID: 11400000, guid: b53855a58915c5b4e93981f7a4caf93f, type: 2}
   - {fileID: 11400000, guid: 774f794db8f01dd4594e1bea99d1271d, type: 2}
+  - {fileID: 11400000, guid: 9fbbd4b5236e47c419ee19aba88d4d7d, type: 2}
+  - {fileID: 11400000, guid: e5259e2d5a4fcaf42b57abfdf66a558f, type: 2}
+  - {fileID: 11400000, guid: d74118b0bdbe83d49838d4f78d21c6ad, type: 2}
   spellCardColletion:
   - {fileID: 11400000, guid: 7671b974056a1b14db884e68bd6ce3cd, type: 2}
   - {fileID: 11400000, guid: bba4b5a193ba6d84fa29000240881147, type: 2}

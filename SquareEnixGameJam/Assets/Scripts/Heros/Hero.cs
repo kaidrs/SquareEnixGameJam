@@ -14,6 +14,7 @@ public class Hero
     public int luck;
     public string classText;
     public List<int> spellCards;
+    public string playerName;
 
     //public float healthPoint { get => healthPoint; set => healthPoint = value; }
     //public int attackPoint { get => attackPoint; set => attackPoint = value; }
@@ -31,12 +32,7 @@ public class Hero
         this.classText = classText;
         this.heroSprite = heroSprite;
     }
-
-    public Hero()
-    {
-
-    }
-
+    
     public void TakeDamageFromPlayer(Hero hero)
     {
         int dodgeChange = Random.Range(0, 100);

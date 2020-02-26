@@ -109,19 +109,21 @@ public class HeroManager : MonoBehaviour
     public void PickWarrior()
     {
         PMi.ownerPlayer.hero = CreateWarrior();
-      // BattleManager.Instance.PlayerVsPlayer(PMi.ownerPlayer.hero, PMi.ownerPlayer.hero);
+        PMi.ownerPlayer.hero.playerName = PMi.ownerPlayer.displayName;
         GameScene();
     }
 
     public void PickPaladin()
     {
         PMi.ownerPlayer.hero = CreatePaladin();
+        PMi.ownerPlayer.hero.playerName = PMi.ownerPlayer.displayName;
         GameScene();
     }
 
     public void PickThief()
     {
         PMi.ownerPlayer.hero = CreateThief();
+        PMi.ownerPlayer.hero.playerName = PMi.ownerPlayer.displayName;
         GameScene();
     }
 

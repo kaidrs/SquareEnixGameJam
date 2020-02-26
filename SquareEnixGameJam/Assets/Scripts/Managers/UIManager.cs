@@ -98,7 +98,8 @@ public class UIManager : MonoBehaviour
         battleRetreatBtn.interactable = true;
         p1SpriteObject.sprite = HeroManager.Instance.spriteList[player.heroSprite];
         p2SpriteObject.sprite = HeroManager.Instance.spriteList[player2.heroSprite];
-
+        p1Text.text = player.playerName;
+        p2Text.text = player2.playerName;
         PlayerHolder = player;
         PlayerHolder2 = player2;
 
@@ -117,6 +118,8 @@ public class UIManager : MonoBehaviour
         BattleCanvas.GetComponent<Canvas>().enabled = false;
         p1SpriteObject.sprite = HeroManager.Instance.spriteList[player.heroSprite];
         p2SpriteObject.sprite = monster.CardSprite;
+        p1Text.text = player.playerName;
+        p2Text.text = monster.CardName;
         PlayerHolder = player;
         monsterHolder = monster;
         //DoBattle();
@@ -154,7 +157,6 @@ public class UIManager : MonoBehaviour
         promptMessage.SetActive(true);
         promptMessage.GetComponent<Animator>().Play("PromptMessageIn");
         promptMessageText.text = msg;
-
     }
 
     public void PromptReward(Card card)
@@ -196,14 +198,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // PromptMessage("hi");
         EnableTurn();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void ShowDice()

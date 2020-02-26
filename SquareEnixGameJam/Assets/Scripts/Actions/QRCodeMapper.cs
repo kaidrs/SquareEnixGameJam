@@ -18,7 +18,7 @@ public class QRCodeMapper : MonoBehaviour
         {
             NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
             return;
-        } 
+        }
         #endregion
         Card myCard = CardManager.Instance.CallCard(code);
 
@@ -26,18 +26,45 @@ public class QRCodeMapper : MonoBehaviour
         {
             case TileType.Loot:
                 LootCard lootedCard = myCard as LootCard;
-                UIManager.Instance.PromptReward(lootedCard);
+                if (lootedCard != null)
+                {
+                    UIManager.Instance.PromptReward(lootedCard);
+                }
+                else
+                {
+                    UIManager.Instance.PromptMessage("Wrong card scanned! Try again!");
+                    UIManager.Instance.PromptGoQR();
+                    return;
+                }
                 NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.Spell:
                 SpellCard spellCard = myCard as SpellCard;
-                UIManager.Instance.PromptReward(spellCard);
-                PlayerManager.Instance.ownerPlayer.hero.spellCards.Add(spellCard.CardNumber);
+                if (spellCard != null)
+                {
+                    UIManager.Instance.PromptReward(spellCard);
+                    PlayerManager.Instance.ownerPlayer.hero.spellCards.Add(spellCard.CardNumber);
+                }
+                else
+                {
+                    UIManager.Instance.PromptMessage("Wrong card scanned! Try again!");
+                    UIManager.Instance.PromptGoQR();
+                    return;
+                }
                 NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.Monster:
                 MonsterCard monsterCard = myCard as MonsterCard;
-                UIManager.Instance.PromptBattle(PlayerManager.Instance.ownerPlayer.hero, monsterCard);
+                if (monsterCard != null)
+                {
+                    UIManager.Instance.PromptBattle(PlayerManager.Instance.ownerPlayer.hero, monsterCard);
+                }
+                else
+                {
+                    UIManager.Instance.PromptMessage("Wrong card scanned! Try again!");
+                    UIManager.Instance.PromptGoQR();
+                    return;
+                }
                 break;
         }
 
