@@ -22,39 +22,17 @@ public class BattleManager : MonoBehaviour
 
 
     PlayerManager PMi;
-    //[SerializeField] 
 
     private void Awake()
     {
         PMi = PlayerManager.Instance;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Hero thief = new Thief(100.0f, 5, 5, 25, "Thief", HeroManager.Instance.thiefSprite);
-        //Hero warrior = new Warrior(100.0f, 25, 5, 5, "Warrior", HeroManager.Instance.warriorSprite);
-        //MonsterCard monster = ScriptableObject.CreateInstance<MonsterCard>();
-        //monster.Attack = 5;
-        //monster.Defence = 2;
-        //monster.Health = 100.0f;
-
-
-        //UIManager.Instance.inBattle = true;
-        //UIManager.Instance.PromptBattle(thief, warrior);
-       // PlayerVsPlayer(thief, warrior);
-       // PlayerVsMonster(thief, monster);
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public IEnumerator PlayerVsPlayer(Hero playerOne, Hero playerTwo)
     {
-        if(PMi.ownerPlayer.hero.spellCards != null)
+        var og1HP = playerOne.healthPoint;
+        var og2HP = playerTwo.healthPoint;
+        if (PMi.ownerPlayer.hero.spellCards != null)
         {
             //Do you wanna use spell panel
         }
@@ -75,6 +53,8 @@ public class BattleManager : MonoBehaviour
         //Debug.Log("Final Player one " + playerOne.healthPoint);
         //Debug.Log("Final Player two " + playerTwo.healthPoint);
         bool result = playerOne.healthPoint > playerTwo.healthPoint;
+        playerOne.healthPoint = og1HP;
+        playerTwo.healthPoint = og2HP;
         if (result)
         {
             LootCard rewardCardLooted = CardManager.Instance.GetRandomLoot();
@@ -90,6 +70,7 @@ public class BattleManager : MonoBehaviour
 
     public IEnumerator PlayerVsMonster(Hero player, MonsterCard monster)
     {
+        var ogHP = player.healthPoint;
         var monsterCardCopy = monster.GetCopy();
         while (player.healthPoint >= 0.0f && monsterCardCopy.Health >= 0.0f)
         {
@@ -103,12 +84,10 @@ public class BattleManager : MonoBehaviour
             Debug.Log("Player one " + player.healthPoint);
             UIManager.Instance.P2HpSlider.value = monsterCardCopy.Health;
         }
-        //playerTwo.TakeDamageFromPlayer(playerOne);
-        //playerOne.TakeDamageFromPlayer(playerTwo);
-        //Debug.Log("Final Player" + player.healthPoint);
-        //Debug.Log("Final monster" + monsterCardCopy.Health);
+
         bool result = player.healthPoint > monsterCardCopy.Health;
         UIManager.Instance.HidePrompts();
+        player.healthPoint = ogHP;
         if (result)
         {
             LootCard rewardCardLooted = CardManager.Instance.GetRandomLoot();
@@ -116,8 +95,5 @@ public class BattleManager : MonoBehaviour
         }
         UIManager.Instance.ShowInventory();
         NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
-
     }
-
-
 }

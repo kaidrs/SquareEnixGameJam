@@ -83,7 +83,7 @@ public class TileManager : MonoBehaviour
     {
         board = new List<TileType>();
         Debug.Log($"Set {zones.Count} Zones in Board");
-      //  TestBattle();
+        //  TestBattle();
 
         foreach (var zone in zones)
         {
@@ -99,15 +99,6 @@ public class TileManager : MonoBehaviour
     {
         return board[tilePosition];
     }
-    //public void RetrievePlayerList()
-    //{
-    //    if (GameManager.Instance.Players != null)
-    //    {
-    //        playerList = GameManager.Instance.Players; //retrieve the list of players set in GameManager
-
-    //        playerList.Sort(SortByTurn);
-    //    }
-    //}
 
     public int SortByTurn(Player p1, Player p2)
     {
@@ -121,19 +112,20 @@ public class TileManager : MonoBehaviour
     /// 
     public void SetPlayerTilePosition(int diceValue)
     {
-
+        string message = $"Move your peon by {diceValue}.";
         battleAgainstPlayer = false;
         if (!PlayerManager.Instance.IsCurrent)
         {
             return;
         }
         int addMove = 1;
+        int totalMoves = 0;
         while (addMove <= diceValue)
         {
-            int nextPosition = PlayerManager.Instance.ownerPlayer.tilePosition + addMove;
+            int nextPosition = PlayerManager.Instance.ownerPlayer.tilePosition + 1;
             int lastTile = board.Count - 1;
 
-            if (nextPosition > (lastTile - PlayerManager.Instance.ownerPlayer.tilePosition))
+            if (nextPosition > lastTile)
             {
                 PlayerManager.Instance.ownerPlayer.tilePosition = lastTile;
             }
@@ -141,15 +133,18 @@ public class TileManager : MonoBehaviour
             {
                 PlayerManager.Instance.ownerPlayer.tilePosition = nextPosition;
             }
+            totalMoves++;
+            UpdatePlayerZone();
             if (GetMyCurrentTile(PlayerManager.Instance.ownerPlayer.tilePosition) == TileType.MonsterBoss)
             {
+                message = $"Move your peon by {totalMoves}, you have reached the boss of the {PlayerManager.Instance.ownerPlayer.zone}.";
                 break;
             }
             addMove++;
         }
-        UpdatePlayerZone();
+
         PlayerManager.Instance.BroadcastUpdate();
-        if (GetMyCurrentTile(PMi.ownerPlayer.tilePosition)!= TileType.Checkpoint)
+        if (GetMyCurrentTile(PMi.ownerPlayer.tilePosition) != TileType.Checkpoint)
         {
             Player pvpHeroForBattle;
             foreach (var player in PMi.allPlayers)
@@ -161,10 +156,10 @@ public class TileManager : MonoBehaviour
                     UIManager.Instance.PromptBattle(PMi.ownerPlayer.hero, player.hero);
                     return;
                 }
-            } 
+            }
         }
         // call check tile postion and do aciton based postion
-        UIManager.Instance.PromptMessage($"Move your peon by {diceValue}.");
+        UIManager.Instance.PromptMessage(message);
     }
 
 
@@ -172,7 +167,7 @@ public class TileManager : MonoBehaviour
     {
         PMi.allPlayers.Add(PlayerManager.Instance.ownerPlayer);
         PMi.allPlayers.Add(new Player("allo", "bye"));
-        
+
 
         PMi.ownerPlayer.tilePosition += 4;
         for (int i = 0; i < PMi.allPlayers.Count; i++)
@@ -185,9 +180,6 @@ public class TileManager : MonoBehaviour
                 UIManager.Instance.PromptBattle(PMi.ownerPlayer.hero, PMi.allPlayers[i].hero);
             }
         }
-        // PMi.ownerPlayer.tilePosition = 6;
-        //UpdatePlayerZone();
-        //PlayerManager.Instance.BroadcastUpdate();
     }
 
 
@@ -197,7 +189,12 @@ public class TileManager : MonoBehaviour
     {
         for (int i = 0; i < zones.Count; i++)
         {
-            if (PlayerManager.Instance.ownerPlayer.tilePosition < zones[i].Tiles.Count)
+            int zoneTileCount = 0;
+            for (int j = 0; j <= i; j++)
+            {
+                zoneTileCount += zones[j].Tiles.Count;
+            }
+            if (PlayerManager.Instance.ownerPlayer.tilePosition < zoneTileCount)
             {
                 PlayerManager.Instance.ownerPlayer.zone = zones[i].Type;
                 break;
@@ -219,27 +216,20 @@ public class TileManager : MonoBehaviour
         {
             case TileType.None:
                 NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
-
                 break;
             case TileType.Event:
                 NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.Loot:
-                ///get card number QR SHOW QR PROMT!!!
-                //QRPROMT()
                 UIManager.Instance.PromptGoQR();
                 break;
             case TileType.Spell:
-                ///get card number QR SHOW QR PROMT!!!
-                //int cardmnumber = QRPROMT()
                 UIManager.Instance.PromptGoQR();
                 break;
             case TileType.Monster:
-                ///get card number QR SHOW QR PROMT!!!S
                 UIManager.Instance.PromptGoQR();
                 break;
             case TileType.Checkpoint:
-                // Nothing prompt relax;
                 NetworkManager.Instance.BroadcastUpdateTurn(); // Ends the turn
                 break;
             case TileType.MonsterBoss:

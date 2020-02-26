@@ -154,7 +154,6 @@ public class UIManager : MonoBehaviour
         promptMessage.SetActive(true);
         promptMessage.GetComponent<Animator>().Play("PromptMessageIn");
         promptMessageText.text = msg;
-
     }
 
     public void PromptReward(Card card)
@@ -196,14 +195,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // PromptMessage("hi");
         EnableTurn();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void ShowDice()

@@ -16,6 +16,7 @@ MonoBehaviour:
   cardNumber: 138
   cardSprite: {fileID: -3164292742882559571, guid: 7aaf05d71e6fe5742bd3be002c98d350,
     type: 3}
-  health: 30
   defence: 25
   attack: 20
+  bossCard: 1
+  zone: 0
