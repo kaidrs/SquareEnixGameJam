@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3df584f4c26f2468d24ed6a066709e, type: 3}
   m_Name: 110-GoldenSword
   m_EditorClassIdentifier: 
-  cardName: GoldenSword
+  cardName: Golden Sword
   cardNumber: 110
   cardSprite: {fileID: 21300000, guid: 091c523e790cfa24588541b2da67fe46, type: 3}
   attackStat: 2
