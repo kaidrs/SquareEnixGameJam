@@ -38,6 +38,10 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public Text playerText;
     public Text connectingText;
     public Dropdown dropdown;
+
+    [Header("Debug")]
+    public Button singlePlayerButton;
+    private int tap = 0;
     private const string GameVersion = "0.2";
 
     private void Start()
@@ -67,6 +71,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        singlePlayerButton.interactable = true;
         Debug.Log("You joined a room.");
         ToggleInRoomButton();
         roomText.text = $"Leave: {PhotonNetwork.CurrentRoom.Name}";
@@ -86,6 +91,8 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         loadGameBtn.gameObject.SetActive(false);
+        singlePlayerButton.interactable = false;
+        tap = 0;
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
@@ -265,5 +272,14 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.CurrentRoom.IsOpen = false;
         photonView.RPC("LoadLevel", RpcTarget.AllViaServer);
+    }
+
+    public void OnSinglePlayerButtonClicked()
+    {
+        tap++;
+        if (tap == 3)
+        {
+            OnLoadGameButtonClicked();
+        }
     }
 } // Class PhotonLobby
