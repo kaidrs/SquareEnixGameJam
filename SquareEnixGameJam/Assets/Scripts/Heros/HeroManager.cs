@@ -130,7 +130,7 @@ public class HeroManager : MonoBehaviour
     public void WarriorChoice()
     {
         panelInfo.SetActive(true);
-        textForUI = "Starting Stat\n\n Attack : 10 (Determine damage)\n\n Defence : 5 (% damage reduction) \n\n Luck : 5 (% dodge chance)";
+        textForUI = "--WARRIOR--\nStarting Stat\n\n Attack : 10 (Determine damage)\n\n Defence : 5 (% damage reduction) \n\n Luck : 5 (% dodge chance)";
         characterNumber = 1;
         isPanelOn = true;
     }
@@ -138,7 +138,7 @@ public class HeroManager : MonoBehaviour
     public void PaladinChoice()
     {
         panelInfo.SetActive(true);
-        textForUI = "Starting Stat\n\n Attack : 5 (Determine damage)\n\n Defence : 10 (% damage reduction) \n\n Luck : 5 (% dodge chance)";
+        textForUI = "--PALADIN--\nStarting Stat\n\n Attack : 5 (Determine damage)\n\n Defence : 10 (% damage reduction) \n\n Luck : 5 (% dodge chance)";
         characterNumber = 2;
         isPanelOn = true;
     }
@@ -146,7 +146,7 @@ public class HeroManager : MonoBehaviour
     public void ThiefChoice()
     {
         panelInfo.SetActive(true);
-        textForUI = "Starting Stat\n\n Attack : 5 (Determine damage)\n\n Defence : 5 (% damage reduction) \n\n Luck : 10 (% dodge chance)";
+        textForUI = "--THIEF--\nStarting Stat\n\n Attack : 5 (Determine damage)\n\n Defence : 5 (% damage reduction) \n\n Luck : 10 (% dodge chance)";
         characterNumber = 3;
         isPanelOn = true;
     }

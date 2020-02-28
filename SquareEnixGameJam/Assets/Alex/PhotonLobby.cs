@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
+public class PhotonLobby : MonoBehaviourPunCallbacks
 {
     public static PhotonLobby lobby;
     #region Singleton
@@ -28,72 +28,102 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public GameObject createRoomButton;
     public GameObject leaveRoomButton;
     public GameObject joinRoomButton;
-    public GameObject toggleRoomButton;
+    public GameObject mainPanel;
+    public GameObject secondPanel;
 
-    public Dropdown dropdown;
+    public Button loadGameBtn;
+
     public Text lobbyText;
     public Text roomText;
-    public Text roomToggleText;
-
-    public List<RoomInfo> roomList;
-
+    public Text playerText;
+    public Text connectingText;
+    public Dropdown dropdown;
+    private const string GameVersion = "0.2";
 
     private void Start()
     {
-        roomList = new List<RoomInfo>();
-        PhotonNetwork.ConnectUsingSettings();
+        secondPanel.SetActive(false);
     }
+
+
 
     public override void OnConnectedToMaster()
     {
         Debug.Log("Player has conencted to the master photon server");
         createRoomButton.SetActive(true);
         dropdown.options.Clear();
-        if (roomList.Count > 0)
-        {
-            joinRoomButton.SetActive(true);
-        }
+        mainPanel.SetActive(false);
+        secondPanel.SetActive(true);
         if (!PhotonNetwork.InLobby)
         {
             lobbyText.text = "Leave Lobby";
             PhotonNetwork.JoinLobby();
         }
-        ToggleInRoomButton(false);
-        if (roomList.Count > 0)
-        {
-            joinRoomButton.SetActive(true);
-        }
+
         Debug.Log($"Number of rooms :{PhotonNetwork.CountOfRooms}");
     }
 
+    
 
-    public void OnCreateRoomButtonClicked()
-    {
-        Debug.Log("Battle Button Clicked");
-        ToggleInRoomButton();
-        CreateRoom();
-    }
-
-    private void ToggleInRoomButton(bool InRoom = true)
-    {
-        createRoomButton.SetActive(!InRoom);
-        joinRoomButton.SetActive(!InRoom);
-        leaveRoomButton.SetActive(InRoom);
-        dropdown.gameObject.SetActive(!InRoom);
-        toggleRoomButton.SetActive(InRoom);
-        leaveLobbyButton.SetActive(!InRoom);
-    }
-
-    public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-        Debug.Log("Tried to join a random room but failed, no room available.");
-        CreateRoom();
-    }
     public override void OnJoinedRoom()
     {
         Debug.Log("You joined a room.");
         ToggleInRoomButton();
         roomText.text = $"Leave: {PhotonNetwork.CurrentRoom.Name}";
+        playerText.text = PhotonNetwork.LocalPlayer.NickName;
+        foreach (var player in PhotonNetwork.PlayerListOthers)
+        {
+            playerText.text += $"\n{player.NickName}";
+        }
+
+        PhotonNetwork.CurrentRoom.IsOpen = PhotonNetwork.CurrentRoom.PlayerCount < PhotonNetwork.CurrentRoom.MaxPlayers;
+        if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+        {
+            loadGameBtn.gameObject.SetActive(true);
+        }
+    }
+
+    public override void OnLeftRoom()
+    {
+        loadGameBtn.gameObject.SetActive(false);
+    }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        roomText.text = message;
+    }
+
+    [PunRPC]
+    public void LoadLevel()
+    {
+        PhotonNetwork.LoadLevel("PlayerLobby");
+    }
+
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        playerText.text += $"\n{newPlayer.NickName}";
+        if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+        {
+            loadGameBtn.gameObject.SetActive(true);
+        }
+    }
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        playerText.text = PhotonNetwork.LocalPlayer.NickName;
+        foreach (var player in PhotonNetwork.PlayerListOthers)
+        {
+            playerText.text += $"\n{player.NickName}";
+        }
+        PhotonNetwork.CurrentRoom.IsOpen = PhotonNetwork.CurrentRoom.PlayerCount < PhotonNetwork.CurrentRoom.MaxPlayers;
+        if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+        {
+            loadGameBtn.gameObject.SetActive(true);
+        }
+        else
+        {
+            loadGameBtn.gameObject.SetActive(false);
+        }
     }
 
     private static void CreateRoom()
@@ -110,56 +140,22 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
         CreateRoom();
     }
 
-    public void OnLeaveRoomButtonClicked()
+
+    private void ToggleRoomBtnDrop(bool on = true)
     {
-        ToggleInRoomButton(false);
-        roomText.text = "Joining...";
-        PhotonNetwork.LeaveRoom();
+        joinRoomButton.SetActive(on);
+        dropdown.gameObject.SetActive(on);
     }
 
-    public void OnJoinRoomButtonClicked()
-    {
-        if (dropdown.options.Count == 0)
-        {
-            Debug.Log("No Rooms");
-            return;
-        }
-        ToggleInRoomButton();
-        var data = dropdown.options[dropdown.value].text;
-        PhotonNetwork.JoinRoom(data);
-    }
-
-    public void OnLobbyButtonClicked()
-    {
-        if (PhotonNetwork.InLobby)
-        {
-            Debug.Log("Leave Lobby");
-            lobbyText.text = "Join Lobby";
-            roomList.Clear();
-            dropdown.ClearOptions();
-            ToggleInLobby(false);
-            PhotonNetwork.LeaveLobby();
-        }
-        else
-        {
-            Debug.Log("Join Lobby");
-            ToggleInLobby();
-            lobbyText.text = "Leave Lobby";
-            PhotonNetwork.JoinLobby();
-        }
-    }
+    
     public void ToggleInLobby(bool InLobby = true)
     {
         createRoomButton.SetActive(InLobby);
-        joinRoomButton.SetActive(InLobby);
-        dropdown.gameObject.SetActive(InLobby);
     }
+
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-
-        base.OnRoomListUpdate(roomList);
         Debug.Log($"List update {roomList.Count}");
-        this.roomList = roomList;
 
         foreach (var room in roomList)
         {
@@ -178,9 +174,13 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
             }
         }
         dropdown.RefreshShownValue();
-        if (roomList.Count > 0)
+        if (dropdown.options.Count > 0)
         {
-            joinRoomButton.SetActive(true);
+            ToggleRoomBtnDrop();
+        }
+        else
+        {
+            ToggleRoomBtnDrop(false);
         }
     }
 
@@ -188,13 +188,82 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         if (PhotonNetwork.CurrentRoom.IsOpen)
         {
-            roomToggleText.text = "Open Room";
             PhotonNetwork.CurrentRoom.IsOpen = false;
         }
         else
         {
-            roomToggleText.text = "Close Room";
             PhotonNetwork.CurrentRoom.IsOpen = true;
         }
+    }
+
+    private void ToggleInRoomButton(bool InRoom = true)
+    {
+        createRoomButton.SetActive(!InRoom);
+        leaveRoomButton.SetActive(InRoom);
+        leaveLobbyButton.SetActive(!InRoom);
+        playerText.text = "";
+        playerText.gameObject.SetActive(InRoom);
+    }
+
+    // --- Buttons methods ---
+
+    public void OnConnectButtonClicked()
+    {
+        connectingText.text = "Searching...";
+        PhotonNetwork.GameVersion = GameVersion;
+        PhotonNetwork.ConnectUsingSettings();
+    }
+
+    public void OnLobbyButtonClicked()
+    {
+        if (PhotonNetwork.InLobby)
+        {
+            Debug.Log("Leave Lobby");
+            lobbyText.text = "Join Lobby";
+            dropdown.ClearOptions();
+            ToggleInLobby(false);
+            PhotonNetwork.LeaveLobby();
+        }
+        else
+        {
+            Debug.Log("Join Lobby");
+            ToggleInLobby();
+            lobbyText.text = "Leave Lobby";
+            PhotonNetwork.JoinLobby();
+        }
+    }
+
+    public void OnCreateRoomButtonClicked()
+    {
+        Debug.Log("Battle Button Clicked");
+        ToggleRoomBtnDrop(false);
+        ToggleInRoomButton();
+        CreateRoom();
+    }
+
+    public void OnLeaveRoomButtonClicked()
+    {
+        ToggleInRoomButton(false);
+        roomText.text = "Joining...";
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public void OnJoinRoomButtonClicked()
+    {
+        if (dropdown.options.Count == 0)
+        {
+            Debug.Log("No Rooms");
+            return;
+        }
+        ToggleInRoomButton();
+        ToggleRoomBtnDrop(false);
+        var data = dropdown.options[dropdown.value].text;
+        PhotonNetwork.JoinRoom(data);
+    }
+
+    public void OnLoadGameButtonClicked()
+    {
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        photonView.RPC("LoadLevel", RpcTarget.AllViaServer);
     }
 } // Class PhotonLobby
