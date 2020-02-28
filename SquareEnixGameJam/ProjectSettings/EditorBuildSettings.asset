@@ -6,21 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/PunNameScene.unity
-    guid: 9298bd391b7ce5c4fb492c960939dc2b
+    path: Assets/Scenes/NewLobby.unity
+    guid: 5183b1125057cdd4e9f0acaf9cb12522
   - enabled: 1
     path: Assets/Scenes/PlayerLobby.unity
     guid: 9cefcded44531d940b81aef557c7a911
   - enabled: 1
-    path: Assets/Scenes/PlayScene.unity
-    guid: 45f2c1bf8f9211846a913dc18631b5ea
-  - enabled: 1
     path: Assets/Scenes/Robert.unity
     guid: 79cf699d2997f48458861cc906e119b9
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 815a164d656f34bb29d077b32032c9ea
   - enabled: 1
     path: Assets/Scenes/Jeff.unity
     guid: 8df1d13b1cb47aa44a634afa96241960
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 815a164d656f34bb29d077b32032c9ea
+    path: Assets/Scenes/BattleScene.unity
+    guid: 5301cada2967c5b4daae21d51ebeade0
+  - enabled: 1
+    path: Assets/Scenes/AfterSelectionRob.unity
+    guid: d4b6d91d64cb3be43964fc3790fa5981
   m_configObjects: {}

@@ -6,7 +6,7 @@ public class PlayerNameInput : MonoBehaviourPunCallbacks
 {
     [SerializeField] private InputField nameInputField = null;
     [SerializeField] private Button continueButton = null;
-
+    public Text inputText;
     private const string PlayerPrefsNameKey = "PlayerName";
 
     private void Start()
@@ -18,6 +18,7 @@ public class PlayerNameInput : MonoBehaviourPunCallbacks
     {
         if (!PlayerPrefs.HasKey(PlayerPrefsNameKey))
         {
+            continueButton.interactable = false;
             return;
         }
 
@@ -30,7 +31,7 @@ public class PlayerNameInput : MonoBehaviourPunCallbacks
 
     public void SetPlayerName(string defaultName)
     {
-        continueButton.interactable = !string.IsNullOrEmpty(name);
+        continueButton.interactable = !string.IsNullOrEmpty(defaultName);
     }
 
     public void SavePlayerName()

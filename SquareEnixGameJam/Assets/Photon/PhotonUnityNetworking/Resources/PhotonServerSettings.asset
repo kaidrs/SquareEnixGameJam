@@ -46,5 +46,6 @@ MonoBehaviour:
   - ReceiveMyPlayerJSON
   - LoadScene
   - EndTurn
+  - LoadLevel
   DisableAutoOpenWizard: 1
   ShowSettings: 1
