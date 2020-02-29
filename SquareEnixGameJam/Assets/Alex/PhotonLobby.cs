@@ -277,7 +277,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public void OnSinglePlayerButtonClicked()
     {
         tap++;
-        if (tap == 3)
+        if (tap >= 3)
         {
             OnLoadGameButtonClicked();
         }

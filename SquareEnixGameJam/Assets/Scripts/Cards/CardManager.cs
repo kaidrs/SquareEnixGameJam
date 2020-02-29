@@ -33,9 +33,25 @@ public class CardManager : MonoBehaviour
     [SerializeField] private EventCard[] eventCardColletion;
 
     [SerializeField] private Dictionary<int, LootCard> lootCardDict = new Dictionary<int, LootCard>();
+    
     public LootCard GetRandomLoot()
     {
         return lootCardColletion[Random.Range(0, lootCardColletion.Length)];
+    }
+
+    public SpellCard GetRandomSpell()
+    {
+        return spellCardColletion[Random.Range(0, spellCardColletion.Length)];
+    }
+
+    public MonsterCard GetRandomMonster()
+    {
+        MonsterCard randomCard = null;
+        do
+        {
+            randomCard = monsterCardColletion[Random.Range(0, monsterCardColletion.Length)]; 
+        } while (randomCard.bossCard);
+        return randomCard;
     }
 
 

@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class QRCodeMapper : MonoBehaviour
 {
-    Card chosenCard;
-
-    [SerializeField] public SpellCard card;
 
     public void MapCodeToCard(string QRResult)
     {
+
+        // Reset the hidden counter for getting random card without scanning.
+        GameManager.Instance.randomCardTap = 0;
+
         TileType playerTileType = TileManager.Instance.GetMyCurrentTile(PlayerManager.Instance.ownerPlayer.tilePosition);
         int code = int.Parse(QRResult);
         Debug.Log($"YOU GOT CARD #{code}");
@@ -68,7 +69,38 @@ public class QRCodeMapper : MonoBehaviour
                 break;
         }
 
+
     }
 
+    /// <summary>
+    /// Used to get random card without scanning.
+    /// </summary>
+    public void OnRandomCardButtonClicked()
+    {
+        GameManager.Instance.randomCardTap++;
+        if (GameManager.Instance.randomCardTap >= 3)
+        {
+            GameManager.Instance.randomCardTap = 0;
+            QRDecodeTest.Instance.Stop();
+            TileType playerTileType = TileManager.Instance.GetMyCurrentTile(PlayerManager.Instance.ownerPlayer.tilePosition);
+            switch (playerTileType)
+            {
+                case TileType.Loot:
+                    var randomLootCard = CardManager.Instance.GetRandomLoot();
+                    MapCodeToCard(randomLootCard.CardNumber.ToString());
+                    break;
+                case TileType.Spell:
+                    var randomSpellCard = CardManager.Instance.GetRandomSpell();
+                    MapCodeToCard(randomSpellCard.CardNumber.ToString());
+                    break;
+                case TileType.Monster:
+                    var randomMonsterCard = CardManager.Instance.GetRandomMonster();
+                    MapCodeToCard(randomMonsterCard.CardNumber.ToString());
+                    break;
+                default:
+                    break;
+            } 
+        }
+    }
 
 }
