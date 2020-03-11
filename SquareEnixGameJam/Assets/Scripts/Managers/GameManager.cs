@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         #endregion
     }
 
+    public int randomCardTap = 0;
     public void UpdateTurn()
     {
 
